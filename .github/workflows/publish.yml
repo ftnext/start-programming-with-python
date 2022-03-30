@@ -22,7 +22,7 @@ jobs:
       - name: Build document
         run: |
           make html
-          rm -r Build/html/_sources
+          rm -r build/html/_sources
       - name: Publish on GitHub Pages
         uses: ftnext/action-push-ghpages@v1.0.0
         with:
