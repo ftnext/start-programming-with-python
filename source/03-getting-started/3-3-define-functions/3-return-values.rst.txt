@@ -1,0 +1,89 @@
+返り値のある関数を作ってみよう
+========================================================
+
+ここまでに作った関数には返り値はありませんでした。
+次のように ``return`` 文（``return`` で始まる文）を使うと、**返り値のある関数** を定義できます：
+
+.. code-block:: python
+
+    >>> def 関数の名前(変数1, 変数2, ...):  # doctest: +SKIP
+    ...     関数にまとめる文（の並び）
+    ...     return 式  # ((returnの後に半角スペースが1つ入ります))
+
+``return`` 文の **式を評価した値** が、関数の返り値となります。
+
+.. https://docs.python.org/ja/3/reference/simple_stmts.html#the-return-statement
+
+引数に指定した人への挨拶文を返す関数
+----------------------------------------------------------------
+
+返り値のある関数を試しに作ってみましょう。
+
+.. list-table:: 指定した人への挨拶文を返す関数
+    :align: center
+
+    * - 箱の名前
+      - ``aisatsu_bun``
+    * - 箱は何をするか
+      - 「〇〇さん、ごきげんよう」という挨拶文を返す
+    * - 箱に入れるもの
+      - 文字列（「〇〇」の部分に入る人の名前）
+    * - 箱から出てくるもの
+      - 文字列（挨拶文）
+
+``aisatsu_bun`` 関数は次のようになります。
+
+.. code-block:: python
+
+    >>> def aisatsu_bun(namae):
+    ...     return f"{namae}さん、ごきげんよう"
+    ...
+    >>>
+
+本書の筆者の名前を渡して呼び出してみます。
+
+.. code-block:: python
+
+    >>> aisatsu_bun("susumuis")
+    'susumuisさん、ごきげんよう'
+
+返り値は、式 ``f"{namae}さん、ごきげんよう"`` を評価した値になっていますね。
+渡した ``"susumuis"`` が ``namae`` に代入されています。
+
+``aisatsu_bun`` 関数の返り値の文字列を ``print`` 関数に渡すことで、挨拶を表示できますね。
+
+.. figure:: images/4/4-18-function_returned_value.drawio.png
+    :align: center
+
+    返り値のある関数は ``return`` を指定して作る
+
+.. advanced:: 関数の返り値は複数あってもいい
+
+    ``return`` 文に続く式は、**カンマで区切って複数指定** できます。
+    このとき、関数は複数の値を返します。
+
+    .. code-block:: python
+
+        >>> def 関数の名前(変数1, 変数2, ...):  # doctest: +SKIP
+        ...     関数にまとめる文（の並び）
+        ...     return 式1, 式2, ...
+    
+    挨拶文とその長さを返す関数を作ってみましょう。
+
+    .. code-block:: python
+
+        >>> def aisatsu_bun_kai(namae):
+        ...     bun = f"{namae}さん、ごきげんよう"
+        ...     return bun, len(bun)
+        ...
+        >>>
+
+    この関数の返り値の代入は、:numref:`variables` 「:ref:`variables`」のコラムで取り上げた「複数の変数に同時に代入」の書き方を使います。
+
+    .. code-block:: python
+
+        >>> aisatsu, mojisuu = aisatsu_bun_kai("nao_y")
+        >>> aisatsu
+        'nao_yさん、ごきげんよう'
+        >>> mojisuu
+        14
