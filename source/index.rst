@@ -20,6 +20,7 @@ Welcome to start-programming-with-python's documentation!
    360-fork/index
    370-loop/index
    380-list/index
+   390-programmer_thinking/index
 
 
 
