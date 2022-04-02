@@ -13,6 +13,7 @@ Welcome to start-programming-with-python's documentation!
 
    300-value_integer_string/index
    310-variables/index
+   320-use_functions/index
 
 
 
