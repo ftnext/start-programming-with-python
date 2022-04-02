@@ -59,5 +59,82 @@ html_theme = 'alabaster'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
+# -- directive/role definition ----------------------------------------------->
+# Based on https://sphinx-users.jp/cookbook/columndirective/index.html
+
+from docutils import nodes  # noqa
+from docutils.parsers.rst.directives.admonitions import BaseAdmonition  # noqa
+from sphinx.util.nodes import StringList, nested_parse_with_titles  # noqa
+
+
+class NamedNoteDirective(BaseAdmonition):
+    node_class = nodes.admonition
+    css_class = "note"
+    # required_arguments = 1
+    required_arguments = 0
+    optional_arguments = 1
+
+    def get_title(self) -> str:
+        title = ""
+        if self.arguments:
+            title += self.arguments[0]
+        return title
+
+    def run(self):
+        title = self.get_title()
+
+        if "class" in self.options:
+            self.options["class"].append(self.css_class)
+        else:
+            self.options["class"] = [self.css_class]
+
+        # コラムのタイトルで `` や ** といったReSTのマークアップがパースされるようにする
+        # ref: https://stackoverflow.com/a/44084890
+        rst = StringList()
+        rst.append(title, "fakefile.rst", 10)
+        section_node_for_title = nodes.section()
+        section_node_for_title.document = self.state.document
+        nested_parse_with_titles(self.state, rst, section_node_for_title)
+
+        node = self.node_class("\n".join(self.content))
+        node += nodes.title("", "", *section_node_for_title.children[0])
+        node["classes"] += self.options["class"]
+        node["name"] = self.name
+        self.state.nested_parse(self.content, self.content_offset, node)
+
+        return [node]
+
+
+class NamedNoteWithPrefixDirective(NamedNoteDirective):
+    title_prefix = "[prefix]"
+
+    def get_title(self):
+        title = f"{self.title_prefix} "
+        if self.arguments:
+            title += self.arguments[0]
+        return title
+
+
+class ColumnDirective(NamedNoteWithPrefixDirective):
+    css_class = "column"
+    title_prefix = "[コラム]"
+
+
+class AdvancedTopicDirective(NamedNoteWithPrefixDirective):
+    css_class = "advanced"
+    title_prefix = "[発展]"
+
+
+class ExerciseAnswerDirective(NamedNoteWithPrefixDirective):
+    css_class = "answer"
+    title_prefix = "[解答]"
+
+
+def setup(app):
+    app.add_stylesheet("custom.css")
+    app.add_directive("column", ColumnDirective)
+    app.add_directive("advanced", AdvancedTopicDirective)
+    app.add_directive("answer", ExerciseAnswerDirective)
+
 
 # -- Extension configuration -------------------------------------------------

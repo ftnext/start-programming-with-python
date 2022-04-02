@@ -1,0 +1,14 @@
+div.column {
+    background-color: #eee;
+    border: 1px solid #ccc;
+}
+
+div.advanced {
+    background-color: azure;
+    border: 1px solid cornflowerblue;
+}
+
+div.answer {
+    background-color: honeydew;
+    border: 1px solid greenyellow;
+}
