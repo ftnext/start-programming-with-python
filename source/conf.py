@@ -70,7 +70,6 @@ from sphinx.util.nodes import StringList, nested_parse_with_titles  # noqa
 class NamedNoteDirective(BaseAdmonition):
     node_class = nodes.admonition
     css_class = "note"
-    # required_arguments = 1
     required_arguments = 0
     optional_arguments = 1
 
@@ -131,7 +130,7 @@ class ExerciseAnswerDirective(NamedNoteWithPrefixDirective):
 
 
 def setup(app):
-    app.add_stylesheet("custom.css")
+    app.add_css_file("custom.css")
     app.add_directive("column", ColumnDirective)
     app.add_directive("advanced", AdvancedTopicDirective)
     app.add_directive("answer", ExerciseAnswerDirective)
