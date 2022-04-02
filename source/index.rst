@@ -9,6 +9,9 @@ Welcome to start-programming-with-python's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   :numbered:
+
+   300-value_integer_string/index
 
 
 
