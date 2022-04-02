@@ -1,0 +1,156 @@
+分岐
+====
+
+``if`` 文
+------------
+
+.. 一番単純な ``if`` 文の動きの説明で、条件式をTrue/Falseとする説明が冗長と感じ、カットした
+
+``if`` に続く条件が ``True`` のとき、インデントされた部分の処理が実行されるというのは、
+``nenrei_kakunin.py`` を以下のように変えると分かりやすいのではないでしょうか。
+
+.. code-block:: python
+    :caption: nenrei_kakunin.py
+    :linenos:
+
+    print('プログラムを開始します')
+    nenrei = 25
+    if True:  # 分かりやすさのため、条件をTrueに変更
+        print('お酒を売ることができる年齢です')
+    print('プログラムを終了します')
+
+条件を ``True`` に変えました。
+4行目の ``print`` 文が実行されます。
+
+.. code-block:: shell
+
+    $ python nenrei_kakunin.py
+    プログラムを開始します
+    お酒を売ることができる年齢です
+    プログラムを終了します
+
+比較演算子が返す値は ``True`` の他に ``False`` がありました。
+条件を ``False`` に変えてみましょう。
+
+.. code-block:: python
+
+    print('プログラムを開始します')
+    nenrei = 25
+    if False:  # 条件をTrueからFalseに変更
+        print('お酒を売ることができる年齢です')
+    print('プログラムを終了します')
+
+``nenrei_kakunin.py`` を実行すると、
+
+.. code-block:: shell
+
+    $ python nenrei_kakunin.py
+    プログラムを開始します
+    プログラムを終了します
+
+4行目の ``print`` 関数が実行されていませんね。
+``if`` に続く条件が ``False`` のときは、直後に続くインデントされた部分が実行されません。
+
+.. ``elif`` を追加した場合については、すべての場合を同じ粒度で網羅する必要がないと気付き、カットした
+
+``elif`` に続く条件 ``nenrei == 20`` が ``False`` となる場合にはどうなるかも確認しておきましょう。
+
+.. code-block:: python
+    :caption: nenrei_kakunin.py
+    :linenos:
+
+    print('プログラムを開始します')
+    nenrei = 19  # 年齢を変更
+    if nenrei > 20:
+        print('お酒を売ることができる年齢です')
+    elif nenrei == 20:
+        print('成人おめでとう！お酒を売ることができる年齢です')
+    else:
+        print('お酒を売ることができる年齢ではありません')
+    print('プログラムを終了します')
+
+``nenrei_kakunin.py`` を実行します。
+
+.. code-block:: shell
+
+    $ python nenrei_kakunin.py
+    プログラムを開始します
+    お酒を売ることができる年齢ではありません
+    プログラムを終了します
+
+8行目の ``print`` 関数が実行されました。
+
+変数 ``nenrei`` に ``19`` が代入されている（2行目）ので、
+``if`` に続く条件 ``nenrei > 20`` は ``False`` となります。
+``elif`` に続く条件 ``nenrei == 20`` を確認しますが、これも ``False`` となります。
+``if`` に続く条件も ``elif`` に続く条件も成り立たないときに、``else`` に続く処理が実行されます。
+
+``if`` に続く条件が ``True`` となるときは、``elif`` に続く処理も、``else`` に続く処理も実行されません。
+
+.. code-block:: python
+    :caption: nenrei_kakunin.py
+    :linenos:
+
+    print('プログラムを開始します')
+    nenrei = 25  # 年齢を変更
+    if nenrei > 20:
+        print('お酒を売ることができる年齢です')
+    elif nenrei == 20:
+        print('成人おめでとう！お酒を売ることができる年齢です')
+    else:
+        print('お酒を売ることができる年齢ではありません')
+    print('プログラムを終了します')
+
+4行目が実行されることが確認できます。
+
+.. code-block:: shell
+
+    $ python nenrei_kakunin.py
+    プログラムを開始します
+    お酒を売ることができる年齢です
+    プログラムを終了します
+
+.. 以下は https://github.com/susumuishigami/pybeginnerbook/issues/80 も参照
+
+文字列を使った条件
+--------------------------------
+
+- 条件には数値だけでなく文字列も使える
+- 等しい、等しくないは数値のときと同様
+
+.. code-block:: shell
+
+    >>> aisatsu = 'こんにちは'
+    >>> aisatsu == 'こんにちは'
+    True
+    >>> aisatsu == 'こんばんは'
+    False
+
+- 変数aisatsuに'こんにちは'という文字列を代入
+- 「変数aisatsuと'こんにちは'は等しいですか」→True
+- 「変数aisatsuと'こんばんは'は等しいですか」→False
+
+- 文字列について大小関係を比較することはあまりない（数値独自の比較）
+- 文字列独自の比較として、「〇〇で始まる」「〇〇で終わる」という比較ができる
+- 「〇〇で終わる」を比較する ``endswith`` を紹介
+- （「〇〇で始まる」を比較する ``startswith`` も基本的には同じ）
+
+.. code-block:: shell
+
+    >>> # 直前の例の続きから
+    >>> aisatsu.endswith('ちは')
+    True
+    >>> aisatsu.endswith('んは')
+    False
+
+- 「変数aisatsuは'ちは'で終わりますか」
+
+    - 変数aisatsuには「こんにちは」が入っている
+    - 「こんにちは」の最後の2文字は「ちは」なので、「こんにちは」は「ちは」で終わる
+    - Pythonも同様に判断し、条件が成り立つ（True）を返す
+- 「変数aisatsuと'んは'で終わりますかは等しいですか」
+
+    - 「こんにちは」の最後の2文字は「んは」ではないので、「こんにちは」は「んは」で終わらない
+    - Pythonも同様に判断し、条件が成り立たない（False）を返す
+
+練習：if_bun.pyの条件を文字列とendswithを使って書き換えてみましょう（endswithの使い方から推測して、startswithも使えたらすごい）

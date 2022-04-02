@@ -1,0 +1,234 @@
+入力を扱う
+============================
+
+入力された値を変数で扱う
+--------------------------------
+
+まずは入力の練習のために新しいファイル ``nyuuryoku.py`` を作ります。
+インタラクティブシェルで試したコードを実行しましょう。
+
+.. code-block:: python
+    :caption: nyuuryoku.py
+    :linenos:
+
+    namae = input('名前を入力してください：')
+    print(namae)
+
+インタラクティブシェルとは異なり、ファイルで使われた変数の指す値を確認するには ``print`` 関数が必要でしたね。
+``nyuuryoku.py`` は、入力された名前を表示するプログラムです。
+実行してみましょう。
+
+.. code-block:: shell
+
+    $ python nyuuryoku.py
+    名前を入力してください：
+
+自分の名前（私の場合は、nikkie）を入力します。
+
+.. code-block:: shell
+
+    $ python nyuuryoku.py
+    名前を入力してください：nikkie
+    nikkie
+
+``nyuuryoku.py`` 2行目の ``print`` 関数により、nikkieと表示されました。
+
+これで、ファイルの中で変数に入力された値を代入する方法が分かりました。
+
+数値を入力する場合
+--------------------------------
+
+.. この中の一部を抜粋して「数値を入力する場合」というコラムにした（zeikomi.pyを作っていない）
+
+1節の数値のところで、消費税込みの価格を求めるということをしました。
+``input`` 関数に慣れる目的で、ここでは、入力された金額（整数）について消費税込みの価格を表示するプログラムを作りましょう。
+消費税率は10%とします。
+
+``aisatsu.py`` の例をもとに考えると、次の2点ができればよさそうですね。
+
+- 価格を入力してもらう（``input`` 関数を利用）
+- 入力された価格から消費税込みの価格を計算し、表示する（計算結果を ``print`` 関数に渡す）
+
+ファイル名は ``zeikomi.py`` としましょう。
+少し立ち止まって考えてみてください。
+
+プログラミングの世界では調べれば「やり方」は見つかります。
+ですが、プログラマが直面している課題（ここでは税込価格の計算）そのものへの答えは見つかりません。
+知った「やり方」を目の前の課題向けに適用する必要があります。
+本章で「立ち止まって考えてみてください」としている箇所では、やり方を課題に適用する方法を考えてもらう意図があります。
+
+以下のようなプログラムが書けたのではないでしょうか。
+
+.. code-block:: python
+    :caption: zeikomi.py
+    :linenos:
+
+    kakaku = input('価格を入力してください：')
+    zeikomi = kakaku * (1+0.1)
+    print(zeikomi)
+
+1行目では ``input`` 関数を使って入力された価格を変数 ``kakaku`` に代入しています。
+そして2行目では消費税率10%の税込価格を計算し、変数 ``zeikomi`` に代入します。
+3行目で ``zeikomi`` の指す値が画面に表示されます。
+
+それでは、実行してみましょう。
+
+.. code-block:: shell
+
+    $ python zeikomi.py
+    価格を入力してください：
+
+1行目の ``input`` 関数が実行されていますね。
+試しに1000（円）と入力してEnterキーを押してみます。
+
+.. code-block:: shell
+
+    $ python zeikomi.py
+    価格を入力してください：1000
+    Traceback (most recent call last):
+      File "zeikomi.py", line 2, in <module>
+        zeikomi = kakaku * (1+0.1)
+    TypeError: can't multiply sequence by non-int of type 'float'
+
+``TypeError`` が発生しました。
+2行目の ``zeikomi = kakaku * (1+0.1)`` で発生しています。
+
+このエラーは、実は2節でも出会っています。
+インタラクティブシェルで ``'万歳！' * 2.5`` を計算しようとした時に出会いました。
+つまり、文字列と小数の掛け算をしようとして、エラーが発生しています。
+
+``kakaku`` に代入された値が文字列なのかインタラクティブシェルで確認しましょう。
+
+.. code-block:: shell
+
+    >>> kakaku = input('価格を入力してください：')  # doctest: +SKIP
+    価格を入力してください：1000
+    >>> type(kakaku)  # doctest: +SKIP
+    <class 'str'>
+
+``type`` 関数を使ったところ、``kakaku`` に代入された値が文字列（``str``）と分かりました。
+
+``input`` 関数の処理の中で私たちが入力した値は文字列になります。
+数字を入力していても、``input`` 関数の返す値は文字列です。
+
+``'1000'`` のように数字が並んだ文字列を数値（整数）に変換する方法もプログラミング言語には用意されています。
+Pythonでは、組み込み関数の中の ``int`` を使います。
+
+.. https://docs.python.org/ja/3/library/functions.html#int
+
+.. TODO：「キャスト」という語を紹介するか要検討（文字列→整数はキャスト？）
+
+インタラクティブシェルで試してみましょう。
+
+.. code-block:: shell
+
+    >>> int('1000')
+    1000
+
+``int`` 関数が返す値の型は整数です。
+
+.. code-block:: shell
+
+    >>> type(int('1000'))
+    <class 'int'>
+
+整数に変換すると、消費税率（小数）との掛け算ができます。
+
+.. code-block:: shell
+
+    >>> int('1000') * (1+0.1)
+    1100.0
+
+整数と小数の積が小数で表示されています。
+
+``int`` 関数を使って、``zeikomi.py`` を書き直してみましょう。
+
+.. code-block:: python
+    :caption: zeikomi.py
+    :linenos:
+
+    kakaku = input('価格を入力してください：')
+    zeikomi = int(kakaku) * (1+0.1)  # int関数を使って文字列を整数に変換
+    print(zeikomi)
+
+実行して確認します。
+
+.. code-block:: shell
+
+    $ python zeikomi.py
+    価格を入力してください：1000
+    1100.0
+
+計算された税込価格が表示されました！
+``int`` 関数を使って、入力された文字列を整数に置き換えたことで ``TypeError`` は発生していませんね。
+
+1節の練習問題2 (3)の例でも実行してみます（価格を 279+100+120 = 499 とします）。
+
+.. code-block:: shell
+
+    $ python zeikomi.py
+    価格を入力してください：499
+    548.9000000000001
+
+練習問題2 (3)と同じ値になっていますね。
+
+税込価格は整数と小数の積が計算され、小数で表示されています。
+実際の税込価格の計算では、小数の部分は切り捨てられます。
+これを ``zeikomi.py`` で実現するのにも、``int`` 関数の出番です。
+小数を ``int`` 関数に渡すと、整数の部分が取り出されます（四捨五入ではありません）。
+
+.. code-block:: shell
+
+    >>> int(123.4)
+    123
+    >>> int(678.9)
+    678
+
+``zeikomi.py`` を変更し、税込価格の計算結果に ``int`` 関数を適用して得られる整数の値を表示するようにします。
+
+.. code-block:: python
+    :caption: zeikomi.py
+    :linenos:
+
+    kakaku = input('価格を入力してください：')
+    zeikomi = int(kakaku) * (1+0.1)
+    print(int(zeikomi))  # int関数を使って計算結果の小数を整数に変換
+
+整数で表示されることを確認しましょう。
+
+.. code-block:: shell
+
+    $ python zeikomi.py
+    価格を入力してください：1000
+    1100
+    $ python zeikomi.py
+    価格を入力してください：499
+    548
+
+入力した価格に対して、税込価格を表示するプログラムができました！
+
+.. note:: 進んだ文字列の書き方：f文字列
+
+    f文字列を使って ``aisatsu.py`` を書き直してみましょう。
+    立ち止まって考えてみてください。
+
+    書き換えは以下のようになります。
+
+    .. code-block:: python
+        :caption: aisatsu.py
+        :linenos:
+
+        def aisatsu_bun(namae):
+            return f'{namae}さん、ごきげんよう^o^'  # f文字列を使って書き換え
+
+
+        namae = input('名前を入力してください：')
+        print(aisatsu_bun(namae))
+
+    実行して動きが変わっていないことを確認します。
+
+    .. code-block:: shell
+
+        $ python aisatsu.py
+        名前を入力してください：susumuis
+        susumuisさん、ごきげんよう^o^
