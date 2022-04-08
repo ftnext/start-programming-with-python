@@ -1,0 +1,33 @@
+name: Run doctest on interpreter mode codes
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - source/**
+      - .github/workflows/doctest.yml
+
+jobs:
+  doctest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: action/checkout@v2
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+
+      - id: value_integer_string
+        run: |
+          files=$(find source/03-getting-started/1-numbers-and-strings -type f -name "[1-9]-*.rst.txt" | sort)
+          echo "::set-output name=files::${files//$'\n'/\ }"
+      - name: Prepare `value_integer_string` doctest target
+        uses: ftnext/action-concatenate-files@v1.0.0
+        with:
+          sources: ${{ steps.value_integer_string.outputs.files }}
+          destination: source/300-value_integer_string/sut.rst.txt
+      - name: Run doctest in `value_integer_string` chapter
+        run: python -m doctest -v source/300-value_integer_string/sut.rst.txt
