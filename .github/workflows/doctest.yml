@@ -25,7 +25,7 @@ jobs:
           files=$(find source/03-getting-started/1-numbers-and-strings -type f -name "[1-9]-*.rst.txt" | sort)
           echo "::set-output name=files::${files//$'\n'/\ }"
       - name: Prepare `value_integer_string` doctest target
-        uses: ftnext/action-concatenate-files@v1.0.0
+        uses: ftnext/action-concatenate-files@v1.0.1
         with:
           sources: ${{ steps.value_integer_string.outputs.files }}
           destination: source/300-value_integer_string/sut.rst.txt
