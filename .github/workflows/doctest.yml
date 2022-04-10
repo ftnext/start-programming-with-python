@@ -9,9 +9,8 @@ on:
       - .github/workflows/doctest.yml
 
 jobs:
-  doctest:
+  setup:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -20,14 +19,23 @@ jobs:
         with:
           python-version: "3.10"
 
-      - id: value_integer_string
+  doctest:
+    needs: [ setup ]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        chapter:
+          - 1-numbers-and-strings
+    steps:
+      - id: chapter
         run: |
-          files=$(find source/03-getting-started/1-numbers-and-strings -type f -name "[1-9]-*.rst.txt" | sort)
+          files=$(find source/03-getting-started/${{ matrix.chapter }} -type f -name "[1-9]-*.rst.txt" | sort)
           echo "::set-output name=files::${files//$'\n'/\ }"
-      - name: Prepare `value_integer_string` doctest target
+      - name: Prepare chapter doctest target
         uses: ftnext/action-concatenate-files@v1.0.1
         with:
-          sources: ${{ steps.value_integer_string.outputs.files }}
-          destination: source/300-value_integer_string/sut.rst.txt
-      - name: Run doctest in `value_integer_string` chapter
-        run: python -m doctest -v source/300-value_integer_string/sut.rst.txt
+          sources: ${{ steps.chapter.outputs.files }}
+          destination: source/${{ matrix.chapter }}.rst.txt
+      - name: Run doctest in chapter
+        run: python -m doctest -v source/${{ matrix.chapter }}.rst.txt
