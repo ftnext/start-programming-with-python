@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.10"
 
-  doctest:
+  doctest-with-matrix:
     needs: [ setup ]
     runs-on: ubuntu-latest
     strategy:
@@ -47,3 +47,24 @@ jobs:
           destination: source/${{ matrix.chapter }}.rst.txt
       - name: Run doctest in chapter
         run: python -m doctest -v source/${{ matrix.chapter }}.rst.txt
+
+  doctest-programming_practice:
+    needs: [ setup ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - id: chapter
+        run: |
+          files=$(find source/03-getting-started/7-2-programmer-thinking -type f -name "[1-9]-*.rst.txt" | sort)
+          echo "::set-output name=files::${files//$'\n'/\ }"
+      - name: Prepare chapter doctest target
+        uses: ftnext/action-concatenate-files@v1.0.1
+        with:
+          sources: ${{ steps.chapter.outputs.files }}
+          destination: source/390-programmer_thinking/codes/7-2/sut.rst.txt
+      - name: Run doctest in chapter
+        run: |
+          # doctestの実行中に aisatsu.py をimportできるように配置する
+          cd source/390-programmer_thinking/codes/7-2
+          python -m doctest -v sut.rst.txt
