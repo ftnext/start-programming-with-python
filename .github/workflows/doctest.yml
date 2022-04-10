@@ -25,6 +25,7 @@ jobs:
       matrix:
         chapter:
           - 1-numbers-and-strings
+          - 2-variables
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
