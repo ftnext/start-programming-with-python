@@ -86,8 +86,6 @@
     この練習問題の解答は省略します。
     レストランの例を参考に取り組んでみてください。
 
-:numref:`programming_practice` 「:ref:`programming_practice`」以降でも、リストは登場します。お楽しみに。
-
 .. advanced:: 「配列」という言葉
 
     .. 手元の『基本情報技術者教科書 平成28年度』
