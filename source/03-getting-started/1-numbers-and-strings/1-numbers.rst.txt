@@ -24,7 +24,6 @@
 .. 2章ではPython処理系をインストールすると説明しているので、処理系を対話モードで起動という説明にした
 
 コマンドラインから、Python処理系を対話モードで立ち上げましょう。
-立ち上げ方が分からない場合は、:numref:`env` の中の 「:ref:`how-to-start-python-interpreter`」 を確認してみてください。
 
 .. figure:: images/1/1-1_start_interpreter.png
     :align: center
