@@ -26,15 +26,12 @@
 ファイルを使う準備
 --------------------------------
 
-まずは、対話モードに ``quit()`` と入力して終了します
-（:numref:`env` の中の「:ref:`how-to-start-python-interpreter`」参照）。
+まずは、対話モードに ``quit()`` と入力して終了します。
 
-:numref:`env` で準備したエディター、Atomを使います。
-Atomで ``py-practice`` ディレクトリをプロジェクトフォルダーとして開いてください  # noqa
-（:numref:`env` の中の「:ref:`atom-basic-usage`」参照）。
+「プログラミングするための環境」として準備したエディター、Atomを使います。
+Atomで ``py-practice`` ディレクトリをプロジェクトフォルダーとして開いてください。  # noqa
 
-次に、Atomを操作して、``basic`` ディレクトリを作ってください
-（引き続き :numref:`env` の中の「:ref:`atom-basic-usage`」参照）。
+次に、Atomを操作して、``basic`` ディレクトリを作ってください。
 この名前は、プログラミングの基本（basic）を学ぶためのディレクトリという意味です。
 
 .. env章の images/atom/original/common-atom-12.png の直後の状態を想定した画像にしている
@@ -50,7 +47,7 @@ Atomで ``py-practice`` ディレクトリをプロジェクトフォルダー�
 ``basic`` ディレクトリに作ります。
 
 最後に、コマンドラインで ``cd`` コマンドを使って ``basic`` ディレクトリに移動しましょう
-（:numref:`env` では、カレントディレクトリが ``py-practice`` になっていましたね）。
+（カレントディレクトリが ``py-practice`` になっていましたね）。
 
 .. code-block:: shell
 
@@ -64,8 +61,6 @@ Atomで ``py-practice`` ディレクトリをプロジェクトフォルダー�
 1. ファイルがない場合は、ファイルを作成する
 2. ファイルに文を入力する
 3. ファイルを保存する
-
-Atomを操作して、ファイルを作成したり保存したりする方法は、:numref:`env` の中の「:ref:`atom-basic-usage`」を参照してください。
 
 .. メモ📝：touchコマンドを1章で教えている
 
