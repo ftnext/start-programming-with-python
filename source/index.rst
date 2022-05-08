@@ -10,6 +10,31 @@ Pythonでプログラミングに入門しよう！
 | プログラミング言語は **Python** を使い、プログラミングに入門します。
 | `CC-BY <https://creativecommons.org/licenses/by/4.0/deed.ja>`_ ライセンスでWebに公開しています（現在α版）。
 
+前提
+----------
+
+* お使いのPCに **プログラミングするための環境** （後述）が **構築** されている
+
+  * 環境構築が不要なバージョン（Google Colab利用）は今後準備予定です
+
+* **コマンドは知っている** ものとしています
+
+  * 「コマンド」という言葉を初めて聞いた方は、Django Girls Tutorialの「 `コマンドラインを使ってみよう <https://tutorial.djangogirls.org/ja/intro_to_command_line/>`_ 」をまず一読ください
+
+プログラミングするための環境
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Python（処理系）
+
+  * プログラミング言語を処理するソフトウェア（処理系）をインストールする必要があります
+  * プログラミング言語Pythonの処理系のインストールはこちらから：https://tutorial.djangogirls.org/ja/installation/#python
+
+* エディタ
+
+  * この文書では、 **Atom** というエディタを前提とします
+  * お使いのエディタがあればそれを使っていただきかまいません（読み替えてください）
+  * 初めての方はAtomをインストールしてください：https://tutorial.djangogirls.org/ja/installation/#atom
+
 お品書き
 ----------
 
