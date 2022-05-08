@@ -35,6 +35,21 @@ Pythonでプログラミングに入門しよう！
   * お使いのエディタがあればそれを使っていただきかまいません（読み替えてください）
   * 初めての方はAtomをインストールしてください：https://tutorial.djangogirls.org/ja/installation/#atom
 
+ディレクトリを作ろう
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+PCの中を整理して使うため、教材に進む前に **今回のプログラミング入門用のディレクトリ** を作りましょう。
+
+ホームディレクトリにプログラミングのための ::file:`programming` ディレクトリを作り、
+その中にPythonの練習用ディレクトリ :file:`py-practice` を作ります。
+以下のコマンドで作成できます。
+
+.. code-block:: shell
+
+    $ cd
+    $ mkdir -p programming/py-practice
+    $ cd programming/py-practice
+
 お品書き
 ----------
 
