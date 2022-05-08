@@ -3,12 +3,19 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to start-programming-with-python's documentation!
+Pythonでプログラミングに入門しよう！
 =========================================================
+
+| この文書は、 **プログラミング入門教材** です。
+| プログラミング言語は **Python** を使い、プログラミングに入門します。
+| `CC-BY <https://creativecommons.org/licenses/by/4.0/deed.ja>`_ ライセンスでWebに公開しています（現在α版）。
+
+お品書き
+----------
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: 目次
    :numbered:
 
    300-value_integer_string/index
