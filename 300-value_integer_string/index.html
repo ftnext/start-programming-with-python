@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="ja" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>1. プログラムで数と文字を扱ってみよう &#8212; start-programming-with-python  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0c5d2aad" />
+    <script src="../_static/documentation_options.js?v=c033477b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=91613774"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="2. 値を変数で扱おう" href="../310-variables/index.html" />
+    <link rel="prev" title="Pythonでプログラミングに入門しよう！" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="value-integer-string">
+<span id="id1"></span><h1><span class="section-number">1. </span>プログラムで数と文字を扱ってみよう<a class="headerlink" href="#value-integer-string" title="Link to this heading">¶</a></h1>
+<p>この章からはいよいよプログラムを書きます。
+まずは数や文字をプログラムで扱えるようになりましょう。</p>
+<p>コマンドラインから、Python処理系を対話モードで立ち上げましょう。</p>
+<figure class="align-center" id="id21">
+<img alt="../_images/1-1_start_interpreter.png" src="../_images/1-1_start_interpreter.png" />
+<figcaption>
+<p><span class="caption-text">コマンドラインに <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> と表示されていたら準備完了です。</span><a class="headerlink" href="#id21" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="id2">
+<h2><span class="section-number">1.1. </span>数値<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3><span class="section-number">1.1.1. </span>初めてのプログラミング：対話モードに数値を入力<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>Pythonの処理系にプログラムを処理させましょう。</p>
+<p>プロンプト（<code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>）の後に <code class="docutils literal notranslate"><span class="pre">5</span></code> と入力します。
+数値1つですが、これも立派なプログラムです！</p>
+<figure class="align-center" id="id22">
+<img alt="../_images/1-2_input_first_program.png" src="../_images/1-2_input_first_program.png" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">5</span></code> と入力しました</span><a class="headerlink" href="#id22" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Enterキーを1回押してください。</p>
+<figure class="align-center" id="id23">
+<img alt="../_images/1-3_execute_first_program.png" src="../_images/1-3_execute_first_program.png" />
+<figcaption>
+<p><span class="caption-text">Enterキーを押した後の状態です</span><a class="headerlink" href="#id23" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>入力した数値 <code class="docutils literal notranslate"><span class="pre">5</span></code> が表示され、再度プロンプトが現れました。</p>
+<p>「対話モードに <code class="docutils literal notranslate"><span class="pre">5</span></code> というプログラムを入力し、Enterキーを押す。処理系が処理した結果 <code class="docutils literal notranslate"><span class="pre">5</span></code> と表示される」ことを、本の中では次のように表記します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<p>Pythonの処理系は数値を計算できますが、<code class="docutils literal notranslate"><span class="pre">5</span></code> のようにそれ以上計算できない数値は、そのまま処理結果とします。
+続いて <strong>数式を入力</strong> してみましょう。</p>
+</section>
+<section id="id4">
+<h3><span class="section-number">1.1.2. </span>四則演算<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>数の足し算・引き算・掛け算・割り算を順に見ていきましょう。
+4つをまとめて「四則演算」と言います。
+<strong>人間が計算するのと同じ</strong> ように、プログラミングでも計算できます。</p>
+<section id="id5">
+<h4><span class="section-number">1.1.2.1. </span>足し算<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">5+7</span></code> と入力してEnterキーを1回押してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span><span class="o">+</span><span class="mi">7</span>
+<span class="go">12</span>
+</pre></div>
+</div>
+<p>Pythonの処理系が <code class="docutils literal notranslate"><span class="pre">5+7</span></code> というプログラムを処理し、足し算の結果である <code class="docutils literal notranslate"><span class="pre">12</span></code> が表示されました。</p>
+</section>
+<section id="id6">
+<h4><span class="section-number">1.1.2.2. </span>引き算<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<p>今度は <code class="docutils literal notranslate"><span class="pre">33-4</span></code> と入力してEnterキーを押してみましょう（Enterキーの入力についてはこの後は省略します）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">33</span><span class="o">-</span><span class="mi">4</span>
+<span class="go">29</span>
+</pre></div>
+</div>
+<p>引き算の結果の <code class="docutils literal notranslate"><span class="pre">29</span></code> が表示されていますね！</p>
+</section>
+<section id="id7">
+<h4><span class="section-number">1.1.2.3. </span>掛け算<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<p>掛け算のプログラムは <code class="docutils literal notranslate"><span class="pre">*</span></code> （アスタリスク）という記号を使います。
+算数や数学で使う <span class="math notranslate nohighlight">\(\times\)</span> 記号とは違うことに注意しましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">9</span><span class="o">*</span><span class="mi">3</span>
+<span class="go">27</span>
+</pre></div>
+</div>
+<p><span class="math notranslate nohighlight">\(9 \times 3\)</span> という掛け算が計算されていますね。</p>
+</section>
+<section id="id8">
+<h4><span class="section-number">1.1.2.4. </span>割り算<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<p>割り算も記号が異なります。
+<span class="math notranslate nohighlight">\(\div\)</span> 記号ではなくて、<code class="docutils literal notranslate"><span class="pre">/</span></code> （スラッシュ）という記号を使います。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">7</span><span class="o">/</span><span class="mi">2</span>
+<span class="go">3.5</span>
+</pre></div>
+</div>
+<p>割り算の結果は小数で求まります。
+割り切れるときも小数です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">6</span><span class="o">/</span><span class="mi">2</span>
+<span class="go">3.0</span>
+</pre></div>
+</div>
+<p>四則演算が必要になったら、プログラミングで計算してもいいですね。</p>
+</section>
+</section>
+<section id="id9">
+<h3><span class="section-number">1.1.3. </span>計算の順番<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>ここで問題です。
+<span class="math notranslate nohighlight">\(5 + 3 \times 4\)</span> はいくつですか。</p>
+<p>皆さんは掛け算が足し算より先に計算されると知っていますよね。
+ですから、答えは17（<span class="math notranslate nohighlight">\(= 5 + 12\)</span>）です。
+プログラミング言語処理系も、掛け算を先に計算します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span><span class="o">+</span><span class="mi">3</span><span class="o">*</span><span class="mi">4</span>
+<span class="go">17</span>
+</pre></div>
+</div>
+<p>それでは、<code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">+</span> <span class="pre">3</span></code> という足し算を先にするにはどうすればいいでしょうか。
+そうです、カッコ <span class="math notranslate nohighlight">\(()\)</span> を使って、<span class="math notranslate nohighlight">\((5 + 3) \times 4\)</span> のように書きますね。
+プログラミングでも同じで、<strong>カッコに入れた足し算は、掛け算より先</strong> に計算されます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">5</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span>
+<span class="go">32</span>
+</pre></div>
+</div>
+<p>ここまでで、プログラミングを電卓代わりに使えるようになりましたね。
+胸を張っていい成果です。</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">1.1.4. </span>式を評価して計算結果を得る<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>プログラミングでも電卓のように計算できることは、あまり驚きがないかもしれません。
+ですが、<code class="docutils literal notranslate"><span class="pre">5+7</span></code> というプログラムが処理されて足し算の結果が求まることには、プログラミングの本質が凝縮しています。
+ここで少しだけ掘り下げてみましょう。</p>
+<p><strong>四則演算に使った</strong> <code class="docutils literal notranslate"><span class="pre">+</span></code> や <code class="docutils literal notranslate"><span class="pre">-</span></code> 、 <code class="docutils literal notranslate"><span class="pre">*</span></code> 、 <code class="docutils literal notranslate"><span class="pre">/</span></code> の <strong>記号</strong> を「演算子」と呼びます。
+そして、<strong>演算子を使ったプログラム</strong> （例えば <code class="docutils literal notranslate"><span class="pre">5+7</span></code>）を「式」と呼びます。</p>
+<p>プログラミング言語の処理系に <code class="docutils literal notranslate"><span class="pre">5+7</span></code> のような式を入力すると、処理系は式を「評価」します。
+評価した結果、<span class="math notranslate nohighlight">\(5 + 7\)</span> が <strong>計算</strong> され、計算結果が表示されます。</p>
+<p>評価は、演算子の優先順位に沿います。
+<code class="docutils literal notranslate"><span class="pre">5+3*4</span></code> という式は、まず <code class="docutils literal notranslate"><span class="pre">3*4</span></code> が評価されます（その結果は <code class="docutils literal notranslate"><span class="pre">12</span></code> ですね）。
+次に <code class="docutils literal notranslate"><span class="pre">5+12</span></code> が評価され、<code class="docutils literal notranslate"><span class="pre">17</span></code> という計算結果が表示されます。</p>
+<p>プログラミングの本質とは、<strong>プログラミング言語処理系が式を評価する</strong> ことです。
+今の段階ではこのことだけ押さえておいてください。
+これから先、演算子を使わない式も紹介しますが、式が評価されるというのは共通です。お楽しみに！</p>
+</section>
+<section id="id11">
+<h3><span class="section-number">1.1.5. </span>練習問題<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>日常生活を題材に、電卓代わりにプログラミングを使う練習をしましょう。</p>
+<p>ある日nikkieは昼休みにコンビニで、279円のサンドイッチと100円の惣菜パンを買いました。
+頭が疲れたときの息抜き用に120円の菓子パンも買いました。
+消費税率を8%としたとき、合計金額はいくらでしょう。</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<p>税抜価格の合計を求めてから、消費税を加算します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">279</span> <span class="o">+</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">120</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.08</span><span class="p">)</span>
+<span class="go">538.9200000000001</span>
+</pre></div>
+</div>
+<p>金額の端数部分（小数部分）ですが、
+消費税の端数の扱いは切り捨てが多いので、ここでも切り捨てることとします。
+合計金額は <strong>538円</strong> です。</p>
+</div>
+<p>例えば家計簿など、たびたび行う計算にプログラミングを使ってみると、身に付けやすいでしょう。
+試したいことが浮かんだら、本から離れて大丈夫ですので、どんどん試してみてください。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 式に半角スペースを入れてもいい？</p>
+<p>ここで式の「書き方」について補足します。
+演算子の前後に半角スペースを1つずつ入れても、評価結果は変わりません。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">+</span> <span class="mi">7</span>
+<span class="go">12</span>
+</pre></div>
+</div>
+<p>半角スペースを2つ以上入れても、評価結果は変わりません（3つずつ入れてみた例）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span>   <span class="o">+</span>   <span class="mi">7</span>
+<span class="go">12</span>
+</pre></div>
+</div>
+<p>半角スペースの有無や数の違いがあったとしても、<strong>式を評価した結果は変わりません</strong>。
+プログラミング言語処理系にとっては、式に含まれる半角スペースの数は重要ではないのです。</p>
+<p>この本では、演算子の前後に <strong>半角スペースを1つずつ</strong> 入れます。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 式に半角スペースを入れるのはなぜ？</p>
+<p>式に半角スペースを入れる理由は、<strong>私たちプログラマーにとって読みやすくするため</strong> です。
+<code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">+</span> <span class="pre">7</span></code> のように演算子の前後に半角スペースを1つずつ入れることで、式が見やすくなります。</p>
+<p>Pythonを書くプログラマーの多くは、演算子の前後に半角スペースを1つずつ入れます。
+その方が読みやすいと実感しているので、本書の筆者もこの慣習を採用しています。
+皆さんがプログラムを入力するときも、キーのタイプは増えますが、半角スペースを入れることをおすすめします。</p>
+<p>なお、複数の演算子を使った式では、それぞれの演算子の前後に半角スペースを1つずつ入れます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="go">17</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="id12">
+<h2><span class="section-number">1.2. </span>文字列<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<p>数の次は文字をプログラムで扱います。
+文字の並びは「文字列（もじれつ）」と呼ぶのでしたね。</p>
+<section id="id13">
+<h3><span class="section-number">1.2.1. </span>プログラムで文字列を表す<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>プログラムでは、文字の並びを <code class="docutils literal notranslate"><span class="pre">'</span></code> （シングルクォート）で囲んで扱います。
+文字列を使ったプログラムをPython処理系に処理させましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;こんにちは世界&#39;</span>
+<span class="go">&#39;こんにちは世界&#39;</span>
+</pre></div>
+</div>
+<p>処理系が文字列を評価し、そのまま処理結果としました。
+処理結果にはシングルクォートが付いていて、文字列と示されています。</p>
+<p>文字の並びを <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> （ダブルクォート）で囲んでも同じです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;こんにちは世界&quot;</span>
+<span class="go">&#39;こんにちは世界&#39;</span>
+</pre></div>
+</div>
+<p>シングルクォートでもダブルクォートでも、<strong>文字列に違いはありません</strong>
+（ダブルクォートで文字列を作った例では、処理結果はシングルクォートになっていますよね）。
+どちらでも違いはないので、<strong>この本ではダブルクォートで囲む</strong> ように統一します。</p>
+<p>一つ注意が必要なのは、文字の並びを囲むのはシングルクォートかダブルクォートの <strong>どちらかに揃える</strong> ことです。
+例えば <code class="docutils literal notranslate"><span class="pre">'こんにちは世界&quot;</span></code> のように、シングルクォートで始めてダブルクォートで終えてはいけません。</p>
+</section>
+<section id="id14">
+<h3><span class="section-number">1.2.2. </span>文字列の計算<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p>数値の四則演算と比べると、文字列には「足し算」と「掛け算」があります。</p>
+<section id="id15">
+<h4><span class="section-number">1.2.2.1. </span>文字列の「足し算」<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<p>演算子 <code class="docutils literal notranslate"><span class="pre">+</span></code> を使って、文字列も「足し算」できます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;吾輩は&quot;</span> <span class="o">+</span> <span class="s2">&quot;猫である&quot;</span>
+<span class="go">&#39;吾輩は猫である&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">文字列</span> <span class="pre">+</span> <span class="pre">文字列</span></code> という式を評価すると、結果は <strong>2つの文字列がくっついた（連結した）</strong> 新しい文字列です。
+<code class="docutils literal notranslate"><span class="pre">&quot;吾輩は&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">&quot;猫である&quot;</span></code> がつながって <code class="docutils literal notranslate"><span class="pre">'吾輩は猫である'</span></code> という文字列ができていますね。</p>
+</section>
+<section id="id16">
+<h4><span class="section-number">1.2.2.2. </span>文字列の「掛け算」<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<p>演算子 <code class="docutils literal notranslate"><span class="pre">*</span></code> を使って、<strong>文字列と整数の間でのみ</strong> 「掛け算」ができます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;万歳！&quot;</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="go">&#39;万歳！万歳！万歳！&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">文字列</span> <span class="pre">*</span> <span class="pre">整数</span></code> という式を処理すると、<strong>整数の数だけ繰り返した文字列</strong> ができます。
+ここでは <code class="docutils literal notranslate"><span class="pre">&quot;万歳！&quot;</span></code> が3回繰り返されていますね。</p>
+<p>文字列と整数を逆にして <code class="docutils literal notranslate"><span class="pre">整数</span> <span class="pre">*</span> <span class="pre">文字列</span></code> と書いても、同じ結果となります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">*</span> <span class="s2">&quot;万歳！&quot;</span>
+<span class="go">&#39;万歳！万歳！万歳！&#39;</span>
+</pre></div>
+</div>
+<p>例えば、文章の区切り線を作るために記号 <code class="docutils literal notranslate"><span class="pre">&quot;ー&quot;</span></code> を繰り返す時、文字列の「掛け算」の出番です。</p>
+</section>
+</section>
+<section id="id17">
+<h3><span class="section-number">1.2.3. </span>練習問題<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>万歳！を10回表示するプログラムを書いてみましょう。</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<p>万歳！を10回表示と聞いて、 <code class="docutils literal notranslate"><span class="pre">*</span></code> で繰り返す方法が浮かびましたか。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;万歳！&quot;</span> <span class="o">*</span> <span class="mi">10</span>
+<span class="go">&#39;万歳！万歳！万歳！万歳！万歳！万歳！万歳！万歳！万歳！万歳！&#39;</span>
+</pre></div>
+</div>
+<p>万歳！を10回表示する方法は、上記以外にも考えられます。
+<code class="docutils literal notranslate"><span class="pre">&quot;万歳！&quot;</span> <span class="pre">+</span> <span class="pre">&quot;万歳！&quot;</span></code> のように10回足す方法や、演算子を使わずに10回繰り返した文字列を入力する方法です。
+ですから、<code class="docutils literal notranslate"><span class="pre">&quot;万歳！&quot;</span> <span class="pre">*</span> <span class="pre">10</span></code> でなくても、万歳！を10回繰り返した文字列ができていたら正解です！</p>
+</div>
+<p>数値の他に文字も扱えるようになりました。
+プログラミングでできることが広がりましたね！</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 「プログラムを処理系に処理させる」の他の言い方</p>
+<p>「プログラムをプログラミング言語処理系に処理させる」には別の言い方があります。</p>
+<ul class="simple">
+<li><p>プログラムを <strong>実行する</strong></p></li>
+<li><p>プログラムを走らせる</p></li>
+</ul>
+<p>どれも意味は同じです。
+本書では「実行する」を主に使っていきます。</p>
+<p>ちなみに、英語ではexecuteやrunを使います。
+これらを訳して、日本語では「実行する」「走らせる」になっています。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 文字列以外は、半角英数記号で揃える</p>
+<p>この節では <code class="docutils literal notranslate"><span class="pre">&quot;こんにちは世界&quot;</span></code> や <code class="docutils literal notranslate"><span class="pre">&quot;万歳！&quot;</span></code> などの文字列を作りました。
+プログラミングで <strong>全角文字が使えるのは、文字列の中だけ</strong> です。
+文字列以外は、半角英数記号で揃えます。</p>
+<p>例えば、文字列を作るときに使うダブルクォートを全角にすると、処理系はエラーを出します。
+先の章では、ダブルクォートや演算子の他にも、イコールやアンダースコアなどの記号が登場しますが、すべて <strong>半角記号</strong> です。</p>
+</div>
+</section>
+</section>
+<section id="value-integer-string-types">
+<span id="id18"></span><h2><span class="section-number">1.3. </span>値には種類がある：型<a class="headerlink" href="#value-integer-string-types" title="Link to this heading">¶</a></h2>
+<p>この節では、数値と文字列は <em>種類が異なる</em> ことを見ていきます。</p>
+<p>これまでに出てきた数値や文字列のことをまとめて、「値」（あたい）と呼びます。
+実はプログラミングでやっていることは、<strong>プログラマーは値と演算子から式を作り</strong>、それを <strong>処理系に評価させ</strong> て、<strong>結果の値を得る</strong> ことです。</p>
+<figure class="align-center" id="id24">
+<a class="reference internal image-reference" href="../_images/1-4_value_operator_expression_evaluation.png"><img alt="../_images/1-4_value_operator_expression_evaluation.png" src="../_images/1-4_value_operator_expression_evaluation.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">プログラミングでやっていること</span><a class="headerlink" href="#id24" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="id19">
+<h3><span class="section-number">1.3.1. </span>値の種類を指定する<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<p>復習を兼ねて、次の式を評価した結果は何でしょうか？</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span> <span class="pre">+</span> <span class="pre">&quot;3&quot;</span></code></p></li>
+</ol>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<p>1は <em>数値</em> の <code class="docutils literal notranslate"><span class="pre">3</span></code> と <code class="docutils literal notranslate"><span class="pre">3</span></code> の足し算ですね。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+<p>2は <em>文字列</em> の <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code> と <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code> をつなげます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;3&quot;</span> <span class="o">+</span> <span class="s2">&quot;3&quot;</span>
+<span class="go">&#39;33&#39;</span>
+</pre></div>
+</div>
+</div>
+<p>この2例は、プログラミングでは <strong>値の種類を明確にして記述する</strong> ことを示しています。</p>
+<ul class="simple">
+<li><p>単に <code class="docutils literal notranslate"><span class="pre">3</span></code> と書いたら <strong>数値</strong></p></li>
+<li><p>ダブルクォートを付けて <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code> と書いたら <strong>文字列</strong></p></li>
+</ul>
+<p>と <strong>種類を書き方で指定</strong> しているのです。</p>
+<p><strong>値の種類</strong> をプログラミングでは「型（かた）」と言います。
+この本を読み進める中で、数値や文字列を表す型の他に、日付などの型と出会います。お楽しみに。</p>
+</section>
+<section id="id20">
+<h3><span class="section-number">1.3.2. </span>初めてのエラー：処理できない型の組合せのとき<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>では、<code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">&quot;3&quot;</span></code> のように、数値（整数）と文字列の「足し算」の式を、実行したら（プログラミング言語処理系に処理させたら）どうなるでしょうか。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">+</span> <span class="s2">&quot;3&quot;</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</span>
+</pre></div>
+</div>
+<p>式の評価結果ではなく、文字が大量に表示されましたね。
+結果が出ていませんが、あなたの <strong>コンピューターやインストールした処理系が壊れたわけではない</strong> ので安心してください
+（対話モードは <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> と次のプログラムの入力を待っていますね）。</p>
+<p>Errorという文字は、処理系がエラーを出したことを表しています。
+式 <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">&quot;3&quot;</span></code> の評価で出たエラーの情報は、
+最後の行の「TypeError: unsupported operand type(s) for +: 'int' and 'str'」に示されています。</p>
+<p><code class="docutils literal notranslate"><span class="pre">int</span></code> と <code class="docutils literal notranslate"><span class="pre">str</span></code> は型の名前です（それぞれ英単語integer（整数）、string（文字列）に由来します）。
+数値 <code class="docutils literal notranslate"><span class="pre">3</span></code> の型は <code class="docutils literal notranslate"><span class="pre">int</span></code>、文字列 <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code> の型は <code class="docutils literal notranslate"><span class="pre">str</span></code> です。
+つまり、整数と文字列とに <code class="docutils literal notranslate"><span class="pre">+</span></code> を使った式はサポートされていない（すなわち、評価できない）ということです。</p>
+<p><code class="docutils literal notranslate"><span class="pre">TypeError</span></code> は型についてのエラーです（プログラミングにおける型は英語でtypeです）。
+<code class="docutils literal notranslate"><span class="pre">整数</span> <span class="pre">+</span> <span class="pre">文字列</span></code> という式は、<strong>適切ではない型の組合せのために評価できない</strong> ことを表しています。
+式 <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">&quot;3&quot;</span></code> に対し、処理系は <strong>常に</strong> <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> を出します。
+つまり、整数と文字列の「足し算」はできません。</p>
+<p>この例のように、演算子がサポートしない型があり、そのために評価できない式があります。
+型は <strong>式の評価に制約を課し</strong> ているわけです。
+プログラマーは人間ですから、見落としや思い込みのために、処理系が評価できないプログラムをときどき書いてしまいます。
+そんなプログラムに処理系はエラーを出すので、プログラマーは自分のミスに気づけます。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] エラーは怖くない</p>
+<p>初めてエラーを経験しましたね。
+エラーは英語でずらずらと書かれており、「不気味なもの」「よく分からないもの」「自分を否定された」と
+あまりいい印象ではないかもしれません。</p>
+<p>私は先輩から「エラーは怖がらずどんどん出そう。
+エラーを見た数だけ、そして、その原因を解決した数だけ、プログラミングは上達する」と教わりました。
+この言葉は、エラーを見ても原因が分からずくじけそうになるときに支えとなりました。</p>
+<p>スポーツの試合でのエラーは失点につながってしまう避けたいものですよね。
+ところが、プログラミングでのエラーは、どんどん経験したい <strong>上達のきっかけ</strong> です。
+プログラミングのエラーは間違いではなく、<strong>皆さんの今後のプログラミングに役立つ財産</strong> です。</p>
+<p>皆さんに上達してほしいので、この本ではこの後もどんどんエラーを出します。
+合わせてエラーの解説もしますので、<strong>エラーの原因を解消する方法</strong> を理解しましょう。
+エラーの経験を積み重ねると、「これはあのときに見たエラーだ。
+あのときはああしたら解決したから、今回はここをこう変えたら直るはず」と
+経験したエラーをヒントに、自力で解決できるようになります。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] エラーの読み方</p>
+<p>エラーには <strong>処理系がエラーを出したときの情報</strong> が英語で書かれています。
+これを手がかりにすると、エラーは、<strong>エラーを解決するためのヒント</strong> になります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">+</span> <span class="s2">&quot;3&quot;</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;</span>
+</pre></div>
+</div>
+<p>エラーとして表示されるのは、Traceback（トレースバック）です。
+次の2つに着目しましょう。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">line</span></code> の表示（プログラムの何行目で、処理系がエラーを出したか）</p></li>
+<li><p>最後の行（処理系はどんなエラーを出したか）</p></li>
+</ul>
+<p>「<strong>line 1</strong>」とあるのは、入力したプログラム（<code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">&quot;3&quot;</span></code> の1行）のうち、1行目の実行で処理系がエラーを出したということです。
+何行目かを手がかりにすることで、<strong>原因箇所</strong> が特定できます
+（<a class="reference internal" href="../350-in_order/index.html#in-order"><span class="std std-numref">6 章</span></a> 「<a class="reference internal" href="../350-in_order/index.html#in-order"><span class="std std-ref">3大構造 一. 順次</span></a>」以降は、何行もあるプログラムを書きますよ）。</p>
+<p><strong>最後の行</strong> には <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> と出ていて、エラーが出た原因も示されています（本文で示したとおりです）。</p>
+<p>こうして、プログラムの <strong>どこが原因で、どんなエラーが出たか</strong> 特定できます。
+その後は解決策を試しましょう。
+エラーの経験を積み重ねると、過去のエラーの経験から解決策がいくつか浮かぶようになります。</p>
+<p>なお、プログラミングでは、エラーのことを「例外」とも言います。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] コマンドラインの履歴を使おう</p>
+<p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">&quot;3&quot;</span></code> を実行して、処理系がエラーを出したとき、もう皆さんはその理由が分かりますね。
+「文字列の <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code> どうしをつなげようとしていたのに、1つ目の3を数値にしてしまっていた」と気づくかもしれません。</p>
+<p>エラーが出た後、プログラムを初めから入力し直すのは少し面倒ですよね。
+実は <strong>上矢印キー</strong> （↑）を1回押すと、直前に入力したPythonのプログラム <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">&quot;3&quot;</span></code> が現れます。
+左矢印キー（←）・右矢印キー（→）でカーソルを左右に動かして <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span> <span class="pre">+</span> <span class="pre">&quot;3&quot;</span></code> のように修正できます。</p>
+<p>このようにプログラミング言語処理系は <strong>履歴</strong> を持っています。
+またシェルにも履歴があり、2つの履歴は分かれています。</p>
+<table class="docutils align-center" id="id25">
+<caption><span class="caption-text">コマンドラインの履歴</span><a class="headerlink" href="#id25" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>履歴の対象</p></td>
+<td><p>説明</p></td>
+<td><p>例</p></td>
+</tr>
+<tr class="row-even"><td><p>シェル</p></td>
+<td><p>コマンドの履歴</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">python</span></code>, <code class="docutils literal notranslate"><span class="pre">ls</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>処理系（対話モード）</p></td>
+<td><p>対話モードに入力されたプログラムの履歴</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">&quot;3&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>上矢印キー（↑）を押すことで、最新から過去へと辿ることができます。
+もし過去に戻りすぎてしまったときは下矢印キー（↓）を押してください。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] プログラミングにおける小数</p>
+<p>数値は小数点を含むか含まないかで2つの型に分かれています。
+小数点を持たない数（例えば、-4, 0, 123）は 整数（<code class="docutils literal notranslate"><span class="pre">int</span></code>）という型です。
+小数点を持つ数（例えば、-5.6, 0.9, 34.0）は <strong>浮動小数点数</strong> （ふどうしょうすうてんすう。<code class="docutils literal notranslate"><span class="pre">float</span></code>）という型です。</p>
+<p>浮動小数点数は、皆さんの知っている小数とは少し異なります。
+数値の練習問題で合計金額が <code class="docutils literal notranslate"><span class="pre">538.9200000000001</span></code> となりましたね。
+電卓を使って計算すれば 538.92 と求まります。</p>
+<p>コンピューター内部では <strong>どんな値も0と1の並び</strong> で表されます。
+小数点を持つ数も0と1の並びで表しますが、小数点を持つ数そのものとは一致しません。
+正確に表そうとすると0と1が無限に続くのですが、コンピューターの大きさは決まっていますから、<strong>やむなく打ち切る</strong> ためです。</p>
+<p>例に出した練習問題では <code class="docutils literal notranslate"><span class="pre">0.08</span></code> が途中で打ち切られた値です。
+これは正確な0.08ではないため、評価結果が <code class="docutils literal notranslate"><span class="pre">538.9200000000001</span></code> と端数を含む値となるのです。
+なお、これでは金額を計算するときに不便なので、プログラミングでも電卓と同じように計算する仕組みが用意されています
+（この本を読み進めると <em>標準ライブラリ</em> が登場します。その中の <code class="docutils literal notranslate"><span class="pre">decimal</span></code> モジュールを使います）。</p>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">start-programming-with-python</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>ナビゲーション</h3>
+<p class="caption" role="heading"><span class="caption-text">目次</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. プログラムで数と文字を扱ってみよう</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.1. 数値</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">1.2. 文字列</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#value-integer-string-types">1.3. 値には種類がある：型</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../310-variables/index.html">2. 値を変数で扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../320-use_functions/index.html">3. 関数でまとまった処理を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../330-input_output/index.html">4. プログラムの入力と出力を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../340-define_functions/index.html">5. 関数を作って処理をまとめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../350-in_order/index.html">6. 3大構造 一. 順次</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../360-fork/index.html">7. 3大構造 二. 分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../370-loop/index.html">8. 3大構造 三. 反復</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../380-list/index.html">9. 複数の値をまとめて扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../390-programmer_thinking/index.html">10. プログラマーの考え方を知ろう</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="前の章へ">Pythonでプログラミングに入門しよう！</a></li>
+      <li>Next: <a href="../310-variables/index.html" title="次の章へ"><span class="section-number">2. </span>値を変数で扱おう</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, nikkie.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/300-value_integer_string/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

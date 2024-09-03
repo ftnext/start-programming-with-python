@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="ja" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>4. プログラムの入力と出力を扱おう &#8212; start-programming-with-python  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0c5d2aad" />
+    <script src="../_static/documentation_options.js?v=c033477b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=91613774"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="5. 関数を作って処理をまとめよう" href="../340-define_functions/index.html" />
+    <link rel="prev" title="3. 関数でまとまった処理を扱おう" href="../320-use_functions/index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="input-output">
+<span id="id1"></span><h1><span class="section-number">4. </span>プログラムの入力と出力を扱おう<a class="headerlink" href="#input-output" title="Link to this heading">¶</a></h1>
+<p>プログラミング言語には「入力」と「出力」を扱う関数が用意されています。</p>
+<ul class="simple">
+<li><p>入力（にゅうりょく）：実行中のプログラムに値を入れられます</p></li>
+<li><p>出力（しゅつりょく）：実行中のプログラムが、式の評価結果を表示します</p></li>
+</ul>
+<p>出力、入力の順で、関数を紹介します。
+この章でも、対話モードに入力しながら読み進めてくださいね。</p>
+<section id="id2">
+<h2><span class="section-number">4.1. </span>値を画面に表示する関数<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">print</span></code> 関数は、渡した <strong>引数の値を画面に表示</strong> します。</p>
+<figure class="align-center" id="id9">
+<img alt="../_images/4-12-print-document.png" src="../_images/4-12-print-document.png" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">print</span></code> 関数のドキュメント</span><a class="headerlink" href="#id9" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<table class="docutils align-center" id="id10">
+<caption><span class="caption-text">値を画面に表示する関数</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">print</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>引数の値を画面に表示する</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>値</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>なし</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id3">
+<h3><span class="section-number">4.1.1. </span>1つだけ引数を渡す<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>整数 <code class="docutils literal notranslate"><span class="pre">123</span></code> を <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数に渡すと、それが画面に表示されます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="go">123</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id11">
+<a class="reference internal image-reference" href="../_images/4-13-print_box_image.drawio.png"><img alt="../_images/4-13-print_box_image.drawio.png" src="../_images/4-13-print_box_image.drawio.png" style="width: 60%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">画面に123と表示する。返り値はない</span><a class="headerlink" href="#id11" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">print</span></code> 関数の引数として、数値だけでなく文字列も渡すことができます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;こんにちは！&quot;</span><span class="p">)</span>
+<span class="go">こんにちは！</span>
+</pre></div>
+</div>
+<p>引数として変数や式を渡したときは、<strong>評価結果の値</strong> が <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数に渡されることになります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">banzai</span> <span class="o">=</span> <span class="s2">&quot;万歳！&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">banzai</span><span class="p">)</span>
+<span class="go">万歳！</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id12">
+<a class="reference internal image-reference" href="../_images/4-14-print_pass_variable.drawio.png"><img alt="../_images/4-14-print_pass_variable.drawio.png" src="../_images/4-14-print_pass_variable.drawio.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">変数の指す値が表示される</span><a class="headerlink" href="#id12" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id4">
+<h3><span class="section-number">4.1.2. </span>複数の引数を渡す<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">print</span></code> 関数には、<strong>2つ以上</strong> の引数（値や式）を渡せます。
+複数の引数は、<strong>カンマ</strong> （<code class="docutils literal notranslate"><span class="pre">,</span></code>） <strong>で区切り</strong> ます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&quot;×&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># ((×は「かける」を変換して出せます))</span>
+<span class="go">4 × 6 = 24</span>
+</pre></div>
+</div>
+<p>複数の引数を渡したときは、左の引数から順に表示され、半角スペースが1つずつ入ります（見やすいですよね）。</p>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../_images/4-15-print_pass_variables.drawio.png"><img alt="../_images/4-15-print_pass_variables.drawio.png" src="../_images/4-15-print_pass_variables.drawio.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">複数の引数を渡したときは、それらを表示する</span><a class="headerlink" href="#id13" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="print">
+<h3><span class="section-number">4.1.3. </span><code class="docutils literal notranslate"><span class="pre">print</span></code> 関数の使い所<a class="headerlink" href="#print" title="Link to this heading">¶</a></h3>
+<p>対話モードに変数を使った式を入力すれば、<code class="docutils literal notranslate"><span class="pre">print</span></code> 関数なしでも評価結果を確認できますよね。
+「なぜ <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数を使うのだろう」と疑問に思うかもしれませんね。</p>
+<p>実はプログラミングは、対話モードではあまり行いません。
+<strong>ファイル</strong> に文を書いていきます。
+対話モードに入力した式や文をプログラムと呼んできましたが、文がいくつも書かれたファイルをプログラムと呼ぶのが一般的です。
+<strong>処理系にファイル（プログラム）を実行させ</strong> て、まとまった処理の結果を得ます。</p>
+<p><strong>ファイルを実行する中で、変数の指す値を表示したい</strong> とき、<code class="docutils literal notranslate"><span class="pre">print</span></code> 関数の出番です。
+<a class="reference internal" href="../350-in_order/index.html#in-order"><span class="std std-numref">6 章</span></a> 「<a class="reference internal" href="../350-in_order/index.html#in-order"><span class="std std-ref">3大構造 一. 順次</span></a>」から対話モードの代わりにファイルを使い始めます。
+<code class="docutils literal notranslate"><span class="pre">print</span></code> 関数も頻繁に使いますよ！</p>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 返り値のない関数と「副作用」</p>
+<p><code class="docutils literal notranslate"><span class="pre">print</span></code> 関数は返り値のない関数です。
+ただ、処理の中で画面の状態を変えています。</p>
+<p>プログラミングの関数は一般に、<strong>返り値を持たないときになにかの状態を変えます</strong>。
+状態を変えるとは、画面に表示したり、ファイルを新規作成したりすることです。
+なにかの状態を変えることを <strong>副作用</strong> と呼びます。</p>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">4.2. </span>入力を受け取る関数<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">input</span></code> 関数で、プログラム実行中に入力を受け取ります。</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/6-3_input_document.png" src="../_images/6-3_input_document.png" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">input</span></code> 関数のドキュメント</span><a class="headerlink" href="#id14" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<table class="docutils align-center" id="id15">
+<caption><span class="caption-text">入力を受け取る関数</span><a class="headerlink" href="#id15" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">input</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>入力を受け取る（改行されるまで）</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>文字列（プロンプトとして表示できる。何も入れなくてもよい）</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>文字列（改行されるまでの入力）</p></td>
+</tr>
+</tbody>
+</table>
+<section id="id6">
+<h3><span class="section-number">4.2.1. </span>プログラム実行中に入力する<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>対話モードの様子がこれまでと少しだけ違うので、画像も使って説明します。</p>
+<p>まず、<code class="docutils literal notranslate"><span class="pre">input()</span></code> と入力し、Enterキーを押します。</p>
+<figure class="align-center">
+<img alt="../_images/6-1_input_interactive_shell.png" src="../_images/6-1_input_interactive_shell.png" />
+</figure>
+<p>これは <code class="docutils literal notranslate"><span class="pre">input</span></code> 関数の評価中で、<strong>キーボードからの入力を待っている</strong> 状態です。
+試しに「こんにちは」と入力してEnterキーを押してみましょう（Enterキーで改行したことになります）。</p>
+<figure class="align-center">
+<img alt="../_images/6-2_input_return_value.png" src="../_images/6-2_input_return_value.png" />
+</figure>
+<p>文字列 <code class="docutils literal notranslate"><span class="pre">'こんにちは'</span></code> が表示され、プロンプト <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> が再び現れました。
+<code class="docutils literal notranslate"><span class="pre">input()</span></code> の後に入力した「こんにちは」が、<code class="docutils literal notranslate"><span class="pre">input</span></code> 関数の返り値となったのです。
+別の入力で <code class="docutils literal notranslate"><span class="pre">input</span></code> 関数を試してみてください。</p>
+<p><code class="docutils literal notranslate"><span class="pre">input</span></code> 関数の挙動は、今後は以下のように表します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span><span class="p">()</span>  
+<span class="go">こんにちは  # ((input()に続く行で「こんにちは」と入力したことを表します))</span>
+<span class="go">&#39;こんにちは&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">4.2.2. </span>プロンプトの文字列を渡す<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">input</span></code> 関数には、文字列の引数を渡せます。
+渡した文字列の後から入力できるようになります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;名前を入力してください：&quot;</span><span class="p">)</span>  
+<span class="go">名前を入力してください：</span>
+</pre></div>
+</div>
+<p><strong>入力してほしい内容を示す文字列</strong> を <code class="docutils literal notranslate"><span class="pre">input</span></code> 関数に渡します。</p>
+<p>引数が渡されたときも、私たちが入力した値が <code class="docutils literal notranslate"><span class="pre">input</span></code> 関数の返り値となります。
+引数の文字列は、返り値とは関係ありません。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;名前を入力してください：&quot;</span><span class="p">)</span>  
+<span class="go">名前を入力してください：nikkie  # ((お好きな名前を入力してください))</span>
+<span class="go">&#39;nikkie&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="input">
+<h3><span class="section-number">4.2.3. </span><code class="docutils literal notranslate"><span class="pre">input</span></code> 関数の返り値を変数に代入<a class="headerlink" href="#input" title="Link to this heading">¶</a></h3>
+<p>関数の返り値は変数に代入できますね。
+<code class="docutils literal notranslate"><span class="pre">input</span></code> 関数の返り値を変数に代入すれば、<strong>プログラム実行中に私たちが入力した値を代入</strong> したことになります！</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;名前を入力してください：&quot;</span><span class="p">)</span>  
+<span class="go">名前を入力してください：nikkie</span>
+</pre></div>
+</div>
+<p>返り値を変数 <code class="docutils literal notranslate"><span class="pre">namae</span></code> に代入しました。
+対話モードへの表示はありませんね。
+では、変数の指す値を確認しましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span>
+<span class="go">&#39;nikkie&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">input</span></code> 関数を使って、私たちが入力した値（Enterキーを押すまでに入力した値）を変数で扱う方法が分かりました。</p>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">4.3. </span>練習問題<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">input</span></code> 関数と <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数を使って、入力した名前を「〇〇さん、ごきげんよう」と表示してください。</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<p>入力した名前を変数に代入する方法は、<code class="docutils literal notranslate"><span class="pre">input</span></code> 関数の紹介で知っていますね。
+<code class="docutils literal notranslate"><span class="pre">input</span></code> 関数の返り値は文字列ですから、文字列を連結して <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数に渡しましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;名前を入力してください：&quot;</span><span class="p">)</span>  
+<span class="go">名前を入力してください：nikkie</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">namae</span> <span class="o">+</span> <span class="s2">&quot;さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="go">nikkieさん、ごきげんよう</span>
+</pre></div>
+</div>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 文字列の新しい書き方：f文字列（エフもじれつ）</p>
+<p>変数を代入した文字列があるとき、別の文字列と連結する方法をすでに知っていますね（<a class="reference internal" href="../300-value_integer_string/index.html#value-integer-string"><span class="std std-numref">1 章</span></a> 参照）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span> <span class="o">=</span> <span class="s2">&quot;susumuis&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span> <span class="o">+</span> <span class="s2">&quot;さん、ごきげんよう^o^&quot;</span>
+<span class="go">&#39;susumuisさん、ごきげんよう^o^&#39;</span>
+</pre></div>
+</div>
+<p>これと同じことを実現する新しい方法「f文字列（f-string）」を紹介します。
+<code class="docutils literal notranslate"><span class="pre">f</span></code> を付けて始めた文字列の中の <code class="docutils literal notranslate"><span class="pre">{変数}</span></code> は、<strong>変数が指す値</strong> として評価されます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう^o^&quot;</span>
+<span class="go">&#39;susumuisさん、ごきげんよう^o^&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">{namae}</span></code> は namae が指す文字列 <code class="docutils literal notranslate"><span class="pre">&quot;susumuis&quot;</span></code> に置き換わっていますね。</p>
+<p>文字列の始まりのシングルクォートまたはダブルクォートの前に <code class="docutils literal notranslate"><span class="pre">f</span></code> を付けるのがポイントです。
+先頭に <code class="docutils literal notranslate"><span class="pre">f</span></code> が付くので、f文字列と呼ばれます。</p>
+<p>fを付けない場合は、変数は指す値に置き換わりません。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;</span><span class="si">{namae}</span><span class="s2">さん、ごきげんよう^o^&quot;</span>
+<span class="go">&#39;{namae}さん、ごきげんよう^o^&#39;</span>
+</pre></div>
+</div>
+<p>fを付けないと <code class="docutils literal notranslate"><span class="pre">{namae}</span></code> がそのまま含まれた文字列になりました。</p>
+<p>変数 <code class="docutils literal notranslate"><span class="pre">namae</span></code> に別の値を代入すると、できあがる文字列も変わります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span> <span class="o">=</span> <span class="s2">&quot;nao_y&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう^o^&quot;</span>
+<span class="go">&#39;nao_yさん、ごきげんよう^o^&#39;</span>
+</pre></div>
+</div>
+<p><strong>複数の変数の値を入れた文字列</strong> を作りたいとき、f文字列は連結よりもスッキリ書けるので重宝しますよ。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] プログラミング言語における新しい書き方との向き合い方</p>
+<p>上のコラムで紹介したf文字列は、Pythonのバージョン3.6から使える書き方です。
+Pythonは1990年代からありますが、f文字列は2010年代後半から使えるようになりました。
+比較的最近ですね。</p>
+<p>私たちが使う言葉には、常に新しい言い回しが現れますね。
+例えば、「エモい」「わかりみ」「オブです」などなど。</p>
+<p>同じようにプログラミング言語にもどんどん新しい書き方が現れます。
+新しい書き方は、これまでの書き方の <strong>不便なところを解消</strong> するものです。
+プログラマーの世界はどんどん変わっていくので、新しいものを歓迎する姿勢で使ってみるのをおすすめします。</p>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">start-programming-with-python</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>ナビゲーション</h3>
+<p class="caption" role="heading"><span class="caption-text">目次</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../300-value_integer_string/index.html">1. プログラムで数と文字を扱ってみよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../310-variables/index.html">2. 値を変数で扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../320-use_functions/index.html">3. 関数でまとまった処理を扱おう</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. プログラムの入力と出力を扱おう</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">4.1. 値を画面に表示する関数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">4.2. 入力を受け取る関数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">4.3. 練習問題</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../340-define_functions/index.html">5. 関数を作って処理をまとめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../350-in_order/index.html">6. 3大構造 一. 順次</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../360-fork/index.html">7. 3大構造 二. 分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../370-loop/index.html">8. 3大構造 三. 反復</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../380-list/index.html">9. 複数の値をまとめて扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../390-programmer_thinking/index.html">10. プログラマーの考え方を知ろう</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../320-use_functions/index.html" title="前の章へ"><span class="section-number">3. </span>関数でまとまった処理を扱おう</a></li>
+      <li>Next: <a href="../340-define_functions/index.html" title="次の章へ"><span class="section-number">5. </span>関数を作って処理をまとめよう</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, nikkie.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/330-input_output/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

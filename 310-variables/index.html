@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+
+<html lang="ja" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>2. 値を変数で扱おう &#8212; start-programming-with-python  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0c5d2aad" />
+    <script src="../_static/documentation_options.js?v=c033477b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=91613774"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="3. 関数でまとまった処理を扱おう" href="../320-use_functions/index.html" />
+    <link rel="prev" title="1. プログラムで数と文字を扱ってみよう" href="../300-value_integer_string/index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="variables">
+<span id="id1"></span><h1><span class="section-number">2. </span>値を変数で扱おう<a class="headerlink" href="#variables" title="Link to this heading">¶</a></h1>
+<p>値と演算子から式を書き、処理系が評価した結果を確認できるようになりましたね。
+プログラマーは、値に <em>名前を付けて</em> 扱います。
+この章では、値に名前を付けたり、名前を使った式を書けるようになりましょう。</p>
+<p>前章から引き続き、対話モードにプログラムを入力しながら読み進めてくださいね
+（コマンドラインの先頭に <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> と表示されていれば準備完了です）。</p>
+<section id="id2">
+<h2><span class="section-number">2.1. </span>変数で値に名前を付けよう<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3><span class="section-number">2.1.1. </span>数値に名前を付ける<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>まずは数値に名前を付けてみます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<img alt="../_images/3-2_variable_terminal_shot.png" class="align-center" src="../_images/3-2_variable_terminal_shot.png" />
+<p>Enterキーを押すと、対話モードには何も表示されずに、再度プロンプトが現れます。
+これで <code class="docutils literal notranslate"><span class="pre">4</span></code> という数値に <code class="docutils literal notranslate"><span class="pre">a</span></code> という名前が付きました。</p>
+<p>対話モードに名前 <code class="docutils literal notranslate"><span class="pre">a</span></code> を入力してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<img alt="../_images/3-2-2_terminal_variable_value.png" class="align-center" src="../_images/3-2-2_terminal_variable_value.png" />
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code> も式です。
+この式の評価結果は、<code class="docutils literal notranslate"><span class="pre">a</span></code> という名前が指す <code class="docutils literal notranslate"><span class="pre">4</span></code> となります。</p>
+<p>ここで見た <code class="docutils literal notranslate"><span class="pre">a</span></code> のように、値に付ける名前を「<strong>変数</strong> （へんすう）」と言います。
+プログラミングでは、変数を <strong>値の名札</strong> として使います。</p>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="../_images/3-1_nameplate_image.drawio.png"><img alt="../_images/3-1_nameplate_image.drawio.png" src="../_images/3-1_nameplate_image.drawio.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">a</span></code> と書かれた名札を、整数の <code class="docutils literal notranslate"><span class="pre">4</span></code> に付けた</span><a class="headerlink" href="#id14" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>変数は <strong>値そのもののように扱えます</strong>。
+試しに、変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> を使った式を書いてみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">*</span> <span class="mi">6</span>
+<span class="go">24</span>
+</pre></div>
+</div>
+<p>変数を評価した結果は、変数が指す値になります。
+式 <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">6</span></code> の評価では、変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> が指す <code class="docutils literal notranslate"><span class="pre">4</span></code> が使われて、<code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">6</span></code> が評価されました。</p>
+<figure class="align-center" id="id15">
+<a class="reference internal image-reference" href="../_images/3-3_use_variable.drawio.png"><img alt="../_images/3-3_use_variable.drawio.png" src="../_images/3-3_use_variable.drawio.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">名札が付いている値が評価に使われる</span><a class="headerlink" href="#id15" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>続いて、数値 <code class="docutils literal notranslate"><span class="pre">6</span></code> に <code class="docutils literal notranslate"><span class="pre">b</span></code> という別の名前を付けます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">6</span>
+</pre></div>
+</div>
+<p>変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> がそれぞれ指す値を掛けてみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<span class="go">24</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code> が指す値 <code class="docutils literal notranslate"><span class="pre">4</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> が指す値 <code class="docutils literal notranslate"><span class="pre">6</span></code> の積 <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">6</span></code> が評価されました。</p>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../_images/3-4_use_variables.drawio.png"><img alt="../_images/3-4_use_variables.drawio.png" src="../_images/3-4_use_variables.drawio.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> は別々の名札</span><a class="headerlink" href="#id16" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id4">
+<h3><span class="section-number">2.1.2. </span>練習問題<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>変数に慣れる練習です。
+<code class="docutils literal notranslate"><span class="pre">a</span></code> や <code class="docutils literal notranslate"><span class="pre">b</span></code> を使った式（掛け算以外）を対話モードで評価してください。
+そして、変数が指す値で評価されているか確認してみてください。</p>
+<p>例えば <code class="docutils literal notranslate"><span class="pre">33</span> <span class="pre">-</span> <span class="pre">a</span></code> のように変数を1つだけ使ってもいいですし、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></code> のように変数を2つ使ってもいいです。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] アルファベットは文字列にも変数にもなる</p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code> や <code class="docutils literal notranslate"><span class="pre">b</span></code> といった変数（名前）を使ってきました。
+アルファベットを使っていますが、<code class="docutils literal notranslate"><span class="pre">a</span></code> や <code class="docutils literal notranslate"><span class="pre">b</span></code> は文字列ではないことに注意してください。</p>
+<p><strong>シングルクォートやダブルクォートを付けないアルファベットの並びは、変数</strong> になります。
+<code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">&quot;c&quot;</span></code> のように、文字列 <code class="docutils literal notranslate"><span class="pre">&quot;c&quot;</span></code> に <code class="docutils literal notranslate"><span class="pre">c</span></code> という名前を付けることもできます。</p>
+</div>
+</section>
+<section id="id5">
+<h3><span class="section-number">2.1.3. </span>文字列に名前を付ける<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>文字列に名前を付けるときも、数値のときと同様です。
+プログラミングでは、どんな型の値でも変数で名前を付けることができます。</p>
+<p>変数 <code class="docutils literal notranslate"><span class="pre">banzai</span></code> を文字列 <code class="docutils literal notranslate"><span class="pre">&quot;万歳！&quot;</span></code> の名札にしてみます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">banzai</span> <span class="o">=</span> <span class="s2">&quot;万歳！&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">banzai</span>
+<span class="go">&#39;万歳！&#39;</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id17">
+<a class="reference internal image-reference" href="../_images/3-5_string_value.drawio.png"><img alt="../_images/3-5_string_value.drawio.png" src="../_images/3-5_string_value.drawio.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">文字列にも名札を付けられる</span><a class="headerlink" href="#id17" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>変数 <code class="docutils literal notranslate"><span class="pre">banzai</span></code> は値そのもののように扱えますから、文字列の繰り返しを評価してみます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">banzai</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="go">&#39;万歳！万歳！万歳！&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;万歳！&quot;</span> <span class="pre">*</span> <span class="pre">3</span></code> が評価されていますね。</p>
+<p>繰り返しの回数を表す整数にも変数を使ってみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">banzai</span> <span class="o">*</span> <span class="n">b</span>
+<span class="go">&#39;万歳！万歳！万歳！万歳！万歳！万歳！&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;万歳！&quot;</span> <span class="pre">*</span> <span class="pre">6</span></code> が評価されました！
+変数にはだいぶ慣れましたか？</p>
+<p>本書ではしばらくの間、<strong>ローマ字表記の変数</strong> を使います（例： <code class="docutils literal notranslate"><span class="pre">goukei</span></code>、<code class="docutils literal notranslate"><span class="pre">goukei_kingaku</span></code>）。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] NameErrorを見かけたら、変数を入力し間違えていないか見直そう</p>
+<p>変数を使い始めると、<code class="docutils literal notranslate"><span class="pre">NameError</span></code> というエラーによく出会うようになります。
+これは、その変数が名札として使えず、プログラムを実行できなかったことを表します。
+具体的には、<strong>変数を入力し間違えている</strong> 場合です。</p>
+<p>試しに、<code class="docutils literal notranslate"><span class="pre">banzai</span></code> という変数を入力し間違えてみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">banzai</span>
+<span class="go">&#39;万歳！&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">baznai</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">NameError</span>: <span class="n">name &#39;baznai&#39; is not defined</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">banzai</span></code> を <code class="docutils literal notranslate"><span class="pre">baznai</span></code> と間違えたところ、処理系は <code class="docutils literal notranslate"><span class="pre">NameError</span></code> を出しました。
+<code class="docutils literal notranslate"><span class="pre">&quot;万歳！&quot;</span></code> の3回繰り返しは実行されていません。</p>
+<p><strong>変数の入力間違いを直せば</strong>、<code class="docutils literal notranslate"><span class="pre">NameError</span></code> は現れません。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">banzai</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="go">&#39;万歳！万歳！万歳！&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 変数に使える文字の決まり</p>
+<p>変数には、<strong>アルファベットの大文字・小文字、アンダースコア</strong> （<code class="docutils literal notranslate"><span class="pre">_</span></code>） <strong>、数字</strong> が使えます（例：<code class="docutils literal notranslate"><span class="pre">banzai_3sho</span></code>）。
+制約は、先頭が数字で始められない（例：<code class="docutils literal notranslate"><span class="pre">3banzai</span></code> とできない）ことだけです。
+変数を表す文字の長さに制限はなく、好きなだけ長くできます：<code class="docutils literal notranslate"><span class="pre">boku_ga_kangaeta_saikyou_no_hensu_mei</span></code>。
+変数のアルファベットの大文字小文字は区別されます（<code class="docutils literal notranslate"><span class="pre">banzai</span></code> と <code class="docutils literal notranslate"><span class="pre">BANZAI</span></code> と <code class="docutils literal notranslate"><span class="pre">Banzai</span></code> と <code class="docutils literal notranslate"><span class="pre">BanZai</span></code> は変数としては別物ということです）。</p>
+</div>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">2.2. </span>代入<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>ここでプログラミングの用語を1つ紹介します。
+<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">4</span></code> のように、値に名札を付けることを <strong>代入</strong> （だいにゅう）と言います。
+「変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> に <code class="docutils literal notranslate"><span class="pre">4</span></code> を代入する」プログラムと説明されます。</p>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../_images/3-8-2_assignment.drawio.png"><img alt="../_images/3-8-2_assignment.drawio.png" src="../_images/3-8-2_assignment.drawio.png" style="width: 30%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">代入は、値に名札を付けること</span><a class="headerlink" href="#id18" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>変数に値を代入することを「変数を定義する」や「変数を初期化する」とも言います。
+前の節のコラムで紹介した <code class="docutils literal notranslate"><span class="pre">NameError</span></code> は、値を代入していない変数を使おうとした場合のエラーです。</p>
+<section id="id7">
+<h3><span class="section-number">2.2.1. </span>文で動作を指示する<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">4</span></code> のような代入のプログラムについて少し掘り下げてみましょう。</p>
+<p>対話モードに式を入力すると、評価した結果が表示されましたね。
+それに対して、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">4</span></code> を対話モードに入力したときは、何も表示されませんでした。</p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">4</span></code> が何かというと、「文」です。
+文は、<strong>処理系に動作を指示</strong> します。
+<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">4</span></code> は処理系に代入するように指示しているのです。
+その結果、<code class="docutils literal notranslate"><span class="pre">a</span></code> が <code class="docutils literal notranslate"><span class="pre">4</span></code> の名札となります。</p>
+<p>皆さんはすでに2種類の文を知っています。
+1つは代入、もう1つは対話モードに入力した <strong>式自体</strong> です。
+<code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">+</span> <span class="pre">7</span></code> のような式も、処理系に <strong>評価を指示</strong> するので文なのです。
+この後の章では、これら以外の文も登場しますよ。</p>
+<p>プログラムは様々な文を組み合わせて書かれます。
+処理系がやっていることは、<strong>文を実行する</strong>、ただそれだけです。</p>
+</section>
+<section id="id8">
+<h3><span class="section-number">2.2.2. </span>評価結果に名前を付ける<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>式を使うと、評価結果を変数に代入できます。
+<code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">6</span></code> という掛け算の結果を変数 <code class="docutils literal notranslate"><span class="pre">seki</span></code> に代入してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seki</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seki</span>
+<span class="go">24</span>
+</pre></div>
+</div>
+<p>式（掛け算）がまず評価されて、その結果が <code class="docutils literal notranslate"><span class="pre">seki</span></code> に代入されました
+（掛け算の計算結果を積と言うことから、この名前にしました）。
+<strong>式の評価が先</strong> に行われ、<strong>評価した結果の値に名前が付く</strong> という順番です。</p>
+<figure class="align-center" id="id19">
+<a class="reference internal image-reference" href="../_images/3-8_assignment.drawio.png"><img alt="../_images/3-8_assignment.drawio.png" src="../_images/3-8_assignment.drawio.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">評価した結果に、名前を付ける</span><a class="headerlink" href="#id19" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>式には変数も使えますから、ある変数を使った式の評価結果を別の変数に代入できます。
+すでに <code class="docutils literal notranslate"><span class="pre">4</span></code> を代入した変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> を使った例です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seki2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seki2</span>
+<span class="go">24</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">6</span></code> の評価結果が、変数 <code class="docutils literal notranslate"><span class="pre">seki2</span></code> に代入されました。</p>
+<figure class="align-center" id="id20">
+<a class="reference internal image-reference" href="../_images/3-9_assign_result.drawio.png"><img alt="../_images/3-9_assign_result.drawio.png" src="../_images/3-9_assign_result.drawio.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">変数を使った式の評価結果に別の名前を付ける</span><a class="headerlink" href="#id20" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>桁が大きくて <strong>暗算できない場合</strong> に、式を使った代入は便利です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ookii_seki</span> <span class="o">=</span> <span class="mi">3600</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">365</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">3600</span> <span class="pre">*</span> <span class="pre">24</span> <span class="pre">*</span> <span class="pre">365</span></code> の評価結果をプログラマーが暗算できなくても問題ありません。
+この積には <code class="docutils literal notranslate"><span class="pre">ookii_seki</span></code> という名前が付いているので、この変数を使えば続きの計算に進めます。</p>
+</section>
+<section id="id9">
+<h3><span class="section-number">2.2.3. </span>代入の使い所<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>式に加えて代入も使うことで、プログラマーができることは広がります。</p>
+<ol class="arabic simple">
+<li><p>評価結果を再利用できる</p></li>
+<li><p>名前を使うことで分かりやすい式にできる</p></li>
+</ol>
+<p>前項の <code class="docutils literal notranslate"><span class="pre">ookii_seki</span></code> のように評価結果に名前が付くと、<code class="docutils literal notranslate"><span class="pre">ookii_seki</span></code> を使った別の式を書けますね。
+このように <strong>評価結果を再利用</strong> できます。
+名前を付けながら評価を積み重ねていき、最後には欲しい結果に至れます。</p>
+<p>評価結果の再利用だけを考えると <code class="docutils literal notranslate"><span class="pre">a</span></code> や <code class="docutils literal notranslate"><span class="pre">b</span></code> のような名前でもいいと思うかもしれません。
+ですが、時間が経って何についての処理かをあなたが忘れてしまった場合に備えて、<strong>評価結果が何を表すか明確にする名前</strong> を付けることが重要です
+（<a class="reference internal" href="../390-programmer_thinking/index.html#programmer-thinking"><span class="std std-numref">10 章</span></a> 「<a class="reference internal" href="../390-programmer_thinking/index.html#programmer-thinking-naming"><span class="std std-ref">名前は重要</span></a>」もお楽しみに）。</p>
+<p>例として、分かりやすい式を使って、1年（365日）は何秒かを求めてみます。
+1日は24時間で、1時間は3600秒ですね。
+まず1日の秒数を求め、その値を代入した変数を使って、1年の秒数を求めます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ichinichi_byou</span> <span class="o">=</span> <span class="mi">3600</span> <span class="o">*</span> <span class="mi">24</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ichinen_nichi</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ichinen_byou</span> <span class="o">=</span> <span class="n">ichinichi_byou</span> <span class="o">*</span> <span class="n">ichinen_nichi</span>
+</pre></div>
+</div>
+<p>1日の秒数に1年の日数を掛けて、1年の秒数を求めました。
+途中の評価結果を変数に代入して、何を求めているかを示しながら、求める答えまで計算しています。
+後で見返した時、変数を手がかりにして、「1年の秒数を求めているプログラムだ」と思い出せますね。</p>
+</section>
+</section>
+<section id="id10">
+<h2><span class="section-number">2.3. </span>代入で変数を活用する<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p>この節では、プログラマーが使う代入のやり方2つを見ていきます。</p>
+<ol class="arabic simple">
+<li><p>同じ変数に繰り返し代入する</p></li>
+<li><p>自身を使った式で変数を更新する</p></li>
+</ol>
+<p>特に2はよく使われます。</p>
+<section id="id11">
+<h3><span class="section-number">2.3.1. </span>同じ変数に繰り返し代入する<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>同じ変数に複数回代入できます。
+その変数は <strong>最後に代入した値を指す</strong> 名前となります。</p>
+<p>整数 <code class="docutils literal notranslate"><span class="pre">4</span></code> を指す変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> で試してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> は最後に代入した値 <code class="docutils literal notranslate"><span class="pre">2</span></code> を指すようになりました。
+<code class="docutils literal notranslate"><span class="pre">a</span></code> はもう <code class="docutils literal notranslate"><span class="pre">4</span></code> の名札ではありません。</p>
+<p>次の式では、（ <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">6</span></code> ではなくて） <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">6</span></code> が評価されます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">*</span> <span class="mi">6</span>
+<span class="go">12</span>
+</pre></div>
+</div>
+<p><strong>1つの変数は1つの値の名札</strong> です。
+<code class="docutils literal notranslate"><span class="pre">2</span></code> にも <code class="docutils literal notranslate"><span class="pre">4</span></code> にも同名の <code class="docutils literal notranslate"><span class="pre">a</span></code> という名札は付けられません。
+変数は、最後に代入した値を指します。
+それまでに指していた値のことは一切指さなくなると考えてください。</p>
+<figure class="align-center" id="id21">
+<a class="reference internal image-reference" href="../_images/3-11_assign_multiple_times.drawio.png"><img alt="../_images/3-11_assign_multiple_times.drawio.png" src="../_images/3-11_assign_multiple_times.drawio.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">名札 <code class="docutils literal notranslate"><span class="pre">a</span></code> は <code class="docutils literal notranslate"><span class="pre">4</span></code> から外れ、代わりに <code class="docutils literal notranslate"><span class="pre">2</span></code> の名札となる</span><a class="headerlink" href="#id21" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id12">
+<h3><span class="section-number">2.3.2. </span>自身を使った式で変数を更新する<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>同じ変数に繰り返し代入を利用して、<strong>自身を使った式を評価した結果で変数の指す値を更新</strong> できます。
+これは初めて見たとき、少し面食らうかもしれません。
+プログラミングではよく使われる書き方ですので、慣用句だと思ってください。
+理解が追いつかないように感じたときは、対話モードで何回か練習して手で覚えてみましょう。</p>
+<p>例として、<code class="docutils literal notranslate"><span class="pre">5</span></code> を指す変数 <code class="docutils literal notranslate"><span class="pre">c</span></code> を用意します。
+<code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">+</span> <span class="pre">2</span></code> は <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">+</span> <span class="pre">2</span></code> が評価されて <code class="docutils literal notranslate"><span class="pre">7</span></code> となりますね。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+<p>プログラミングでは、次のような書き方をすることができます。
+<em>変数</em> <code class="docutils literal notranslate"><span class="pre">c</span></code> <em>に、式</em> <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">+</span> <span class="pre">2</span></code> <em>を評価した結果を代入</em> します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">c</span> <span class="pre">+</span> <span class="pre">2</span></code> でやっていることは、先ほど見た例の <code class="docutils literal notranslate"><span class="pre">seki2</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">6</span></code> でやっていることと同じです。
+<code class="docutils literal notranslate"><span class="pre">seki2</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">6</span></code> では、式 <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">6</span></code> を評価した結果を変数 <code class="docutils literal notranslate"><span class="pre">seki2</span></code> に代入します。
+それと同じように、式 <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">+</span> <span class="pre">2</span></code> <strong>を評価した結果を変数</strong> <code class="docutils literal notranslate"><span class="pre">c</span></code> <strong>に代入</strong> しているのです。
+変数 <code class="docutils literal notranslate"><span class="pre">c</span></code> は最後に代入した値 <code class="docutils literal notranslate"><span class="pre">7</span></code> を指すようになります。</p>
+<figure class="align-center" id="id22">
+<a class="reference internal image-reference" href="../_images/3-13_assign_self.drawio.png"><img alt="../_images/3-13_assign_self.drawio.png" src="../_images/3-13_assign_self.drawio.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">+</span> <span class="pre">2</span></code> の評価結果に、新たに <code class="docutils literal notranslate"><span class="pre">c</span></code> という名前を付ける</span><a class="headerlink" href="#id22" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">c</span> <span class="pre">+</span> <span class="pre">2</span></code> のように、変数を使った式を変数自身に代入する場合、何回実行したかで結果が変わることに注意しましょう。
+<code class="docutils literal notranslate"><span class="pre">c</span></code> が指す値が2ずつ増えていきます！</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">9</span>
+</pre></div>
+</div>
+<p>これに対して、<code class="docutils literal notranslate"><span class="pre">seki2</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">*</span> <span class="pre">6</span></code> は連続で何回実行しても <code class="docutils literal notranslate"><span class="pre">seki2</span></code> が指す値は変わりません。
+ただし、毎回はじめに <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">5</span></code> と初期化すると、<code class="docutils literal notranslate"><span class="pre">c</span></code> の指す値は常に <code class="docutils literal notranslate"><span class="pre">7</span></code> になります。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 代入の慣用句との思い出</p>
+<p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">c</span> <span class="pre">+</span> <span class="pre">2</span></code> という書き方を初めてみたとき、私はすんなりと理解できませんでした。
+理解する上でポイントだったのは、代入の <code class="docutils literal notranslate"><span class="pre">=</span></code> は、<strong>数学で等しいを表す</strong> <span class="math notranslate nohighlight">\(=\)</span> <strong>（イコール）とは別物</strong> という気付きです。</p>
+<p>大学のプログラミングの授業で何回か、この書き方の説明を受けたのですが、数式のイコールと違うことに気付くのに私はかなり時間がかかりました。
+説明を聞いてもすっきり理解できない期間は、<strong>何度も書いて手で覚える</strong> ようにしていました（大学では単位を取らなければなりませんからね）。</p>
+<p>もし皆さんも、プログラミングで説明を読んでも腑に落ちないときがあれば、手を動かして、対話モードの結果を都度確認しながら、少しずつ理解を深めていきましょう。</p>
+</div>
+</section>
+<section id="id13">
+<h3><span class="section-number">2.3.3. </span>練習問題<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>代入の「慣用句」に慣れるために練習問題を用意しました。
+プログラムは対話モードで入力するとします。</p>
+<ol class="arabic simple">
+<li><p>変数 <code class="docutils literal notranslate"><span class="pre">c</span></code> に <code class="docutils literal notranslate"><span class="pre">5</span></code> を代入した後で、<code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">c</span> <span class="pre">-</span> <span class="pre">3</span></code> を実行すると、<code class="docutils literal notranslate"><span class="pre">c</span></code> が指す値はいくつでしょうか。</p></li>
+<li><p>(1)の後に、<code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">c</span> <span class="pre">*</span> <span class="pre">4</span></code> を実行すると <code class="docutils literal notranslate"><span class="pre">c</span></code> が指す値はいくつでしょうか。</p></li>
+</ol>
+<p>(3) 変数 <code class="docutils literal notranslate"><span class="pre">kakutodani</span></code> に <cite>&quot;さしもしらじな&quot;</cite> を代入した後で、
+<code class="docutils literal notranslate"><span class="pre">kakutodani</span> <span class="pre">=</span> <span class="pre">kakutodani</span> <span class="pre">+</span> <span class="pre">&quot;もゆるおもひを&quot;</span></code> を実行すると、<code class="docutils literal notranslate"><span class="pre">kakutodani</span></code> が指す値は何でしょうか。</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答] (1)</p>
+<p><code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">-</span> <span class="pre">3</span></code> の評価結果が <code class="docutils literal notranslate"><span class="pre">c</span></code> に代入されて <code class="docutils literal notranslate"><span class="pre">2</span></code> となります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">-</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+</div>
+<div class="answer admonition">
+<p class="admonition-title">[解答] (2)</p>
+<p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">4</span></code> の評価結果が <code class="docutils literal notranslate"><span class="pre">c</span></code> に代入されて <code class="docutils literal notranslate"><span class="pre">8</span></code> になります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">8</span>
+</pre></div>
+</div>
+</div>
+<div class="answer admonition">
+<p class="admonition-title">[解答] (3)</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;さしもしらじな&quot;</span> <span class="pre">+</span> <span class="pre">&quot;もゆるおもひを&quot;</span></code> の評価結果が代入されて、<code class="docutils literal notranslate"><span class="pre">'さしもしらじなもゆるおもひを'</span></code> となります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kakutodani</span> <span class="o">=</span> <span class="s2">&quot;さしもしらじな&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kakutodani</span> <span class="o">=</span> <span class="n">kakutodani</span> <span class="o">+</span> <span class="s2">&quot;もゆるおもひを&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kakutodani</span>
+<span class="go">&#39;さしもしらじなもゆるおもひを&#39;</span>
+</pre></div>
+</div>
+</div>
+<p>この章では、変数という新しい概念と出会いました。
+よく分からないところがあっても、あまり気にしないでくださいね。
+書いてあることが全部分かるまで、先を読んではいけないということはありません。
+先に進む中で納得することもあります。
+また、繰り返し手を動かす中で、「こういうことだったのか！」と納得する瞬間が訪れることもあります。</p>
+<p>初めてプログラミングに取り組むというだけで大きな挑戦です。
+いくつか分からない箇所があったとしても、「それ以外は分かった！」という成果を持って、次に進みましょう。</p>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 代入を使って変数自身を更新する結果になる別の書き方</p>
+<p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">c</span> <span class="pre">+</span> <span class="pre">2</span></code> と同じ結果になる別の書き方を紹介します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">+=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">+=</span> <span class="pre">2</span></code> という書き方をしました。
+<code class="docutils literal notranslate"><span class="pre">+=</span></code> の部分は、演算子（ここでは <code class="docutils literal notranslate"><span class="pre">+</span></code>）と代入のイコール <code class="docutils literal notranslate"><span class="pre">=</span></code> をつなげて書きます。
+<strong>整数、浮動小数点数、文字列では、2つの書き方は同じ結果</strong> となります。
+しかし厳密には動作が異なり、値の型によっては同じ結果にはなりません（この後登場する「リスト」という型の場合）。</p>
+<figure class="align-center" id="id23">
+<a class="reference internal image-reference" href="../_images/3-14_plus_assign.drawio.png"><img alt="../_images/3-14_plus_assign.drawio.png" src="../_images/3-14_plus_assign.drawio.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">c</span> <span class="pre">+</span> <span class="pre">2</span></code> と同じ結果になる</span><a class="headerlink" href="#id23" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>先ほどの練習問題(1)〜(3)を <code class="docutils literal notranslate"><span class="pre">+=</span></code> のような演算子とイコールの形で書き直して練習してみましょう。</p>
+<p>(3)のように長い名前の場合は、この書き方だとスッキリしますね。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kakutodani</span> <span class="o">=</span> <span class="s2">&quot;さしもしらじな&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kakutodani</span> <span class="o">+=</span> <span class="s2">&quot;もゆるおもひを&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kakutodani</span>
+<span class="go">&#39;さしもしらじなもゆるおもひを&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 複数の変数に同時に代入する</p>
+<p><strong>複数の変数に一度に代入する</strong> こともできます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>これは、変数 <code class="docutils literal notranslate"><span class="pre">d</span></code> に <code class="docutils literal notranslate"><span class="pre">3</span></code> 、<code class="docutils literal notranslate"><span class="pre">e</span></code> に <code class="docutils literal notranslate"><span class="pre">5</span></code> を同時に代入する書き方です。
+このプログラムを実行すると <code class="docutils literal notranslate"><span class="pre">d</span></code> も <code class="docutils literal notranslate"><span class="pre">e</span></code> も値を指すようになります。</p>
+<figure class="align-center" id="id24">
+<a class="reference internal image-reference" href="../_images/3-15_assign_multiple_variables.drawio.png"><img alt="../_images/3-15_assign_multiple_variables.drawio.png" src="../_images/3-15_assign_multiple_variables.drawio.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">2つの値に同時に名前を付ける</span><a class="headerlink" href="#id24" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">*</span> <span class="n">e</span>
+<span class="go">15</span>
+</pre></div>
+</div>
+<p>2つの変数に限らず、3つ以上の変数にも同時に代入できます。
+同時に代入する書き方のルールは以下のようになります：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> の左側に変数をカンマで区切って並べます（例： <code class="docutils literal notranslate"><span class="pre">d,</span> <span class="pre">e</span></code>）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> の右側に値や変数、それらを使った式を、カンマで区切って並べます（例： <code class="docutils literal notranslate"><span class="pre">3,</span> <span class="pre">5</span></code>）</p></li>
+</ul>
+<p>重要な点は、<code class="docutils literal notranslate"><span class="pre">=</span></code> の <strong>左側と右側に並べる数は同じにする</strong> ということです。</p>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">start-programming-with-python</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>ナビゲーション</h3>
+<p class="caption" role="heading"><span class="caption-text">目次</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../300-value_integer_string/index.html">1. プログラムで数と文字を扱ってみよう</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. 値を変数で扱おう</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">2.1. 変数で値に名前を付けよう</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">2.2. 代入</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">2.3. 代入で変数を活用する</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../320-use_functions/index.html">3. 関数でまとまった処理を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../330-input_output/index.html">4. プログラムの入力と出力を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../340-define_functions/index.html">5. 関数を作って処理をまとめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../350-in_order/index.html">6. 3大構造 一. 順次</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../360-fork/index.html">7. 3大構造 二. 分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../370-loop/index.html">8. 3大構造 三. 反復</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../380-list/index.html">9. 複数の値をまとめて扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../390-programmer_thinking/index.html">10. プログラマーの考え方を知ろう</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../300-value_integer_string/index.html" title="前の章へ"><span class="section-number">1. </span>プログラムで数と文字を扱ってみよう</a></li>
+      <li>Next: <a href="../320-use_functions/index.html" title="次の章へ"><span class="section-number">3. </span>関数でまとまった処理を扱おう</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, nikkie.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/310-variables/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

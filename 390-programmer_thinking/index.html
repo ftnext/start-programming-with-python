@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html lang="ja" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10. プログラマーの考え方を知ろう &#8212; start-programming-with-python  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0c5d2aad" />
+    <script src="../_static/documentation_options.js?v=c033477b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=91613774"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="prev" title="9. 複数の値をまとめて扱おう" href="../380-list/index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="programmer-thinking">
+<span id="id1"></span><h1><span class="section-number">10. </span>プログラマーの考え方を知ろう<a class="headerlink" href="#programmer-thinking" title="Link to this heading">¶</a></h1>
+<p>この章では、実用的なプログラムを作る上で押さえておくと役に立つ話題を2つ紹介します。</p>
+<ul class="simple">
+<li><p>プログラムの再利用</p></li>
+<li><p>命名</p></li>
+</ul>
+<p>それぞれの話題でプログラマーの考え方を押さえたら、次章からはいよいよ実用的なプログラムを作ります。</p>
+<section id="id2">
+<h2><span class="section-number">10.1. </span>プログラムを再利用する<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>皆さんの手元には、これまでに書いてきたプログラム（Pythonのファイル）がありますね。
+例えば、<a class="reference internal" href="../350-in_order/index.html#in-order"><span class="std std-numref">6 章</span></a> の「<a class="reference internal" href="../350-in_order/index.html#in-order-practice"><span class="std std-ref">順次の練習：挨拶するプログラム</span></a>」では、
+渡した名前の人への挨拶文を返す関数 <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> を <code class="file docutils literal notranslate"><span class="pre">aisatsu.py</span></code> に作りました。</p>
+<p>それでは、別のプログラムを書いている時に、
+<code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数が返すのと全く同じ挨拶文を返す関数を使う必要があるとなったら、どうしますか？</p>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数をコピー&amp;ペーストして、別のプログラムに定義するというやり方も浮かびますね。
+ですが、プログラマーの考え方としては、すでにある <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数を <strong>再利用する</strong> ことを考えます。</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">現在の aisatsu.py</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">aisatsu_bun</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう^o^&quot;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">namae</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;名前を入力してください：&quot;</span><span class="p">)</span>
+<span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">aisatsu_bun</span><span class="p">(</span><span class="n">namae</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>再利用の手順は2段階です。</p>
+<ol class="arabic simple">
+<li><p><code class="file docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を <strong>読み込む</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数を呼び出す</p></li>
+</ol>
+<p>1の読み込みについて解説します。
+読み込んだ後の呼び出しは、関数の呼び出しと共通です。</p>
+<section id="id3">
+<h3><span class="section-number">10.1.1. </span>プログラムを読み込む<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<section id="import">
+<h4><span class="section-number">10.1.1.1. </span><code class="docutils literal notranslate"><span class="pre">import</span></code> 文<a class="headerlink" href="#import" title="Link to this heading">¶</a></h4>
+<p>読み込むには <code class="docutils literal notranslate"><span class="pre">import</span></code> 文を使います。
+プログラマーは、プログラムを読み込むことを「プログラムをインポートする」とも言います。</p>
+<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">プログラム名</span></code> と書くと、指定したプログラムを読み込めます（例：<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">aisatsu</span></code>）。
+プログラム名の拡張子は不要です。</p>
+<p>対話モードで試してみましょう。
+カレントディレクトリが <code class="docutils literal notranslate"><span class="pre">basic</span></code> であることを確認してから、対話モードを起動してください。</p>
+<p><code class="file docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を読み込みます。
+ファイルを読み込む処理系は、まずその <strong>ファイルを実行</strong> します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">aisatsu</span>  
+<span class="go">名前を入力してください：</span>
+</pre></div>
+</div>
+<p>処理系が <code class="file docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を実行し、5行目の <code class="docutils literal notranslate"><span class="pre">input</span></code> 関数で入力待ちになりました。
+名前を入力すると、残りが実行され、読み込みは完了します（<code class="docutils literal notranslate"><span class="pre">print</span></code> 関数による表示があります）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">aisatsu</span>  
+<span class="go">名前を入力してください：nikkie</span>
+<span class="go">nikkieさん、ごきげんよう^o^</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>対話モードのプロンプトが再度現れたら、読み込み完了です。
+<code class="docutils literal notranslate"><span class="pre">import</span></code> 文を実行すると、処理系は <code class="file docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を <code class="docutils literal notranslate"><span class="pre">aisatsu</span></code> という <strong>名前で扱える</strong> ようになります。
+<code class="file docutils literal notranslate"><span class="pre">aisatsu.py</span></code> の <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数は、<code class="docutils literal notranslate"><span class="pre">aisatsu.aisatsu_bun</span></code> とドットでつないで呼び出せます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu</span><span class="o">.</span><span class="n">aisatsu_bun</span><span class="p">(</span><span class="s2">&quot;nao_y&quot;</span><span class="p">)</span>  
+<span class="go">&#39;nao_yさん、ごきげんよう^o^&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu</span><span class="o">.</span><span class="n">aisatsu_bun</span><span class="p">(</span><span class="s2">&quot;susumuis&quot;</span><span class="p">)</span>  
+<span class="go">&#39;susumuisさん、ごきげんよう^o^&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数を再利用できました！</p>
+</section>
+<section id="id4">
+<h4><span class="section-number">10.1.1.2. </span>読み込むときに実行しない処理を指定する<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> の読み込みで名前の入力が求められるのは少し使いづらいですよね。
+そこで、<code class="docutils literal notranslate"><span class="pre">import</span></code> で <strong>読み込むときには実行しないという分岐を追加</strong> します。</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">aisatsu.py</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">aisatsu_bun</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう^o^&quot;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>
+<span class="hll"><span class="linenos">5</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+</span><span class="linenos">6</span>    <span class="n">namae</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;名前を入力してください：&quot;</span><span class="p">)</span>
+<span class="linenos">7</span>    <span class="nb">print</span><span class="p">(</span><span class="n">aisatsu_bun</span><span class="p">(</span><span class="n">namae</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を変更したら、対話モードを一度終了してから再度開いて <code class="docutils literal notranslate"><span class="pre">import</span></code> します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">aisatsu</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu</span><span class="o">.</span><span class="n">aisatsu_bun</span><span class="p">(</span><span class="s2">&quot;susumuis&quot;</span><span class="p">)</span>
+<span class="go">&#39;susumuisさん、ごきげんよう^o^&#39;</span>
+</pre></div>
+</div>
+<p>名前を入力せずに読み込めました！</p>
+<p>追加した分岐について説明します。
+これは <strong>ファイルをコマンドラインから実行したときのみ</strong> 実行される分岐です。</p>
+<p>条件に使われている <code class="docutils literal notranslate"><span class="pre">__name__</span></code> は <strong>変数</strong> です。
+前後にアンダースコアが2つずつ付いていますが、変数であることは変わりません。
+この変数は、Pythonファイルが持つ特別な変数です。</p>
+<ul class="simple">
+<li><p>コマンドラインからPythonファイルを実行する時、そのファイルの <code class="docutils literal notranslate"><span class="pre">__name__</span></code> が指す値は、文字列の <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code> と一致します</p></li>
+<li><p>Pythonファイルを <code class="docutils literal notranslate"><span class="pre">import</span></code> する時、そのファイルの <code class="docutils literal notranslate"><span class="pre">__name__</span></code> が指す値は、文字列の <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code> とは一致しません</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">import</span></code> でファイルを実行するときは <strong>分岐を通らない</strong> ので、名前の入力が求められないのです。</p>
+<p>コマンドラインで実行したときの挙動は変わっていません。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>aisatsu.py
+名前を入力してください：nikkie
+nikkieさん、ごきげんよう^o^
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> という分岐は、Pythonのファイルの中でよく使われます。</p>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 読み込みの別のやり方： <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">import</span></code></p>
+<p>別の <code class="docutils literal notranslate"><span class="pre">import</span></code> のやり方も紹介します。
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">プログラム名</span> <span class="pre">import</span> <span class="pre">関数名</span></code> と書くと、読み込んだ関数をドットでつながず <strong>そのままの名前で</strong> 呼び出せます。</p>
+<p>対話モードを開き直してから以下を実行してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">aisatsu</span> <span class="kn">import</span> <span class="n">aisatsu_bun</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu_bun</span><span class="p">(</span><span class="s2">&quot;nao_y&quot;</span><span class="p">)</span>
+<span class="go">&#39;nao_yさん、ごきげんよう^o^&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">import</span></code> という書き方でも <code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> が <strong>実行されることは変わりません</strong>。
+この書き方で読み込むと、<code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> の <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数を <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> という名前で扱えます。
+どちらも使われるので、2通り頭に入れておくと、この後出てくるプログラムが読みやすいでしょう。</p>
+</div>
+</section>
+</section>
+<section id="id5">
+<h3><span class="section-number">10.1.2. </span>再利用してプログラムを書く<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>学んだ <code class="docutils literal notranslate"><span class="pre">import</span></code> を使って、関数を別のプログラムで再利用してみましょう。
+<code class="file docutils literal notranslate"><span class="pre">aisatsu.py</span></code> の <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数を別のプログラムで使います。
+<code class="docutils literal notranslate"><span class="pre">import</span></code> を使うファイルは <code class="file docutils literal notranslate"><span class="pre">aisatsu.py</span></code> と同じディレクトリ（<code class="docutils literal notranslate"><span class="pre">basic</span></code>）の中に作ってください。</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">再利用の例</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">from</span> <span class="nn">aisatsu</span> <span class="kn">import</span> <span class="n">aisatsu_bun</span>
+<span class="linenos">2</span>
+<span class="linenos">3</span><span class="nb">print</span><span class="p">(</span><span class="n">aisatsu_bun</span><span class="p">(</span><span class="s2">&quot;読者の皆さん&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>再利用するのは、あなたが作ったプログラムだけにとどまりません。
+<strong>他のプログラマーが作ったプログラム</strong> も再利用できます。</p>
+<p>プログラマーが再利用できるように公開されたプログラムは「ライブラリ」と呼ばれます。
+<strong>プログラミング言語には、よく使う処理がライブラリとして用意</strong> されています。
+Pythonにも「標準ライブラリ」があります。
+Pythonと一緒にインストールされるので、皆さんの環境はすでに標準ライブラリは使える状態です。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] ライブラリは作品集と似ている</p>
+<p>ライブラリという言葉には、<strong>作品集</strong> という意味もあります。
+作品集を入手するように、ライブラリもインストールして入手する必要があります。</p>
+<p>作品集が1つ1つの作品から成るように、ライブラリも「モジュール」が集まってできます。
+モジュールは、プログラムが書かれた <strong>ファイル</strong> です。</p>
+<p><code class="docutils literal notranslate"><span class="pre">import</span></code> 文を使うと、ライブラリにあるモジュール（ファイル）に書かれた関数や型を使えます。
+作品集の中の作品から、特定の部分を参照するイメージです。</p>
+</div>
+<p>標準ライブラリに用意されたモジュールから、関数や型を <code class="docutils literal notranslate"><span class="pre">import</span></code> するだけで、様々な処理が使えます。</p>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 標準ライブラリ以外のライブラリ</p>
+<p>プログラミング言語に用意されたライブラリ以外にも、<strong>プログラマーが公開しているライブラリ</strong> がたくさんあります。
+標準ライブラリだけでもかなり多くのことができますが、
+標準ライブラリ以外のライブラリ（サードパーティーライブラリ）を使えば、文字通りあらゆることができる印象です。</p>
+<p>サードパーティーライブラリは、<strong>ライブラリごとにインストール</strong> して、あなたの環境で使える状態にする必要があります。
+プログラマーの世界には、「パッケージマネージャー」と呼ばれる、インストールを手伝ってくれるソフトウェアがあります。  # noqa
+サードパーティーライブラリを使う必要が生じたら、使い方を調べたり、質問したりしましょう。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] なぜ関数をコピー&amp;ペーストしなかったのか</p>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を読み込む代わりに「<code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数をコピーして、
+使いたいファイルにペーストすればいいのではないか」と思ったかもしれませんね。
+なぜそうしなかったのか、その理由は、似たコードが増えてしまうからです。</p>
+<p><strong>似たコードが増えると、変更が大変になります</strong>。
+例えば <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数の返り値に含む顔文字を変更するとしましょう。
+コピー&amp;ペーストで増やした全ての <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数を変更しなければなりません。
+1つ1つの修正は単純だと思うかもしれませんが、作業箇所が多いほど、作業漏れなどミスしやすくなります。</p>
+<p>このように、コピー&amp;ペーストは、プログラムの <strong>変更しやすさを失わせ</strong> てしまいます。
+変更しやすい状態を保つため、コピー&amp;ペーストをせずに <code class="docutils literal notranslate"><span class="pre">import</span></code> で読み込みます。
+これならば <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数の返り値を変えることになっても、読み込み元1箇所だけの変更で済みます。</p>
+<p>プログラマーの世界には、DRY（ドライ。乾燥という意味のドライともかけている）という格言もあります。
+Don't repeat yourself「<strong>繰り返してはならぬ</strong>」の略です。
+繰り返しによる悪影響はみな知っているのです。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] ライブラリを使うのに気後れする必要はない</p>
+<p>プログラマーの世界には、ライブラリを <strong>他のプログラマーが使えるように公開する文化</strong> があります。
+この裏にあるのは、「自分にとって便利なライブラリは、他の誰かにとっても便利」という考え方です。
+なので、プログラミングを始めたばかりでも、<strong>凄腕プログラマーが開発した便利なライブラリ</strong> をあなたのプログラムの中で使えます。</p>
+<p>もしかすると、「まだまだ学び始めの自分が使っていいのか」と気後れするかもしれませんね。
+敬意は必要ですが、<strong>遠慮は不要</strong> です。
+<strong>感謝を胸に</strong>、積極的に使いましょう。
+ライブラリを使うと、あなたがプログラミングでできることが一気に増えます！
+この姿勢は「巨人の肩に乗る」と呼ばれ、プログラマーの世界で奨励されます。</p>
+<p>もらいっぱなしが気になるのなら、いつの日かあなたの書いたプログラムが、
+<strong>他の誰かの課題を解決するという形で、コミュニティにお返し</strong> すればいいのです。
+他の誰かは、先を行く凄腕プログラマーに限らず、あなたの後に続く初学者でもいいのです。</p>
+<p>ライブラリを使う際の心構えとして「お客さまにならない」ことをおすすめします。
+ライブラリは完成した製品ではなく、<strong>プログラマーコミュニティのみんなで開発中</strong> のプログラムです。
+なにか問題に気づいたら、苦情を言うのではなく、「一緒に修正しよう」という姿勢で関わりましょう。</p>
+</div>
+</section>
+</section>
+<section id="programmer-thinking-naming">
+<span id="id6"></span><h2><span class="section-number">10.2. </span>名前は重要<a class="headerlink" href="#programmer-thinking-naming" title="Link to this heading">¶</a></h2>
+<p>プログラムの3大構造を学ぶ中で、変数や関数名は、日本語をローマ字にして付けました。
+例えば <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数は「挨拶文（あいさつぶん）」のローマ字表記です。</p>
+<p>実用的なプログラムを作る前に、<strong>名前を付ける際の考え方</strong> を知りましょう。
+また、<strong>英単語をつないだ</strong> 名前の付け方も紹介します。</p>
+<section id="id7">
+<h3><span class="section-number">10.2.1. </span>名前にはよい／悪いがある<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>実はプログラマーは、プログラムを書くよりも <strong>他人が書いたプログラムを読む時間の方が多い</strong> です。
+プログラムを読んで理解するときには、変数や関数名といった名前が手がかりになります。
+<strong>名前を具体的にする</strong> ことで、プログラムを理解するまでの時間を短くできます。</p>
+<p>よい名前とは、他のプログラマーがプログラムを読んで <strong>理解するまでの時間を短くする</strong> 名前です。
+よい名前は具体的な名前です。
+変数であれば、<strong>指す値の意味を示す名前</strong>、関数であれば、<strong>処理の内容を示す名前</strong> がよい名前です。</p>
+<p>例えば、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1080</span></code> の変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> はよい名前でしょうか？
+指している値 <code class="docutils literal notranslate"><span class="pre">1080</span></code> がどんな意味か分かりづらいですよね。
+仮に、この値は合計を意味しているとしましょう。
+<code class="docutils literal notranslate"><span class="pre">goukei</span> <span class="pre">=</span> <span class="pre">1080</span></code> と書き換えると、<code class="docutils literal notranslate"><span class="pre">1080</span></code> という値が合計であることが伝えられます</p>
+<p>「自分のプログラムを他のプログラマーに見せる機会がないから関係ない」とは考えないでください。
+プログラムを読んで理解するプログラマーには、<strong>数週間〜数カ月先の（どんなプログラムかを忘れた）あなた自身</strong> も含まれます。
+未来の自分がプログラムをすぐに把握できるように、意味を説明する名前を付けていきましょう。
+ここまでに登場したローマ字表記の名前も、意味を説明するような名前を選んでいました。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] よい名前についてもっと知る</p>
+<p>よい名前を付けることは簡単そうに聞こえて奥が深いです。
+プログラマーも苦労してきたようで、先人たちが数々の指針を残しています。</p>
+<p>よい名前を付けたい場合、自己流でやるよりは、<strong>先人の残した指針を参考にする</strong> のをおすすめします。
+例えば『リーダブルコード』という本で、先人の指針を学べます。</p>
+</div>
+</section>
+<section id="id8">
+<h3><span class="section-number">10.2.2. </span>変数や関数の名前は英単語で付ける<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>ここまで、名前をローマ字表記で付けたのは、初めてプログラミングをする上での障壁を小さくするための工夫です。
+プログラマーは一般に、<strong>英単語を組合せて</strong> 名前を付けます。
+本書の残りで登場するプログラムも、変数や関数名が英単語に変わります。</p>
+<p>「英単語」と聞いて、「英語に自信がない」と思うかもしれませんが、心配いりません。
+プログラムは英文ではないので、英文法の知識は必須ではありません。
+<strong>英単語をつなげればいい</strong> のです。</p>
+<p>名前は理解するまでの時間を短くすることが重要です。
+なので、<strong>まず日本語で</strong> 具体的な名前を考えましょう。
+具体的な名前が決まったら、<strong>単語ごとに英語に置き換え</strong> ます。
+このとき、インターネット上の辞書サイトや、PCに内蔵された辞書アプリ（macOSの「辞書.app」など）の助けを得られます。</p>
+<p>英文法としての誤りを心配する必要はありません。
+十分具体的な英単語をつないだら、文法的に間違っていたとしても、プログラムを理解するまでの時間は短くなります。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 英単語の意味を調べる習慣を付けよう</p>
+<p>この本の目的はプログラミング入門ですから、英単語にどうしても苦手意識がある場合は、ローマ字表記の名前を使えばよいでしょう。
+ですが、プログラミングに取り組む中では、英単語を完全に避けて通ることはできません。
+例えば、ライブラリにある関数は、英単語で命名されていますし、皆さんから見て先輩のプログラマーたちは英単語で命名します。</p>
+<p>英単語への苦手意識を払拭できると、プログラミングでも恩恵が得られます。
+中学校や高校で習う英文法をやり直す必要はありません。
+<strong>英単語の意味を個々に調べて</strong> 意味をつかめばいいのです。</p>
+<p>意味を調べる習慣が付くと、ライブラリにある関数名から処理内容がつかめます。
+また、他のプログラマーと一緒にプログラムを書く機会にも飛び込んでいきやすくなるでしょう。
+英単語の意味を掴むようにすることで、プログラムを通したコミュニケーションができるようになるのです。</p>
+</div>
+</section>
+<section id="id9">
+<h3><span class="section-number">10.2.3. </span>例：挨拶のプログラムを書き変える<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>以上を踏まえ、<code class="file docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を書き直します。
+ローマ字表記で具体的な名前になっているので、英単語に置き換えます。
+「挨拶をする」は英語でgreetなので、ファイル名も <code class="file docutils literal notranslate"><span class="pre">greet.py</span></code> に変えます。</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">greet.py</span><a class="headerlink" href="#id13" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">さん、ごきげんよう^o^&quot;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="linenos">6</span>    <span class="n">name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;名前を入力してください：&quot;</span><span class="p">)</span>
+<span class="linenos">7</span>    <span class="nb">print</span><span class="p">(</span><span class="n">greeting</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<table class="docutils align-center" id="id14">
+<caption><span class="caption-text">英単語を使って <code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を書き換え</span><a class="headerlink" href="#id14" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>変数／関数の役割</p></td>
+<td><p>これまでのローマ字表記</p></td>
+<td><p>英単語を使った表記</p></td>
+</tr>
+<tr class="row-even"><td><p>挨拶の言葉を返す</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">greeting</span></code> （挨拶の言葉という意味）</p></td>
+</tr>
+<tr class="row-odd"><td><p>名前を表す</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">namae</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">name</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>ここまでに登場したプログラムを英単語を使って書き直すと練習になるでしょう。
+また、ここまでのプログラムを何も見ずにスラスラと書けるようになれば、よい名前付けの習慣が身に付いています！</p>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 命名での単語のつなぎ方</p>
+<p>複数の単語を組合せて名前を付ける時、本書では <strong>アンダースコアでつないで</strong> きました（例：<code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code>）。
+この記法は、胴の長い蛇（snake）のように見えるため、「スネークケース」と呼ばれます。</p>
+<p>単語をそのままつなげると、区切りが分からず読みにくいですよね（例： <code class="docutils literal notranslate"><span class="pre">greentea</span></code>）。
+そのため、つなぎ方を考える必要があり、スネークケース以外のつなぎ方も考案されてきました。</p>
+<ul class="simple">
+<li><p><strong>ハイフン</strong> でつなぐ：<code class="docutils literal notranslate"><span class="pre">green-tea</span></code> （ケバブケース）</p></li>
+<li><p>続く単語の <strong>先頭の文字を大文字にして</strong> つなぐ：<code class="docutils literal notranslate"><span class="pre">greenTea</span></code> （キャメルケース）</p></li>
+</ul>
+<p>キャメル（camel）はラクダのことで、大文字がラクダのコブのように見えることから呼ばれています。</p>
+<p>スネークケース、ケバブケース、キャメルケース、どれが使われるかはプログラミング言語ごとに異なります。
+Pythonを書く場合は、スネークケースが多いです。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 繰り返し読まないプログラムなら、よい名前にこだわらなくてもいい</p>
+<p>具体的な名前を付けるのは、読んだときにプログラムをすぐに把握できるようにするためです。
+もしそのプログラムを繰り返し読むことがないのなら、具体的な名前にこだわらなくてもよいでしょう。</p>
+<p>繰り返し読まないプログラムの例は、<strong>新しく知ったことを対話モードで試すとき</strong> です（<a class="reference internal" href="../360-fork/index.html#fork"><span class="std std-numref">7 章</span></a> のコラム参照）。
+新しく知った関数や書き方を把握するのが目的で、後から読み返すわけではありません。
+そんなとき、私は <code class="docutils literal notranslate"><span class="pre">a</span></code> や <code class="docutils literal notranslate"><span class="pre">b</span></code> のような「悪い」変数を使います。
+ただし、把握した後にファイルに書くときは、指す値を具体的に示すよい名前になるように注意を払います。</p>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">start-programming-with-python</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>ナビゲーション</h3>
+<p class="caption" role="heading"><span class="caption-text">目次</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../300-value_integer_string/index.html">1. プログラムで数と文字を扱ってみよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../310-variables/index.html">2. 値を変数で扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../320-use_functions/index.html">3. 関数でまとまった処理を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../330-input_output/index.html">4. プログラムの入力と出力を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../340-define_functions/index.html">5. 関数を作って処理をまとめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../350-in_order/index.html">6. 3大構造 一. 順次</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../360-fork/index.html">7. 3大構造 二. 分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../370-loop/index.html">8. 3大構造 三. 反復</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../380-list/index.html">9. 複数の値をまとめて扱おう</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">10. プログラマーの考え方を知ろう</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">10.1. プログラムを再利用する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#programmer-thinking-naming">10.2. 名前は重要</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../380-list/index.html" title="前の章へ"><span class="section-number">9. </span>複数の値をまとめて扱おう</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, nikkie.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/390-programmer_thinking/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

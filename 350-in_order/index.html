@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html lang="ja" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>6. 3大構造 一. 順次 &#8212; start-programming-with-python  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0c5d2aad" />
+    <script src="../_static/documentation_options.js?v=c033477b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=91613774"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="7. 3大構造 二. 分岐" href="../360-fork/index.html" />
+    <link rel="prev" title="5. 関数を作って処理をまとめよう" href="../340-define_functions/index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="in-order">
+<span id="id1"></span><h1><span class="section-number">6. </span>3大構造 一. 順次<a class="headerlink" href="#in-order" title="Link to this heading">¶</a></h1>
+<p>この章から <strong>プログラムの3大構造</strong> を紹介します。</p>
+<ul class="simple">
+<li><p>順次（本章）</p></li>
+<li><p>分岐（<a class="reference internal" href="../360-fork/index.html#fork"><span class="std std-numref">7 章</span></a>）</p></li>
+<li><p>反復（<a class="reference internal" href="../370-loop/index.html#loop"><span class="std std-numref">8 章</span></a>）</p></li>
+</ul>
+<p><strong>順次</strong> （じゅんじ）とは、<strong>処理を順番に実行する</strong> ことです。</p>
+<p>この章からは対話モードを離れ、処理を <strong>ファイルに書いて</strong> いきます。
+対話モードで学んだことは、ファイルでも同じように使えます。</p>
+<section id="in-order-command-reference">
+<span id="id2"></span><h2><span class="section-number">6.1. </span>はじめてのファイルを使ったプログラム<a class="headerlink" href="#in-order-command-reference" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3><span class="section-number">6.1.1. </span>ファイルを使う準備<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>まずは、対話モードに <code class="docutils literal notranslate"><span class="pre">quit()</span></code> と入力して終了します。</p>
+<p>「プログラミングするための環境」として準備したエディター、Atomを使います。
+Atomで <code class="docutils literal notranslate"><span class="pre">py-practice</span></code> ディレクトリをプロジェクトフォルダーとして開いてください。  # noqa</p>
+<p>次に、Atomを操作して、<code class="docutils literal notranslate"><span class="pre">basic</span></code> ディレクトリを作ってください。
+この名前は、プログラミングの基本（basic）を学ぶためのディレクトリという意味です。</p>
+<figure class="align-center" id="id14">
+<img alt="../_images/5-6-2_create_basic_directory.png" src="../_images/5-6-2_create_basic_directory.png" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">basic</span></code> ディレクトリを作った後のAtom</span><a class="headerlink" href="#id14" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>ディレクトリをまず作り、その中にファイルを作るのがおすすめです。
+<strong>作業ごとにディレクトリを作る</strong> と、PCの中を整理整頓して使っていけます。
+本章から <a class="reference internal" href="../390-programmer_thinking/index.html#programmer-thinking"><span class="std std-numref">10 章</span></a> 「<a class="reference internal" href="../390-programmer_thinking/index.html#programmer-thinking"><span class="std std-ref">プログラマーの考え方を知ろう</span></a>」までのプログラムは、
+<code class="docutils literal notranslate"><span class="pre">basic</span></code> ディレクトリに作ります。</p>
+<p>最後に、コマンドラインで <code class="docutils literal notranslate"><span class="pre">cd</span></code> コマンドを使って <code class="docutils literal notranslate"><span class="pre">basic</span></code> ディレクトリに移動しましょう
+（カレントディレクトリが <code class="docutils literal notranslate"><span class="pre">py-practice</span></code> になっていましたね）。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>basic
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">6.1.2. </span>ファイルに処理を書く<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>ファイルのプログラムを作るときは、Atomを以下の手順で操作します。</p>
+<ol class="arabic simple">
+<li><p>ファイルがない場合は、ファイルを作成する</p></li>
+<li><p>ファイルに文を入力する</p></li>
+<li><p>ファイルを保存する</p></li>
+</ol>
+<p>まず、 <code class="docutils literal notranslate"><span class="pre">basic</span></code> ディレクトリの中に <code class="docutils literal notranslate"><span class="pre">hajimete.py</span></code> というファイルを作ります。</p>
+<p>次に <code class="docutils literal notranslate"><span class="pre">hajimete.py</span></code> に、以下の3行を入力しましょう。
+2つの変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> を使って、整数の積を計算します（<a class="reference internal" href="../310-variables/index.html#variables"><span class="std std-numref">2 章</span></a> 「<a class="reference internal" href="../310-variables/index.html#variables"><span class="std std-ref">値を変数で扱おう</span></a>」でも書きましたね）。</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">hajimete.py</span><a class="headerlink" href="#id15" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="linenos">2</span><span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="linenos">3</span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>入力したら、ファイルを保存してください。
+Atomでファイルを保存することで、入力内容がPCの中のファイルに書き込まれます。</p>
+</section>
+<section id="id5">
+<h3><span class="section-number">6.1.3. </span>プログラムのファイルを実行<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>それでは、<code class="file docutils literal notranslate"><span class="pre">hajimete.py</span></code> というファイルのプログラムを <strong>プログラミング言語処理系で処理</strong> します。
+これは、「ファイルのプログラムを実行」「ファイルを実行」とも言われます。</p>
+<p><strong>コマンドはOSによって異なります</strong>。
+以下のうち、該当する方を入力してください。</p>
+<section id="windows">
+<h4><span class="section-number">6.1.3.1. </span>Windowsの場合<a class="headerlink" href="#windows" title="Link to this heading">¶</a></h4>
+<p>PowerShellで <strong class="command">python</strong> コマンドに続けて、<strong>実行するファイルの相対パスを指定</strong> します。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>hajimete.py
+</pre></div>
+</div>
+<p>この後にやることは、続く「macOSの場合」でファイルの相対パスを入力した後の部分で説明します。</p>
+</section>
+<section id="macos">
+<h4><span class="section-number">6.1.3.2. </span>macOSの場合<a class="headerlink" href="#macos" title="Link to this heading">¶</a></h4>
+<p>ターミナル.appで <strong class="command">python3</strong> コマンドに続けて、<strong>実行するファイルの相対パスを指定</strong> します。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span>python3<span class="w"> </span>hajimete.py
+</pre></div>
+</div>
+<p>ここから先は <strong>「Windowsの場合」のコマンドだけ</strong> を示します。
+<strong>macOSを使っている方</strong> は、<strong class="command">python</strong> と見かけたら、<strong class="command">python3</strong> に <strong>読み替え</strong> てください。</p>
+<p>ファイルの相対パスを入力した後は、<kbd class="kbd docutils literal notranslate">Enter</kbd> キーを押してください。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>hajimete.py
+<span class="m">24</span>
+&gt;
+</pre></div>
+</div>
+<p>コマンドラインに <code class="docutils literal notranslate"><span class="pre">24</span></code> が表示され、そしてプロンプトが再度表示されています。
+ファイルの実行が終わると、プロンプトが再度現れます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">hajimete.py</span></code> に書かれた処理が <strong>1行目から順に</strong> 実行された結果、<code class="docutils literal notranslate"><span class="pre">24</span></code> が表示されました。</p>
+<figure class="align-center" id="id16">
+<img alt="../_images/5-11_in_order.drawio.png" src="../_images/5-11_in_order.drawio.png" />
+<figcaption>
+<p><span class="caption-text">ファイルのプログラムは1行目から順に処理される</span><a class="headerlink" href="#id16" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>処理系が <strong>ファイルを</strong> 1行目にある文から <strong>順番に1文ずつ実行する</strong> というのが順次です。
+後に続く行がなくなったら、ファイルの実行は終わります。
+順次により、<code class="docutils literal notranslate"><span class="pre">hajimete.py</span></code> では <span class="math notranslate nohighlight">\(4 \times 6\)</span> が計算されて、<code class="docutils literal notranslate"><span class="pre">24</span></code> と表示されました。</p>
+<p>ファイルのプログラムを読むときは、<strong>1行目から順番に、何をしている文か理解</strong> しましょう。
+処理系の動きをプログラマーの頭の中で再現するのです。</p>
+<p>対話モードでは先に入力した処理から順番に実行されましたね。
+ファイルの実行は、1行目から1文ずつ対話モードで実行するのと同じなのです。</p>
+</section>
+</section>
+<section id="id6">
+<h3><span class="section-number">6.1.4. </span>練習問題<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>以下のように処理を足した <code class="docutils literal notranslate"><span class="pre">hajimete.py</span></code> を実行すると、コマンドラインには何が表示されるでしょうか。</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">hajimete.py</span><a class="headerlink" href="#id17" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="linenos">2</span><span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="linenos">3</span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+<span class="hll"><span class="linenos">4</span><span class="n">banzai</span> <span class="o">=</span> <span class="s2">&quot;万歳！&quot;</span>
+</span><span class="hll"><span class="linenos">5</span><span class="nb">print</span><span class="p">(</span><span class="n">banzai</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<p>「こう思う」と結論が出たら、実際に実行して確かめましょう。</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<p>表示されるのは2行です。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>hajimete.py
+<span class="m">24</span>
+万歳！万歳！万歳！
+&gt;
+</pre></div>
+</div>
+<p>まず <code class="docutils literal notranslate"><span class="pre">24</span></code> と表示されます（3行目の <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数によります）。
+続いて、<code class="docutils literal notranslate"><span class="pre">万歳！万歳！万歳！</span></code> と表示されます（5行目の <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数）。</p>
+<p>この結果を「当たり前」と感じたら、順次を体得しています！
+プログラムは1行目から1文ずつ実行されるので、行として上にある <code class="docutils literal notranslate"><span class="pre">print(a</span> <span class="pre">*</span> <span class="pre">b)</span></code> が実行されて、<code class="docutils literal notranslate"><span class="pre">24</span></code> が先に表示されます。
+追加した4,5行目の文から実行されるということはありません。</p>
+<figure class="align-center" id="id18">
+<img alt="../_images/5-12_in_order2.drawio.png" src="../_images/5-12_in_order2.drawio.png" />
+<figcaption>
+<p><span class="caption-text">1行目から順に実行される</span><a class="headerlink" href="#id18" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>もし、ここで示した結果が表示されない場合は、Atomでファイルを保存したか確認してください。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] ファイルで体験する <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数の効能</p>
+<p><code class="docutils literal notranslate"><span class="pre">hajimete.py</span></code> の3行目で <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数を呼び出さなかったらどうなるでしょうか。</p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">hajimete.py</span><a class="headerlink" href="#id19" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="linenos">2</span><span class="n">b</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="hll"><span class="linenos">3</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+</span></pre></div>
+</div>
+</div>
+<p>ファイルを実行しても、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></code> の評価結果はコマンドラインに表示されません。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>hajimete.py
+&gt;
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></code> を評価していないのではありません。
+<code class="docutils literal notranslate"><span class="pre">print</span></code> 関数を呼び出していないので、コマンドラインに表示されないのです。</p>
+<p><strong>表示には</strong> <code class="docutils literal notranslate"><span class="pre">print</span></code> <strong>関数を呼び出す必要がある</strong> というのが、対話モードとファイルとの違いです。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 新しく知った文法は対話モードでまず試そう</p>
+<p>この章から先は、プログラムをファイルに書くことが中心になります。
+ですが、対話モードを全く使わなくなるわけではありません。
+新しく知った文法は <strong>対話モードでまず試し、使い方を掴んでからファイルに書く</strong> のがおすすめです。</p>
+<p>私の経験では、新しく知った文法を使ったプログラムをいきなりファイルに書いたとき、実行時にたいてい処理系はエラーを出します。
+これは新しく知った文法の使い方を間違えていることが原因でした。
+そこで、 <strong>ファイルに書く前に対話モードで試し、処理系がエラーを出さない使い方を把握する</strong> ようにしています。
+対話モードで確認した通りにプログラムをファイルに書けばいいのです。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] プログラムとコード</p>
+<p>この章でファイルのプログラムを扱い始めました。
+プログラマーの世界には、プログラムと似た意味の言葉に「コード」があります。</p>
+<p>コードという言葉は、<strong>プログラムの一部の式や文</strong>、それらのまとまりを指します。
+プログラムがまとまった処理をし、コードがそのプログラムの部品です。</p>
+<p><code class="docutils literal notranslate"><span class="pre">hajimete.py</span></code> はプログラムですが、各行をコードと呼んだり、
+3行全体を <span class="math notranslate nohighlight">\(4 \times 6\)</span> を計算する部品と見てコードと呼んだりします。</p>
+</div>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">6.2. </span>ファイルに書いた関数<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>関数を書いたファイルの実行も、順次で説明されます。
+ですが、関数の呼び出しは、ファイルを <em>遡っているように見え</em> ます。
+本節で、関数を書いたファイルについて、処理系の動きを頭の中で再現できるようになりましょう。</p>
+<section id="id8">
+<h3><span class="section-number">6.2.1. </span>ファイルで挨拶を表示する関数を作る<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>関数を使ったファイル <code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を書いていきましょう。</p>
+<p><a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-numref">5 章</span></a> 「<a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-ref">関数を作って処理をまとめよう</span></a>」で作った、引数に指定した人への挨拶を表示する関数を
+<code class="docutils literal notranslate"><span class="pre">aisatsu</span></code> という名前で定義します。</p>
+<table class="docutils align-center" id="id20">
+<caption><span class="caption-text">指定した人への挨拶を表示する関数</span><a class="headerlink" href="#id20" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">aisatsu</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>「〇〇さん、ごきげんよう」と挨拶を表示する</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>文字列（「〇〇」の部分に入る人の名前）</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>なし</p></td>
+</tr>
+</tbody>
+</table>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-text">aisatsu.py</span><a class="headerlink" href="#id21" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">aisatsu</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>対話モードと同様、ファイルでも <strong>インデントが必要</strong> です。</p>
+<p>このファイルを実行しましょう（実行方法は前節を参照してください）。
+どうなると思いますか？</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>aisatsu.py
+&gt;
+</pre></div>
+</div>
+<p>おや、「ごきげんよう」という挨拶は表示されませんでした。
+処理系がエラーを出したわけではないですね。
+では、なぜ表示されなかったのでしょうか。</p>
+<p>プログラミングで何かがうまくいかない状況に陥ったら、<strong>過去にうまくいった状態と今のうまくいかない状態を比較</strong> します。
+対話モードでは挨拶が表示されていましたね。
+<a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-numref">5 章</span></a> 「<a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-ref">関数を作って処理をまとめよう</span></a>」を思い出してみて、何か気づくことはありませんか？</p>
+</section>
+<section id="id9">
+<h3><span class="section-number">6.2.2. </span>ファイルでも関数の呼び出しが必要<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>対話モードでは <code class="docutils literal notranslate"><span class="pre">aisatsu</span></code> 関数を定義したあと、<code class="docutils literal notranslate"><span class="pre">aisatsu(&quot;susumuis&quot;)</span></code> と <strong>呼び出し</strong> ていました。
+それに対して、<code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> では、まだ呼び出していません。
+ファイルに関数の呼び出しを追加したら、挨拶が表示されそうですね。
+この仮説を試してみましょう（変更点は5行目だけです）。</p>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-text">aisatsu.py</span><a class="headerlink" href="#id22" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">aisatsu</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>
+<span class="hll"><span class="linenos">5</span><span class="n">aisatsu</span><span class="p">(</span><span class="s2">&quot;susumuis&quot;</span><span class="p">)</span>  <span class="c1"># ((aisatsu関数を呼び出す))</span>
+</span></pre></div>
+</div>
+</div>
+<p>コマンドラインで実行すると、挨拶が表示されます！（仮説は正しく、問題は解消しました！）</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>aisatsu.py
+susumuisさん、ごきげんよう
+&gt;
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3><span class="section-number">6.2.3. </span>関数を含むファイルの読み方<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>処理系が <code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> をどのように処理するか、見ていきましょう。
+順次により、ファイルは <strong>1文目から順番に実行され</strong> ます。</p>
+<ol class="arabic simple">
+<li><p>処理系は1,2行目の <code class="docutils literal notranslate"><span class="pre">aisatsu</span></code> 関数定義の文を実行します。これで <code class="docutils literal notranslate"><span class="pre">aisatsu</span></code> 関数が <strong>使えるようになり</strong> ます</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>この処理では、関数は呼び出されません。使えるようになるだけです</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>処理系は5行目の文、 <code class="docutils literal notranslate"><span class="pre">aisatsu</span></code> 関数の <strong>呼び出し</strong> を実行します</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>関数呼び出しにより、関数にまとめられた文が1文ずつ順に実行されます（まとめられた文を順次実行します）</p></li>
+<li><p>このファイルでは2行目の文が実行されます（<code class="docutils literal notranslate"><span class="pre">namae</span></code> には引数 <code class="docutils literal notranslate"><span class="pre">&quot;susumuis&quot;</span></code> が代入されます）</p></li>
+</ul>
+</div></blockquote>
+<figure class="align-center" id="id23">
+<img alt="../_images/5-16_in_order_function.drawio.png" src="../_images/5-16_in_order_function.drawio.png" />
+<figcaption>
+<p><span class="caption-text">関数を呼び出すと、関数に定義した文が順に実行される</span><a class="headerlink" href="#id23" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>関数を2回呼び出すように <code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を変えてみましょう。</p>
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-text">aisatsu.py</span><a class="headerlink" href="#id24" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">aisatsu</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="n">aisatsu</span><span class="p">(</span><span class="s2">&quot;susumuis&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">6</span><span class="n">aisatsu</span><span class="p">(</span><span class="s2">&quot;nao_y&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<p>処理系は次の順でプログラムを実行します。</p>
+<ol class="arabic simple">
+<li><p>1,2行目の <code class="docutils literal notranslate"><span class="pre">aisatsu</span></code> 関数の定義を実行します</p></li>
+<li><p>5行目の <code class="docutils literal notranslate"><span class="pre">aisatsu</span></code> 関数の呼び出しを実行します</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">namae</span></code> に <code class="docutils literal notranslate"><span class="pre">&quot;susumuis&quot;</span></code> が代入された状態で2行目が実行されます</p></li>
+<li><p>関数の呼び出しの実行が終わると、続く文の実行に進みます</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>6行目の <code class="docutils literal notranslate"><span class="pre">aisatsu</span></code> 関数の呼び出しを実行します</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">namae</span></code> に <code class="docutils literal notranslate"><span class="pre">&quot;nao_y&quot;</span></code> が代入された状態で2行目が実行されます</p></li>
+<li><p>関数の呼び出しの実行が終わると、続く文の実行に進みます（続く文がないのでプログラムの実行終了です）</p></li>
+</ul>
+</div></blockquote>
+<p>このことから、関数を書いたファイルを処理系がどう実行するかを知りたいときは、
+「関数呼び出しを見つけたら、関数の定義を探す」という読み方になります。  # noqa</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 関数を定義より先に呼び出すとエラー</p>
+<p>関数を定義する前に関数を呼び出したらどうなるでしょうか。</p>
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-text">aisatsu.py（処理系がエラーを出します）</span><a class="headerlink" href="#id25" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="linenos">1</span><span class="n">aisatsu</span><span class="p">(</span><span class="s2">&quot;susumuis&quot;</span><span class="p">)</span>
+</span><span class="linenos">2</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="k">def</span> <span class="nf">aisatsu</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="linenos">5</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>定義されていない関数の呼び出しで、処理系は <code class="docutils literal notranslate"><span class="pre">NameError</span></code> を出します。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>aisatsu.py
+Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;aisatsu.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;module&gt;
+<span class="w">    </span>aisatsu<span class="o">(</span><span class="s2">&quot;susumuis&quot;</span><span class="o">)</span>
+NameError:<span class="w"> </span>name<span class="w"> </span><span class="s1">&#39;aisatsu&#39;</span><span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>defined
+&gt;
+</pre></div>
+</div>
+<p>定義が1行目より後にありますね。
+1行目の文を処理するときには <code class="docutils literal notranslate"><span class="pre">aisatsu</span></code> 関数が使えるようになっていないのです。</p>
+<p>処理系が <code class="docutils literal notranslate"><span class="pre">NameError</span></code> を出さなくするために、ファイルでは、関数の <strong>定義を先に、呼び出しを後に</strong> 書きましょう。</p>
+</div>
+</section>
+<section id="id11">
+<h3><span class="section-number">6.2.4. </span>練習問題<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>以下の「挨拶文を返す関数」が返す挨拶文をコマンドラインに表示するように、<code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を変更してみましょう。
+<a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-numref">5 章</span></a> 「<a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-ref">関数を作って処理をまとめよう</span></a>」で作った関数から、返り値を少し変えています。</p>
+<table class="docutils align-center" id="id26">
+<caption><span class="caption-text">挨拶文を返す関数</span><a class="headerlink" href="#id26" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>「〇〇さん、ごきげんよう^o^」という挨拶文を返す</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>文字列（「〇〇」の部分に入る人の名前）</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>文字列（挨拶文）</p></td>
+</tr>
+</tbody>
+</table>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-text">aisatsu.py</span><a class="headerlink" href="#id27" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">aisatsu_bun</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう^o^&quot;</span>  <span class="c1"># ((値を返す))</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>
+<span class="linenos">5</span><span class="c1"># ((aisatsu_bun(&quot;susumuis&quot;)の返す値をprint関数で画面に表示する))</span>
+<span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">aisatsu_bun</span><span class="p">(</span><span class="s2">&quot;susumuis&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>実行すると、顔文字付きの挨拶が表示されます。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>aisatsu.py
+susumuisさん、ごきげんよう^o^
+&gt;
+</pre></div>
+</div>
+<p>6行目の文（式） <code class="docutils literal notranslate"><span class="pre">print(aisatsu_bun(&quot;susumuis&quot;))</span></code> は、<strong>内側から</strong> 評価されます。
+<code class="docutils literal notranslate"><span class="pre">aisatsu_bun(&quot;susumuis&quot;)</span></code> が評価され、返り値が <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数の引数となります。</p>
+<p>ある関数の呼び出しを別の関数の引数にするというこの書き方は、プログラムの行数が減るのでたびたび使われます。
+ただし、関数3つ以上でやると読みやすさを損ねてしまいます。
+3つ以上のときは、途中結果を変数に代入する方が読みやすいでしょう。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 関数定義の下が2行空いているのはなぜ？</p>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> で、<code class="docutils literal notranslate"><span class="pre">aisatsu</span></code> 関数の定義の下に2行、空の行（空行：くうぎょう）を入れました。
+これはPythonのプログラムを <strong>読みやすく書くための慣習に従っている</strong> ためです。
+<a class="reference internal" href="../300-value_integer_string/index.html#value-integer-string"><span class="std std-numref">1 章</span></a> 「<a class="reference internal" href="../300-value_integer_string/index.html#value-integer-string"><span class="std std-ref">プログラムで数と文字を扱ってみよう</span></a>」のコラムで取り上げた
+演算子の前後の半角スペースと同じで、プログラマーのためのものです。</p>
+<p>空の行の数は処理系には影響しません。
+空の行が3行以上あっても、1行でも、なくても、<code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を実行すれば同じ結果になります（気になる方は試してみてください）。</p>
+<p>本書では、Pythonのプログラムを読みやすく書くための慣習に従い、本章以降も関数定義の下に2行空行を入れます。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] エディターだとプログラムが書きやすい</p>
+<p>この章ではエディターを使ってプログラムを書きました。
+「対話モードに慣れてきたのに、なぜわざわざエディターを使うのだろう」と疑問に思うかもしれませんね。
+理由は、対話モードで書くよりも <strong>プログラムを書きやすい</strong> からです。</p>
+<p>例えば関数を作る時、対話モードで改行すると、前の行には戻れません。
+それに対して、エディターでは <strong>入力カーソルを好きな位置に移動</strong> できます（前の行の内容も簡単に直せますね）。</p>
+<p>さらにエディターはプログラムを書きやすくする機能をもっと持っています。
+エディターは、ファイルの拡張子からプログラミング言語を判断します。</p>
+<p>拡張子が <code class="docutils literal notranslate"><span class="pre">py</span></code> のファイルについては、必要なところは <strong>自動でインデント</strong> が入ります。
+例えば、関数を定義するとき、<code class="docutils literal notranslate"><span class="pre">def</span></code> の行をコロンまで入力して改行すると、
+次の行は半角スペース4つ分インデントした位置から始まります。
+タイプする数が減って、プログラムが書きやすいですね。</p>
+<figure class="align-center" id="id28">
+<img alt="../_images/5-15_atom_auto_indent.png" src="../_images/5-15_atom_auto_indent.png" />
+<figcaption>
+<p><span class="caption-text">インデントした位置から入力できる</span><a class="headerlink" href="#id28" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>他にも、変数や関数呼び出しのタイプ中に <strong>候補を提示</strong> したり、変数を別の名前に <strong>一括置換</strong> できたりします。
+Atomを使って快適にプログラミングしたければ、
+自分で調べたり、長くAtomを使っている先輩プログラマーにコミュニティで質問したりしてみてはいかがでしょうか。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] エディターだとプログラムが読みやすい</p>
+<p>エディターはプログラムを書きやすくするだけではなく、読みやすくする機能も提供します。
+例えば、Atomでは、<strong>値が型ごとに色分け</strong> されます。</p>
+<figure class="align-center" id="id29">
+<img alt="../_images/5-17_atom_highlight.png" src="../_images/5-17_atom_highlight.png" />
+<figcaption>
+<p><span class="caption-text">Atomでは、数値はオレンジ、文字列は黄緑、関数は水色で示される</span><a class="headerlink" href="#id29" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>また、プログラミング言語における <strong>キーワード</strong> （Pythonでは <code class="docutils literal notranslate"><span class="pre">def</span></code> や <code class="docutils literal notranslate"><span class="pre">return</span></code> など） <strong>も色で区別</strong> されます。</p>
+<p>対話モードでは文字の色は全部同じでしたね。
+それと比べると、色分けされたプログラムは読みやすく感じるのではないでしょうか。</p>
+</div>
+</section>
+</section>
+<section id="in-order-practice">
+<span id="id12"></span><h2><span class="section-number">6.3. </span>順次の練習：挨拶するプログラム<a class="headerlink" href="#in-order-practice" title="Link to this heading">¶</a></h2>
+<p>前の節で作った <code class="docutils literal notranslate"><span class="pre">aisatsu.py</span></code> を実行すると、常にsusumuisに挨拶しますね。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>aisatsu.py
+susumuisさん、ごきげんよう^o^
+&gt;
+</pre></div>
+</div>
+<p>これは挨拶の相手がsusumuisとプログラム中に書かれているからです。
+練習として、挨拶をする相手の名前を <strong>プログラム実行中に指定</strong> できるように変更しましょう。</p>
+<section id="id13">
+<h3><span class="section-number">6.3.1. </span>練習問題：挨拶する相手を入力する<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p><a class="reference internal" href="../330-input_output/index.html#input-output"><span class="std std-numref">4 章</span></a> 「<a class="reference internal" href="../330-input_output/index.html#input-output"><span class="std std-ref">プログラムの入力と出力を扱おう</span></a>」で紹介した、
+入力を受け取る関数 <code class="docutils literal notranslate"><span class="pre">input</span></code> を使いましょう。</p>
+<p>入力した名前を <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数に渡せば、その人への挨拶が返りますね。</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答] 正解例</p>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-text">aisatsu.py</span><a class="headerlink" href="#id30" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">def</span> <span class="nf">aisatsu_bun</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="linenos">2</span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう^o^&quot;</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span>
+<span class="hll"><span class="linenos">5</span><span class="n">namae</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;名前を入力してください：&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">6</span><span class="nb">print</span><span class="p">(</span><span class="n">aisatsu_bun</span><span class="p">(</span><span class="n">namae</span><span class="p">))</span>  <span class="c1"># ((変数 namae を渡すように変更))</span>
+</span></pre></div>
+</div>
+</div>
+<p>5行目で <code class="docutils literal notranslate"><span class="pre">input</span></code> 関数を使って、入力された名前を <code class="docutils literal notranslate"><span class="pre">namae</span></code> に代入します。
+6行目で <code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数を呼び出して、入力された名前向けの挨拶を表示します。</p>
+<p>動作確認しましょう。
+好きな名前を入力してください。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>aisatsu.py
+名前を入力してください：nikkie
+nikkieさん、ごきげんよう^o^
+&gt;
+</pre></div>
+</div>
+<p>入力した名前に対して挨拶するようになりました！
+これで <strong>プログラムを変更しなくても</strong> 、susumuisにもnao_yにも挨拶できます。</p>
+<p><em>注</em> ：本書のプログラムと手元のプログラムが違っても、同じように動いていれば正解です。
+例えば、5行目の <code class="docutils literal notranslate"><span class="pre">input</span></code> 関数をファイルの先頭（1行目）に移しても、動きは変わりません。</p>
+</div>
+<p>プログラミングで使う値はプログラムに <strong>全て書いておかなければならないわけではありません</strong> 。
+プログラムの実行中に入力し、その値を変数に代入して、プログラムで使えます。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 飛ばして先に進む読み方もOK！</p>
+<p>順次を学んだ後、残りの3大構造を飛ばして、実際に使えるプログラムを作る他書をのぞいてみることもできます。
+他書では、3大構造を全て知っていることを前提にして解説が進むでしょう。
+初めて知ることがあれば一時戻って、理解に必要な部分をつまみ読みしてください。</p>
+<p>皆さんの中には基礎から着実に押さえたい方もいれば、実践の中で学びたいという方もいるでしょう。
+基礎から着実に押さえたいという方は、引き続きお付き合いください。
+「そろそろ実践したくなってきた」という方は、実際に使えるプログラムを作る章に挑戦してみてはいかがでしょうか
+（<strong>本は前から順番に読まなければならないものではない</strong> ですからね）。</p>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">start-programming-with-python</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>ナビゲーション</h3>
+<p class="caption" role="heading"><span class="caption-text">目次</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../300-value_integer_string/index.html">1. プログラムで数と文字を扱ってみよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../310-variables/index.html">2. 値を変数で扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../320-use_functions/index.html">3. 関数でまとまった処理を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../330-input_output/index.html">4. プログラムの入力と出力を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../340-define_functions/index.html">5. 関数を作って処理をまとめよう</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. 3大構造 一. 順次</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#in-order-command-reference">6.1. はじめてのファイルを使ったプログラム</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">6.2. ファイルに書いた関数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#in-order-practice">6.3. 順次の練習：挨拶するプログラム</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../360-fork/index.html">7. 3大構造 二. 分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../370-loop/index.html">8. 3大構造 三. 反復</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../380-list/index.html">9. 複数の値をまとめて扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../390-programmer_thinking/index.html">10. プログラマーの考え方を知ろう</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../340-define_functions/index.html" title="前の章へ"><span class="section-number">5. </span>関数を作って処理をまとめよう</a></li>
+      <li>Next: <a href="../360-fork/index.html" title="次の章へ"><span class="section-number">7. </span>3大構造 二. 分岐</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, nikkie.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/350-in_order/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+<html lang="ja" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>9. 複数の値をまとめて扱おう &#8212; start-programming-with-python  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0c5d2aad" />
+    <script src="../_static/documentation_options.js?v=c033477b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=91613774"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="10. プログラマーの考え方を知ろう" href="../390-programmer_thinking/index.html" />
+    <link rel="prev" title="8. 3大構造 三. 反復" href="../370-loop/index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="list">
+<span id="id1"></span><h1><span class="section-number">9. </span>複数の値をまとめて扱おう<a class="headerlink" href="#list" title="Link to this heading">¶</a></h1>
+<p>どんなプログラムも、順次・分岐・反復で構成されると学んできました。
+構造を掴んだ後は、各部でどんな処理をしているのか、詳しく知りたくなりますよね。
+そんなときに知っていると役に立つ事項を、この章と次章で紹介します。</p>
+<p>本章では、<strong>複数の値の扱い方</strong> を学びましょう。
+対話モードで手を動かしながら読み進めてください。</p>
+<section id="id2">
+<h2><span class="section-number">9.1. </span>複数の値をリストにまとめる<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3><span class="section-number">9.1.1. </span>リストを作る<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p><a class="reference internal" href="../370-loop/index.html#loop"><span class="std std-numref">8 章</span></a> 「<a class="reference internal" href="../370-loop/index.html#loop-for"><span class="std std-ref">for 文を使って、決まった回数繰り返す</span></a>」で、リストを「値をまとめた値」と紹介しました。
+数値をまとめたリスト（<code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>）や、
+文字列をまとめたリスト（<code class="docutils literal notranslate"><span class="pre">[&quot;susumuis&quot;,</span> <span class="pre">&quot;nao_y&quot;,</span> <span class="pre">&quot;nikkie&quot;]</span></code>）を覚えていますか。</p>
+<p><strong>型が揃っていなくても</strong> リストに値をまとめられます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="mi">1990</span><span class="p">,</span> <span class="mf">175.2</span><span class="p">,</span> <span class="s2">&quot;nikkie&quot;</span><span class="p">]</span>  <span class="c1"># ((整数、小数、文字列からなるリスト))</span>
+<span class="go">[1990, 175.2, &#39;nikkie&#39;]</span>
+</pre></div>
+</div>
+<p>リストを作るときの <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> は <strong>式で、評価した結果がリスト</strong> です。
+これまで扱ってきた式と同じように、<strong>変数が使えます</strong> 。
+評価結果は、変数が指す値がまとまったリストです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span>
+<span class="go">[4, 6]</span>
+</pre></div>
+</div>
+<section id="id4">
+<h4><span class="section-number">9.1.1.1. </span>リストの型<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h4>
+<p>リストを表す型は、<code class="docutils literal notranslate"><span class="pre">list</span></code> （リスト）です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  <span class="c1"># (([1, 2, 3]という値の型を確認))</span>
+<span class="go">&lt;class &#39;list&#39;&gt;</span>
+</pre></div>
+</div>
+<p>リストを作るときに使う <code class="docutils literal notranslate"><span class="pre">[]</span></code> （<strong>角括弧、ブラケット</strong>）で、作る値がリストだと <strong>指定</strong> しています。
+そのため、まとめる値がどんな型でも、リストであれば常に型は <code class="docutils literal notranslate"><span class="pre">list</span></code> です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">([</span><span class="mi">1990</span><span class="p">,</span> <span class="mf">175.2</span><span class="p">,</span> <span class="s2">&quot;nikkie&quot;</span><span class="p">])</span>
+<span class="go">&lt;class &#39;list&#39;&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h4><span class="section-number">9.1.1.2. </span>リストを変数で指す<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h4>
+<p>数値や文字列と同じように、リストも <strong>変数に代入できます</strong>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kazu_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>リストを指していても、そもそも変数なので、<strong>関数の引数に使えます</strong>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">kazu_list</span><span class="p">)</span>
+<span class="go">&lt;class &#39;list&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">kazu_list</span><span class="p">)</span>  <span class="c1"># ((引数のリストが表示される))</span>
+<span class="go">[1, 2, 3]</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h4><span class="section-number">9.1.1.3. </span>練習問題<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p>自由にリストを作り、変数に代入してください。まとめる値の型を揃えても、揃えなくてもかまいません</p></li>
+<li><p>変数が指す値の型を確認しましょう</p></li>
+<li><p>変数が指しているリストを確認しましょう</p></li>
+</ol>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<p>1では、<code class="docutils literal notranslate"><span class="pre">kazu_list</span></code> を作ったとします。</p>
+<p>2は <code class="docutils literal notranslate"><span class="pre">type</span></code> 関数に渡せばいいですね。</p>
+<p>3は <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数に渡す、もしくは対話モードなので、変数を評価すればいいです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kazu_list</span>
+<span class="go">[1, 2, 3]</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="id7">
+<h3><span class="section-number">9.1.2. </span>リストの個々の値を扱う<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>リストにまとめられた個々の値を「要素」と呼びます。
+リストの特徴は、<strong>要素が順番を持つ</strong> ことです。
+<a class="reference internal" href="../370-loop/index.html#loop"><span class="std std-numref">8 章</span></a> 「<a class="reference internal" href="../370-loop/index.html#loop-for"><span class="std std-ref">for 文を使って、決まった回数繰り返す</span></a>」で説明したように、一番左が先頭の要素で、一番右が末尾の要素です。</p>
+<section id="id8">
+<h4><span class="section-number">9.1.2.1. </span>インデックス<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h4>
+<p><strong>何番目の要素かを指定</strong> することで、個々の要素を扱えます。
+何番目かの指定には、「インデックス」という <strong>番号</strong> を使います。
+インデックスは整数で、正の値も負の値も取れます。</p>
+<p>楽器名のリストを使ってインデックスに慣れましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;チューバ&quot;</span><span class="p">,</span> <span class="s2">&quot;ユーフォニアム&quot;</span><span class="p">,</span> <span class="s2">&quot;コントラバス&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span>
+<span class="go">[&#39;チューバ&#39;, &#39;ユーフォニアム&#39;, &#39;コントラバス&#39;]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>0と正の値は <strong>先頭から数えた番号</strong></p></li>
+<li><p>負の値は <strong>末尾から数えた番号</strong></p></li>
+</ul>
+<table class="docutils align-center" id="id24">
+<caption><span class="caption-text">楽器名のリストのインデックス</span><a class="headerlink" href="#id24" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>楽器名（要素）</p></td>
+<td><p>先頭から数えたインデックス</p></td>
+<td><p>末尾から数えたインデックス</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;チューバ&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-3</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;ユーフォニアム&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-2</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;コントラバス&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center" id="id25">
+<img alt="../_images/10-3_list_index.drawio.png" src="../_images/10-3_list_index.drawio.png" />
+<figcaption>
+<p><span class="caption-text">インデックスには前からと後ろからの2通りがある</span><a class="headerlink" href="#id25" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id9">
+<h4><span class="section-number">9.1.2.2. </span>インデックスで要素を指定する<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<p>リストの要素は <code class="docutils literal notranslate"><span class="pre">リスト[インデックス]</span></code> という書き方で指定します。
+これも式で、評価結果はインデックスに対応する要素です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="s2">&quot;チューバ&quot;</span><span class="p">,</span> <span class="s2">&quot;ユーフォニアム&quot;</span><span class="p">,</span> <span class="s2">&quot;コントラバス&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;チューバ&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">リスト</span></code> の部分は、<strong>リストを指す変数</strong> も使えます。
+変数を使うと、この式はまず変数が評価されます。
+試しに <code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> が指すリストから、先頭（インデックス <code class="docutils literal notranslate"><span class="pre">0</span></code>）の要素を指定してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># (([&quot;チューバ&quot;, &quot;ユーフォニアム&quot;, &quot;コントラバス&quot;][0] と同じ))</span>
+<span class="go">&#39;チューバ&#39;</span>
+</pre></div>
+</div>
+<p>負のインデックスを使って、末尾の要素（インデックス <code class="docutils literal notranslate"><span class="pre">-1</span></code>）を指定します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">&#39;コントラバス&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">リスト[インデックス]</span></code> という書き方は、リストを指す変数で書くことがほとんどです。
+この書き方に慣れると、「リスト <code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> の先頭の要素 <code class="docutils literal notranslate"><span class="pre">gakki_list[0]</span></code>」とも考えられますね。</p>
+<p>また、<code class="docutils literal notranslate"><span class="pre">リストを指す変数[インデックス]</span></code> は <strong>変数を書いたのと同じ</strong> とも言えます。
+インデックスのところの <code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> の図をもう一度見てください。
+<code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> のインデックス <code class="docutils literal notranslate"><span class="pre">0</span></code> （<code class="docutils literal notranslate"><span class="pre">gakki_list[0]</span></code>） <strong>が指す</strong> 値が <code class="docutils literal notranslate"><span class="pre">&quot;チューバ&quot;</span></code> です。
+他のインデックスも値を指します。
+つまり、リストを指す変数は、インデックスを指定することで、複数の変数として使えるのです。</p>
+</section>
+<section id="id10">
+<h4><span class="section-number">9.1.2.3. </span>練習問題<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h4>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> の要素 <code class="docutils literal notranslate"><span class="pre">&quot;ユーフォニアム&quot;</span></code> を正のインデックスで指定してみましょう</p></li>
+<li><p>続いて、 <code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> から <code class="docutils literal notranslate"><span class="pre">&quot;コントラバス&quot;</span></code> も正のインデックスで指定してみましょう</p></li>
+<li><p>負のインデックスを使って、<code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> の要素を1つ指定してみましょう</p></li>
+</ol>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># ((1の解答))</span>
+<span class="go">&#39;ユーフォニアム&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># ((2の解答))</span>
+<span class="go">&#39;コントラバス&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># ((3の解答))</span>
+<span class="go">&#39;ユーフォニアム&#39;</span>
+</pre></div>
+</div>
+<p>インデックスの表や図と合わせて確認し、インデックスに慣れてくださいね。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] プログラマーは0から数え始める</p>
+<p>インデックスとそれを使った要素の指定を紹介しました。
+日常生活でものを数えるとき、1、2、3と1から数え始めますが、
+プログラミングでは（前からの） <strong>インデックスは0から</strong> 始まります。</p>
+<p>プログラマーの世界では、<strong>最初を表すインデックスが0</strong> なのです。
+これは決まりですから、慣れるのが一番です。
+プログラミングに取り組むときは、「0から数え始める」と考え方を切り替えましょう。</p>
+<p><code class="docutils literal notranslate"><span class="pre">リスト[1]</span></code> と書いてしまい、先頭の要素が指定できないというのは、初めはみな経験します。
+日常生活の中で、最初は1というのが染み付いているのです。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] インデックスの指定には正負2通りのやり方がある</p>
+<p>同じ要素を、正のインデックスでも負のインデックスでも指定できます。
+リストは先頭から末尾への順番で扱うことが多いので、0以上の整数を使った方法はよく使われます。
+ですが、「後ろから2番めの要素」のように、<strong>後ろのほうが考えやすい時があり</strong>、そのときはマイナスの整数の出番です。
+2通りのうちどちらを使ってもいいので、考えやすい方を使うのをおすすめします。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] リストの「長さ」とインデックス</p>
+<p>リストは <strong>要素の数</strong> を「長さ」として持ちます。
+3つの要素を持つリスト <code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> を <code class="docutils literal notranslate"><span class="pre">len</span></code> 関数に渡してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">gakki_list</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>リストの長さは、<strong>インデックスに指定できる整数の範囲</strong> を決めています。</p>
+<ul class="simple">
+<li><p>先頭から指定する場合、インデックスは <code class="docutils literal notranslate"><span class="pre">0</span></code> 以上、<code class="docutils literal notranslate"><span class="pre">長さ-1</span></code> 以下</p></li>
+<li><p>末尾から指定する場合、インデックスは <code class="docutils literal notranslate"><span class="pre">-長さ</span></code> 以上、<code class="docutils literal notranslate"><span class="pre">-1</span></code> 以下</p></li>
+</ul>
+<p>インデックスに指定できるのは <code class="docutils literal notranslate"><span class="pre">-長さ</span></code> 以上、<code class="docutils literal notranslate"><span class="pre">長さ-1</span></code> 以下の整数です。
+<strong>長さと等しい整数は指定できない</strong> ので注意しましょう。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] インデックスに指定できない整数を指定するとエラー</p>
+<p>インデックスに指定できない整数を指定した場合、処理系は <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> を出します。
+<code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> の指すリストを例に、インデックスに指定できる整数の範囲外の値（<code class="docutils literal notranslate"><span class="pre">3</span></code> や <code class="docutils literal notranslate"><span class="pre">-4</span></code>）を試してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">IndexError</span>: <span class="n">list index out of range</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">IndexError</span>: <span class="n">list index out of range</span>
+</pre></div>
+</div>
+<p>「list index out of range」は、リストのインデックス(index)が範囲外(out of range)という意味です。</p>
+<p><code class="docutils literal notranslate"><span class="pre">IndexError</span></code> を見かけたら、<code class="docutils literal notranslate"><span class="pre">len</span></code> 関数でリストの長さを確認し、指定できる範囲内のインデックスを指定していたか確認しましょう。</p>
+</div>
+</section>
+</section>
+</section>
+<section id="id11">
+<h2><span class="section-number">9.2. </span>リストを変更する<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>リストは複数の値をまとめただけでなく、「変更」できます。</p>
+<ul class="simple">
+<li><p>リストの個々の要素を変更する</p></li>
+<li><p>リスト自体を変更する（要素の追加／削除）</p></li>
+</ul>
+<section id="id12">
+<h3><span class="section-number">9.2.1. </span>リストの要素を変更する<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>インデックスで指定した要素に <strong>別の値を代入する</strong> ことで、その要素を変更できます。
+<code class="docutils literal notranslate"><span class="pre">リスト[インデックス]</span></code> には変数のように指す値がありますが、それを更新できます。</p>
+<p>例として <code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> の <code class="docutils literal notranslate"><span class="pre">&quot;ユーフォニアム&quot;</span></code> を <code class="docutils literal notranslate"><span class="pre">&quot;ユーフォ&quot;</span></code> に変更してみます。
+ユーフォニアムという楽器は、縮めて「ユーフォ」と呼ばれます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># ((変更する前の値を確認します))</span>
+<span class="go">&#39;ユーフォニアム&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ユーフォ&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">&#39;ユーフォ&#39;</span>
+</pre></div>
+</div>
+<p>リスト全体を表示しましょう。
+インデックス <code class="docutils literal notranslate"><span class="pre">1</span></code> の要素が指す値は更新されていますが、
+他の要素が指す値（チューバやコントラバス）は更新されていませんね。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span>
+<span class="go">[&#39;チューバ&#39;, &#39;ユーフォ&#39;, &#39;コントラバス&#39;]</span>
+</pre></div>
+</div>
+<section id="id13">
+<h4><span class="section-number">9.2.1.1. </span>練習問題<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<p>コントラバスも、縮めた呼び方「コンバス」に変えてみましょう。</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;コンバス&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span>
+<span class="go">[&#39;チューバ&#39;, &#39;ユーフォ&#39;, &#39;コンバス&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] インデックスの指定し忘れに注意！</p>
+<p>要素を変更する時に、過ってインデックスを指定し忘れると、<strong>変数が指す値をリストから文字列に更新</strong> してしまいます。
+変数がリストを指さなくなるということです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;チューバ&quot;</span><span class="p">,</span> <span class="s2">&quot;ユーフォニアム&quot;</span><span class="p">,</span> <span class="s2">&quot;コントラバス&quot;</span><span class="p">]</span>  <span class="c1"># ((別のリストを作って確認))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list2</span>
+<span class="go">[&#39;チューバ&#39;, &#39;ユーフォニアム&#39;, &#39;コントラバス&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list2</span> <span class="o">=</span> <span class="s2">&quot;ユーフォ&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list2</span>
+<span class="go">&#39;ユーフォ&#39;</span>
+</pre></div>
+</div>
+<p>リストの要素を変えたい場合は、インデックス自体の指定し忘れに注意しましょう。</p>
+</div>
+</section>
+</section>
+<section id="id14">
+<h3><span class="section-number">9.2.2. </span>リスト自体を変更する<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<section id="id15">
+<h4><span class="section-number">9.2.2.1. </span>リストに要素を追加する<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<p>楽器はまだまだありますから、 <code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> に追加したいですよね。
+<code class="docutils literal notranslate"><span class="pre">リスト.append(追加したい値)</span></code> と書くと、<strong>リストの末尾に値を追加</strong> できます。
+appendという英単語は「追加する」という意味です。</p>
+<table class="docutils align-center" id="id26">
+<caption><span class="caption-text">リストに対して使える、末尾に値を追加する関数</span><a class="headerlink" href="#id26" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">append</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>リストの末尾に要素を追加する</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>リストに追加したい値</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>なし</p></td>
+</tr>
+</tbody>
+</table>
+<p>トランペットを追加してみます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span>  <span class="c1"># ((要素を追加する前の確認))</span>
+<span class="go">[&#39;チューバ&#39;, &#39;ユーフォ&#39;, &#39;コンバス&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;トランペット&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span>
+<span class="go">[&#39;チューバ&#39;, &#39;ユーフォ&#39;, &#39;コンバス&#39;, &#39;トランペット&#39;]</span>
+</pre></div>
+</div>
+<p>要素が4つに増えたことで、インデックスに指定できる値の範囲も <code class="docutils literal notranslate"><span class="pre">-4</span></code> から <code class="docutils literal notranslate"><span class="pre">3</span></code> までに変わりました。
+追加した要素をインデックスを使って指定します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># ((-1 と指定してもよい))</span>
+<span class="go">&#39;トランペット&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">append</span></code> のように <strong>特定の型の値についてのみ適用できる関数</strong> を「メソッド」と呼びます。</p>
+</section>
+<section id="id16">
+<h4><span class="section-number">9.2.2.2. </span>練習問題<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">append</span></code> を使って <code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> に好きな楽器を1つ追加してみましょう。
+楽器名の例：オーボエ、フルート、ホルン、トロンボーン、クラリネット</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;オーボエ&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span>
+<span class="go">[&#39;チューバ&#39;, &#39;ユーフォ&#39;, &#39;コンバス&#39;, &#39;トランペット&#39;, &#39;オーボエ&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] <code class="docutils literal notranslate"><span class="pre">append</span></code> を使って100個の要素のリストを作る</p>
+<p>100個のように、多くの要素を持つリストは <code class="docutils literal notranslate"><span class="pre">append</span></code> を <strong>繰り返し使って</strong> 作れます。</p>
+<p>まず要素を持たないリスト（空のリスト）を用意します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">list_100</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>そして、要素の追加を反復します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">list_100</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>対話モードで <code class="docutils literal notranslate"><span class="pre">for</span></code> 文を書く際は、改行して現れる <code class="docutils literal notranslate"><span class="pre">...</span></code> の表示の後に、再度 <kbd class="kbd docutils literal notranslate">Enter</kbd> キーを押す必要があります。</p>
+<p>長さを求めると、100個の要素を持つことが確認できます（前節の「発展」参照）。
+これは0〜99までの整数のリストです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">list_100</span><span class="p">)</span>
+<span class="go">100</span>
+</pre></div>
+</div>
+<p><strong>空のリストを用意し、繰り返し</strong> <code class="docutils literal notranslate"><span class="pre">append</span></code>。
+これを使えば、数千、数万の要素を持つリストも作れますね。</p>
+</div>
+</section>
+<section id="id17">
+<h4><span class="section-number">9.2.2.3. </span>リストから要素を削除する<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h4>
+<p>追加以外に削除もできます。
+<code class="docutils literal notranslate"><span class="pre">リスト.pop(削除したい要素のインデックス)</span></code> で、<strong>指定したインデックスの要素を削除</strong> できます。
+popという英単語は「ポンと出す」という意味です。
+指定したインデックスの要素が <strong>取り出され</strong> （返り値）、リストからは消えます。</p>
+<table class="docutils align-center" id="id27">
+<caption><span class="caption-text">リストに対して使える、指定したインデックスの要素を取り出す関数</span><a class="headerlink" href="#id27" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pop</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>指定したインデックスの要素を取り出し、リストから削除する</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>取り出したい要素のインデックス（指定しない場合は末尾を指定したことになる）</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>取り出した要素</p></td>
+</tr>
+</tbody>
+</table>
+<p>ユーフォニアム（インデックス <code class="docutils literal notranslate"><span class="pre">1</span></code> の要素）を取り出してみます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;チューバ&quot;</span><span class="p">,</span> <span class="s2">&quot;ユーフォニアム&quot;</span><span class="p">,</span> <span class="s2">&quot;コントラバス&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list2</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># ((インデックス1の要素が返り値になっている))</span>
+<span class="go">&#39;ユーフォニアム&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list2</span>
+<span class="go">[&#39;チューバ&#39;, &#39;コントラバス&#39;]</span>
+</pre></div>
+</div>
+<p>取り出された要素以降の正のインデックスは1ずつ小さくなります。</p>
+<figure class="align-center" id="id28">
+<img alt="../_images/10-7_index_when_pop.drawio.png" src="../_images/10-7_index_when_pop.drawio.png" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">&quot;ユーフォニアム&quot;</span></code> がリストからなくなり、要素と対応するインデックスが変わる</span><a class="headerlink" href="#id28" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">pop</span></code> は <strong>引数を指定せずに</strong> 呼び出せます（<code class="docutils literal notranslate"><span class="pre">gakki_list2.pop()</span></code>）。
+その場合、<strong>末尾の要素</strong> が取り出されて、リストから削除されます。</p>
+<p>引数に範囲外のインデックスを指定すると、処理系は <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> を出します。</p>
+</section>
+<section id="id18">
+<h4><span class="section-number">9.2.2.4. </span>練習問題<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">pop</span></code> を使って <code class="docutils literal notranslate"><span class="pre">gakki_list</span></code> から要素を1つ削除してみましょう。</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<p>参考例として末尾の要素を削除しました。
+お好きなインデックスを指定して試してみてください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="go">&#39;オーボエ&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_list</span>
+<span class="go">[&#39;チューバ&#39;, &#39;ユーフォ&#39;, &#39;コンバス&#39;, &#39;トランペット&#39;]</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="id19">
+<h2><span class="section-number">9.3. </span>リストの使い所<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h2>
+<p>ここまで、リストの以下の特徴について見てきました。</p>
+<ul class="simple">
+<li><p>◯番目として、個々の値を扱える</p></li>
+<li><p>リストを変更できる</p></li>
+</ul>
+<p>では、そんなリストをプログラミングでどんな時に使うか考えてみましょう。
+私たちの身の回りには、リストが使えるシーンが隠れています。</p>
+<section id="id20">
+<h3><span class="section-number">9.3.1. </span>例：ファミリーレストランの会計<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>例として、ファミレスでの注文の扱いを考えます。</p>
+<ul class="simple">
+<li><p>注文があるたびに <strong>商品の金額をリストに追加</strong> します</p></li>
+<li><p>会計時にリストを使って合計金額を算出します</p></li>
+</ul>
+<p>リストを使って、<strong>処理中の値を覚えておく</strong> わけです。</p>
+<section id="id21">
+<h4><span class="section-number">9.3.1.1. </span>注文を受ける<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h4>
+<p>お客さまが入店したら、<strong>空のリスト</strong> を用意します。
+お客さまごとに会計をするので、空のリストはお客さまごとに必要です。
+話を単純にするために、お客さまは1組だけとします。</p>
+<p>変数 <code class="docutils literal notranslate"><span class="pre">chumon_kingaku</span></code> で、お客さまの注文金額を表すことにしましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chumon_kingaku</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p>お客さまはドリアとドリンクバーを注文しました。</p>
+<ul class="simple">
+<li><p>ドリア：300円（※金額はすべて税込価格とします）</p></li>
+<li><p>ドリンクバー：180円</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">chumon_kingaku</span></code> に追加します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chumon_kingaku</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chumon_kingaku</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>お客さまは食後にデザートを追加で注文しました。
+デザートは、プリンとティラミスのセットプレート（400円）です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chumon_kingaku</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id22">
+<h4><span class="section-number">9.3.1.2. </span>会計する<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h4>
+<p>お客さまは会計に進みました。
+リスト <code class="docutils literal notranslate"><span class="pre">chumon_kingaku</span></code> と <code class="docutils literal notranslate"><span class="pre">for</span></code> 文を使うと、合計金額が求められます。
+最初に合計金額を0円とし、<code class="docutils literal notranslate"><span class="pre">chumon_kingaku</span></code> の要素（個々の金額）を合計金額に足すことを繰り返します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">goukei_kingaku</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">kakaku</span> <span class="ow">in</span> <span class="n">chumon_kingaku</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">goukei_kingaku</span> <span class="o">+=</span> <span class="n">kakaku</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">goukei_kingaku</span>  <span class="c1"># ((計算された合計金額))</span>
+<span class="go">880</span>
+</pre></div>
+</div>
+<p>価格それぞれを足すという反復処理の前に、<strong>合計金額を0円としておく</strong> のがポイントです。
+0円は実際の合計金額ではありませんが、そこに値を加算していきます。
+反復処理が終わったときには、リスト <code class="docutils literal notranslate"><span class="pre">chumon_kingaku</span></code> の <strong>要素が1度ずつ足されている</strong> （<code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">+</span> <span class="pre">300</span> <span class="pre">+</span> <span class="pre">180</span> <span class="pre">+</span> <span class="pre">400</span></code>）ので、
+<code class="docutils literal notranslate"><span class="pre">goukei_kingaku</span></code> が指す値は、注文の合計金額に等しくなります。</p>
+</section>
+<section id="id23">
+<h4><span class="section-number">9.3.1.3. </span>練習問題<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h4>
+<p>ここで見た例にならって、あなたの直近の注文をリストで扱い、合計金額を算出してみてください。</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<p>この練習問題の解答は省略します。
+レストランの例を参考に取り組んでみてください。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 「配列」という言葉</p>
+<p>プログラミングには「配列（はいれつ）」という言葉があります。
+配列は複数の値をまとめて扱うために使われます。</p>
+<p>配列は、この章で紹介した <strong>リストとほぼ同じ</strong> ものです。
+配列とリストの違いは、配列では要素は同じ型に限るという点です。
+プログラミングに取り組む中で配列という言葉に出会ったら、リストに読み替えてください。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 複数の値のもう1つの扱い方、タプル</p>
+<p>リストと似た値に <strong>タプル</strong> があります。
+リストでは複数の値を <code class="docutils literal notranslate"><span class="pre">[]</span></code> で囲みましたが、タプルは <code class="docutils literal notranslate"><span class="pre">()</span></code> で囲みます。
+<code class="docutils literal notranslate"><span class="pre">()</span></code> で囲むことで、作る値がタプルだと指定しています。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">(1, 2, 3)</span>
+</pre></div>
+</div>
+<p>タプルの型は、要素の型によらず、常に <code class="docutils literal notranslate"><span class="pre">tuple</span></code> です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">((</span><span class="mi">1990</span><span class="p">,</span> <span class="mf">175.2</span><span class="p">,</span> <span class="s2">&quot;nikkie&quot;</span><span class="p">))</span>
+<span class="go">&lt;class &#39;tuple&#39;&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] タプルとリストの共通の性質</p>
+<ul class="simple">
+<li><p>タプルも要素に <strong>順番</strong> を持ちます（左が先頭、右が末尾）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span></code> 文でタプルの要素を <strong>反復</strong> できます</p></li>
+<li><p>要素数を <strong>長さ</strong> として持ちます</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-長さ</span></code> 以上、<code class="docutils literal notranslate"><span class="pre">長さ-1</span></code> 以下の範囲の <strong>インデックス</strong> で要素を指定できます</p></li>
+<li><p>インデックスに指定できる範囲の外を指定した場合、処理系は <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> を出します</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;チューバ&quot;</span><span class="p">,</span> <span class="s2">&quot;ユーフォニアム&quot;</span><span class="p">,</span> <span class="s2">&quot;コントラバス&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_tuple</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># ((後ろから2つ目の要素を指定))</span>
+<span class="go">&#39;ユーフォニアム&#39;</span>
+</pre></div>
+</div>
+<p>リストのインデックスで試したことを、タプルでも試してみてください。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] タプルは変更できない！（リストとの違い）</p>
+<p>タプルは、<strong>要素への代入、要素の追加、削除ができません</strong>。
+例えば、インデックスが指す要素に代入しようとすると、処理系はエラーを出します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gakki_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ユーフォ&quot;</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">&#39;tuple&#39; object does not support item assignment</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">TypeError</span></code> は、タプルは要素への代入ができない（does not support item assignment）旨を表示しています。
+代入のほか、<code class="docutils literal notranslate"><span class="pre">append</span></code> で要素を追加したり、<code class="docutils literal notranslate"><span class="pre">pop</span></code> で削除することもできません（そのようなメソッドが用意されていません）。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] リストとタプルの使い分け</p>
+<p>リストもタプルも <code class="docutils literal notranslate"><span class="pre">for</span></code> 文で繰り返したり、インデックスで要素を指定したりできます。
+使い分けに影響するのは、変更できる必要があるかどうかです。
+私は、<strong>変更しない複数の値をタプルで</strong> 扱い、<strong>変更する可能性がある複数の値をリストで</strong> 扱っています。</p>
+<p>リストは空のリストに繰り返し <code class="docutils literal notranslate"><span class="pre">append</span></code> する例を紹介したように、変更できるのが利点です。</p>
+<p>タプルは、用意した後に変更しない（または変更すると困る）複数の値を扱う際に利用します。
+変更しないタプルにすることで、変更を意図していないことを示す意図もあります。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 複数の返り値を返す関数は、タプルを返している</p>
+<p><a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-numref">5 章</span></a> 「<a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-ref">関数を作って処理をまとめよう</span></a>」の発展で
+「関数の返り値は複数あってもいい」と紹介しました。
+返り値をカンマで区切って書いたとき、実は <strong>タプルを返して</strong> いるんです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kaerichi</span> <span class="o">=</span> <span class="n">aisatsu_bun_kai</span><span class="p">(</span><span class="s2">&quot;nao_y&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">kaerichi</span><span class="p">)</span>
+<span class="go">&lt;class &#39;tuple&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kaerichi</span>
+<span class="go">(&#39;nao_yさん、ごきげんよう&#39;, 14)</span>
+</pre></div>
+</div>
+<p>複数の返り値を持つ関数の返り値を変数に代入するとき、
+返り値の数と同じだけ変数を用意した場合は、それぞれの値が変数に代入されます。
+変数を1つだけ用意した場合は、<strong>返り値を並べたタプル</strong> が代入されます。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 同じ値を指すことの不思議（数値や文字列の場合）</p>
+<p><code class="docutils literal notranslate"><span class="pre">変数2</span> <span class="pre">=</span> <span class="pre">変数1</span></code> という文で、変数1が指す値そのものを変数2も指すのでしたね。</p>
+<p>復習として、整数の場合を見てみましょう（文字列の場合も同じです）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span> <span class="o">=</span> <span class="n">a1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">a1</span></code> が指す <code class="docutils literal notranslate"><span class="pre">4</span></code> という値を <code class="docutils literal notranslate"><span class="pre">a2</span></code> も指しています。
+ここで <code class="docutils literal notranslate"><span class="pre">a1</span></code> が別の値を指すように変更しても <code class="docutils literal notranslate"><span class="pre">a2</span></code> は変わりません。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a1</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a2</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 同じ値を指すことの不思議（リストの場合、数値や文字列と違う！）</p>
+<p><code class="docutils literal notranslate"><span class="pre">変数2</span> <span class="pre">=</span> <span class="pre">変数1</span></code> は <code class="docutils literal notranslate"><span class="pre">変数1</span></code> が指す値がリストだと、<strong>リスト自身を変更できる</strong> ために、ちょっと不思議なことが起こります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">[1, 2, 3]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code> が指すリストを <code class="docutils literal notranslate"><span class="pre">b</span></code> も指しています。
+<code class="docutils literal notranslate"><span class="pre">a</span></code> が別のリストを指すように変更（例 <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">[4,</span> <span class="pre">5]</span></code>）しても <code class="docutils literal notranslate"><span class="pre">b</span></code> は変わりません（整数で見たときと同じです）。</p>
+<p>違いは、<code class="docutils literal notranslate"><span class="pre">a</span></code> が指す <strong>リストそのものを変更</strong> する場合です（<code class="docutils literal notranslate"><span class="pre">append</span></code> メソッドなど） 。
+これはリストのときに限った話で、数値や文字列の場合は、値そのものを変更することができません
+（<code class="docutils literal notranslate"><span class="pre">4</span></code> という値はどこまでいっても <code class="docutils literal notranslate"><span class="pre">4</span></code> です）。</p>
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code> の指すリストで、インデックス <code class="docutils literal notranslate"><span class="pre">1</span></code> が指す値を更新してみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">102</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">[1, 102, 3]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> は <strong>同一のリスト</strong> を指しているので、リストが変更されたことを変数 <code class="docutils literal notranslate"><span class="pre">b</span></code> の側からも確認できます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">[1, 102, 3]</span>
+</pre></div>
+</div>
+<p>変数 <code class="docutils literal notranslate"><span class="pre">a</span></code> と変数 <code class="docutils literal notranslate"><span class="pre">b</span></code> が <strong>指すリストが同じ</strong> というのがポイントです。
+逆に、 <code class="docutils literal notranslate"><span class="pre">b.append(104)</span></code> のようにリストを変更した場合も、<code class="docutils literal notranslate"><span class="pre">a</span></code> の側からも変更が確認できます。</p>
+<figure class="align-center" id="id29">
+<a class="reference internal image-reference" href="../_images/10-4_reference_same_list.drawio.png"><img alt="../_images/10-4_reference_same_list.drawio.png" src="../_images/10-4_reference_same_list.drawio.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> が指す共通のリストの変更となる</span><a class="headerlink" href="#id29" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 2つの変数が同じリストを指さないようにする</p>
+<p>1つ前の発展の <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code> の例は、<strong>同じリストを指さなければ起こりません</strong>。</p>
+<p>続く例の <code class="docutils literal notranslate"><span class="pre">c</span></code> と <code class="docutils literal notranslate"><span class="pre">d</span></code> の指すリストは、個々の要素が同じですが、<strong>別々に作られたのでリストとしては別物</strong> です。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">104</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">[104, 5]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span>
+<span class="go">[4, 5]</span>
+</pre></div>
+</div>
+<figure class="align-center" id="id30">
+<a class="reference internal image-reference" href="../_images/10-5_reference_each_list.drawio.png"><img alt="../_images/10-5_reference_each_list.drawio.png" src="../_images/10-5_reference_each_list.drawio.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">c</span></code> の指すリストのみの変更。<code class="docutils literal notranslate"><span class="pre">d</span></code> の指すリスト（<code class="docutils literal notranslate"><span class="pre">c</span></code> と同じ要素）には影響しない</span><a class="headerlink" href="#id30" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code> の例は、<strong>1つのリストを複数の変数で指して使いたい場合</strong> の書き方です。
+同じ要素のリストの <strong>片方についてだけ操作したい場合</strong> は、変数 <code class="docutils literal notranslate"><span class="pre">c</span></code> や <code class="docutils literal notranslate"><span class="pre">d</span></code> の例のように <strong>リストをそれぞれ代入</strong> しましょう。
+<code class="docutils literal notranslate"><span class="pre">リスト.copy()</span></code> というメソッドを使っても同じ結果になり、片方のリストだけを操作できます。</p>
+<table class="docutils align-center" id="id31">
+<caption><span class="caption-text">リストに対して使える、コピーした別のリストを用意する関数</span><a class="headerlink" href="#id31" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">copy</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>リストをコピーし、同じ要素からなる別のリストを作る</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>なし</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>コピーしたリスト</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span>
+<span class="go">[1, 2, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">102</span>  <span class="c1"># ((変数fが指すリストには影響しない))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span>
+<span class="go">[1, 102, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span>
+<span class="go">[1, 2, 3]</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">start-programming-with-python</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>ナビゲーション</h3>
+<p class="caption" role="heading"><span class="caption-text">目次</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../300-value_integer_string/index.html">1. プログラムで数と文字を扱ってみよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../310-variables/index.html">2. 値を変数で扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../320-use_functions/index.html">3. 関数でまとまった処理を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../330-input_output/index.html">4. プログラムの入力と出力を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../340-define_functions/index.html">5. 関数を作って処理をまとめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../350-in_order/index.html">6. 3大構造 一. 順次</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../360-fork/index.html">7. 3大構造 二. 分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../370-loop/index.html">8. 3大構造 三. 反復</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">9. 複数の値をまとめて扱おう</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">9.1. 複数の値をリストにまとめる</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">9.2. リストを変更する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id19">9.3. リストの使い所</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../390-programmer_thinking/index.html">10. プログラマーの考え方を知ろう</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../370-loop/index.html" title="前の章へ"><span class="section-number">8. </span>3大構造 三. 反復</a></li>
+      <li>Next: <a href="../390-programmer_thinking/index.html" title="次の章へ"><span class="section-number">10. </span>プログラマーの考え方を知ろう</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, nikkie.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/380-list/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

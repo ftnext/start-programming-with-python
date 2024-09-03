@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+
+<html lang="ja" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>7. 3大構造 二. 分岐 &#8212; start-programming-with-python  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0c5d2aad" />
+    <script src="../_static/documentation_options.js?v=c033477b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=91613774"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="8. 3大構造 三. 反復" href="../370-loop/index.html" />
+    <link rel="prev" title="6. 3大構造 一. 順次" href="../350-in_order/index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="fork">
+<span id="id1"></span><h1><span class="section-number">7. </span>3大構造 二. 分岐<a class="headerlink" href="#fork" title="Link to this heading">¶</a></h1>
+<p>この章では、プログラムの3大構造の2つ目「分岐（ぶんき）」を学びます。
+分岐とは、「<strong>条件</strong> に従って <strong>処理を</strong> いくつかに <strong>分け</strong> 、そのうちの <strong>どれか1つを実行</strong> する」ことです。</p>
+<p>例えば、ふだんの生活では、お酒を買う時に年齢確認が求められます。
+年齢確認の後、店員が行う処理は、次のように <em>分岐</em> しています。</p>
+<ul class="simple">
+<li><p>お客が20歳以上であれば、お酒を売る</p></li>
+<li><p>お客が20歳以上でなければ、お酒を売らない</p></li>
+</ul>
+<p>確認した年齢をもとに、どちらかの処理を実行しますね。</p>
+<p>分岐は <code class="docutils literal notranslate"><span class="pre">if</span></code> 文（イフぶん）で実現します。
+次の順番で見ていきましょう。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> 文で条件を表すのに使う「比較演算子」をまず説明します。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> 文について説明します。</p></li>
+</ol>
+<section id="id2">
+<h2><span class="section-number">7.1. </span>比較演算子<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3><span class="section-number">7.1.1. </span>処理系に数の大小を評価させる<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>年齢確認の例は「年齢が20歳以上と言えるか」と捉えられます。</p>
+<ul class="simple">
+<li><p>年齢が25歳のときは、20歳以上と言えます</p></li>
+<li><p>年齢が19歳のとき、20歳以上とは言えません</p></li>
+</ul>
+<p>「年齢が20歳以上と言えるか」のような <strong>数の大小関係</strong> は、プログラミングして <strong>式で表せます</strong>。
+そして、プログラミング言語処理系は、その <strong>式を評価</strong> できます。
+評価結果は、<strong>人間が大小関係を判定するときと同じ</strong> になります。</p>
+<p>「年齢が20歳以上と言えるか」を式で表すときに使うのが <strong>比較演算子</strong> です。
+例えば「以上」の比較演算子は <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> です。</p>
+<p>比較演算子を使った式の評価結果は、次の <strong>2つの値のいずれか</strong> です。</p>
+<table class="docutils align-center" id="id10">
+<caption><span class="caption-text">比較演算子を使った式の評価結果</span><a class="headerlink" href="#id10" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>値</p></td>
+<td><p>読み</p></td>
+<td><p>意味</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>トゥルー</p></td>
+<td><p>言える</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>フォールス</p></td>
+<td><p>言えない</p></td>
+</tr>
+</tbody>
+</table>
+<p>プログラミングでは <code class="docutils literal notranslate"><span class="pre">True</span></code> と <code class="docutils literal notranslate"><span class="pre">False</span></code> のことを、「真理値（しんりち）」（または「真偽値（しんぎち）」「ブール値（ブールち）」）と呼びます。</p>
+</section>
+<section id="id4">
+<h3><span class="section-number">7.1.2. </span>例：年齢が20歳以上と言えるか<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>比較演算子に慣れるため、対話モードで練習しましょう。</p>
+<p>「年齢が20歳以上と言えるか」を式で表す練習です。
+年齢を変数 <code class="docutils literal notranslate"><span class="pre">nenrei</span></code> で表すと、<code class="docutils literal notranslate"><span class="pre">nenrei</span> <span class="pre">&gt;=</span> <span class="pre">20</span></code> という式で表せます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">nenrei</span></code> が <code class="docutils literal notranslate"><span class="pre">25</span></code> を指すとき、<code class="docutils literal notranslate"><span class="pre">nenrei</span></code> は20歳以上でしょうか？</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nenrei</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nenrei</span> <span class="o">&gt;=</span> <span class="mi">20</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>25歳は20歳以上と言えますよね。
+人間の判定と同じように、処理系も <code class="docutils literal notranslate"><span class="pre">True</span></code> と評価しました。</p>
+<p><code class="docutils literal notranslate"><span class="pre">nenrei</span></code> が指す値を <code class="docutils literal notranslate"><span class="pre">19</span></code> に変えた次の例では、20歳以上と言えるでしょうか？</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nenrei</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nenrei</span> <span class="o">&gt;=</span> <span class="mi">20</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>19歳は20歳以上とは言えませんね。
+処理系も <code class="docutils literal notranslate"><span class="pre">False</span></code> と評価しました。</p>
+<p><code class="docutils literal notranslate"><span class="pre">nenrei</span></code> に代入する数値を変えて試してみてください。</p>
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> 文では、<strong>変数と比較演算子を使った式</strong> を使って、<strong>分岐の条件を表し</strong> ます。</p>
+</section>
+<section id="id5">
+<h3><span class="section-number">7.1.3. </span>本章で登場する比較演算子<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>比較演算子の中から、本章では、「以上」 <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>、「より大きい」 <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>、「等しい」 <code class="docutils literal notranslate"><span class="pre">==</span></code> を使います。
+主な比較演算子の一覧は、章末の発展を見てください。</p>
+<p>繰り返しますが、比較演算子を使った式を <strong>処理系が評価した結果は、人間が大小関係を判定した結果と一致</strong> します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nenrei</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nenrei</span> <span class="o">&gt;</span> <span class="mi">20</span>  <span class="c1"># ((20は20より大きいとは言えません))</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nenrei</span> <span class="o">==</span> <span class="mi">20</span>  <span class="c1"># ((20は20と等しいと言えます))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="if">
+<h2><span class="section-number">7.2. </span><code class="docutils literal notranslate"><span class="pre">if</span></code> 文<a class="headerlink" href="#if" title="Link to this heading">¶</a></h2>
+<p>分岐を実現する <code class="docutils literal notranslate"><span class="pre">if</span></code> 文の全体像は以下のようになります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">条件1</span><span class="p">:</span>
+    <span class="n">処理A</span>
+<span class="k">elif</span> <span class="n">条件2</span><span class="p">:</span>
+    <span class="n">処理B</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">処理C</span>
+</pre></div>
+</div>
+<p>if文も文の1種です。
+関数定義と同じように、別の文を含められる文です（処理A〜Cの部分）。</p>
+<p>年齢確認を例に、<code class="docutils literal notranslate"><span class="pre">if</span></code> 文を構成する要素を少しずつ紹介します。
+<code class="docutils literal notranslate"><span class="pre">if</span></code> 文を使って、どのように処理を分岐させられるか、一歩ずつ見ていきましょう。</p>
+<p>Atomで <code class="docutils literal notranslate"><span class="pre">nenrei_kakunin.py</span></code> というファイルを作ってください。</p>
+<section id="if-if">
+<h3><span class="section-number">7.2.1. </span>単純な <code class="docutils literal notranslate"><span class="pre">if</span></code> 文（<code class="docutils literal notranslate"><span class="pre">if</span></code> のみ）<a class="headerlink" href="#if-if" title="Link to this heading">¶</a></h3>
+<p>最初に <code class="docutils literal notranslate"><span class="pre">if</span></code> 文の <strong>最小限の構成要素</strong> を紹介します。
+条件に従って、<strong>処理を実行する／しない</strong> と分岐します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">式1</span><span class="p">:</span>  <span class="c1"># ((ifの後に半角スペースが1つ入ります。また、コロンを忘れずに！))</span>
+    <span class="n">処理A</span><span class="err">（</span><span class="n">文</span><span class="err">（</span><span class="n">の並び</span><span class="err">））</span>  <span class="c1"># ((先頭のインデントを忘れずに！))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> で始まる行の <code class="docutils literal notranslate"><span class="pre">式1</span></code> は、<strong>分岐の条件</strong> です。
+条件には、比較演算子を使った式が使われます。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">式1</span></code> の評価結果が <code class="docutils literal notranslate"><span class="pre">True</span></code> となる（つまり、条件が成り立つ）とき、処理Aが実行されます</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">式1</span></code> の評価結果が <code class="docutils literal notranslate"><span class="pre">False</span></code> となる（条件が成り立たない）とき、処理Aは実行されません</p></li>
+</ul>
+<p>最小限の <code class="docutils literal notranslate"><span class="pre">if</span></code> 文を <code class="file docutils literal notranslate"><span class="pre">nenrei_kakunin.py</span></code> に書いてみましょう。</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">nenrei_kakunin.py</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;年齢確認のプログラムを開始します&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">nenrei</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="linenos">3</span><span class="k">if</span> <span class="n">nenrei</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nenrei</span><span class="si">}</span><span class="s2">歳はお酒が買える年齢です&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;プログラムを終了します&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>ファイルを実行して、処理系に <code class="docutils literal notranslate"><span class="pre">if</span></code> 文を実行させましょう。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>nenrei_kakunin.py
+</pre></div>
+</div>
+<p>macOSでは <strong class="command">python3</strong> に読み替えが必要です。
+詳しくは <a class="reference internal" href="../350-in_order/index.html#in-order"><span class="std std-numref">6 章</span></a> の「<a class="reference internal" href="../350-in_order/index.html#in-order-command-reference"><span class="std std-ref">はじめてのファイルを使ったプログラム</span></a>」を確認してください。</p>
+<p>入力したら <kbd class="kbd docutils literal notranslate">Enter</kbd> キーを押しましょう。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>nenrei_kakunin.py
+年齢確認のプログラムを開始します
+25歳はお酒が買える年齢です
+プログラムを終了します
+</pre></div>
+</div>
+<p>順次により、処理系はファイルの1文目から実行します。
+変数 <code class="docutils literal notranslate"><span class="pre">nenrei</span></code> は <code class="docutils literal notranslate"><span class="pre">25</span></code> を指すので、 3行目の <code class="docutils literal notranslate"><span class="pre">if</span></code> 文の条件 <code class="docutils literal notranslate"><span class="pre">nenrei</span> <span class="pre">&gt;=</span> <span class="pre">20</span></code> は <code class="docutils literal notranslate"><span class="pre">True</span></code> ですね。
+4行目にある <code class="docutils literal notranslate"><span class="pre">print(f&quot;{nenrei}歳はお酒が買える年齢です&quot;)</span></code> が実行されました。</p>
+<p>今度は、条件が <code class="docutils literal notranslate"><span class="pre">False</span></code> となる場合を見てみましょう。</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">nenrei_kakunin.py</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;年齢確認のプログラムを開始します&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">2</span><span class="n">nenrei</span> <span class="o">=</span> <span class="mi">19</span>
+</span><span class="linenos">3</span><span class="k">if</span> <span class="n">nenrei</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nenrei</span><span class="si">}</span><span class="s2">歳はお酒が買える年齢です&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;プログラムを終了します&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>ファイルの2行目で代入する値を変えました。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>nenrei_kakunin.py
+年齢確認のプログラムを開始します
+プログラムを終了します
+</pre></div>
+</div>
+<p>4行目の処理は実行されていませんね。</p>
+<figure class="align-center" id="id13">
+<img alt="../_images/7-11_simple_if_code_flow.drawio.png" src="../_images/7-11_simple_if_code_flow.drawio.png" />
+<figcaption>
+<p><span class="caption-text">単純な <code class="docutils literal notranslate"><span class="pre">if</span></code> 文では、条件が <code class="docutils literal notranslate"><span class="pre">True</span></code> の場合のみ処理が実行される</span><a class="headerlink" href="#id13" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> だけを使うと、<strong>条件が成り立つときだけ処理を実行する</strong> という分岐が作れます。</p>
+</section>
+<section id="if-else">
+<h3><span class="section-number">7.2.2. </span><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">...</span> <span class="pre">else</span> <span class="pre">...</span></code><a class="headerlink" href="#if-else" title="Link to this heading">¶</a></h3>
+<p>続いて、<code class="docutils literal notranslate"><span class="pre">else</span></code> （エルス）を追加してみましょう。
+条件が <strong>成り立つ時の処理、成り立たない時の処理と分岐</strong> します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">式1</span><span class="p">:</span>
+    <span class="n">処理A</span><span class="err">（</span><span class="n">文</span><span class="err">（</span><span class="n">の並び</span><span class="err">））</span>
+<span class="k">else</span><span class="p">:</span>  <span class="c1"># ((コロンを忘れずに！))</span>
+    <span class="n">処理C</span><span class="err">（</span><span class="n">文</span><span class="err">（</span><span class="n">の並び</span><span class="err">））</span>  <span class="c1"># ((先頭のインデントを忘れずに！))</span>
+</pre></div>
+</div>
+<p>処理系は、条件（<code class="docutils literal notranslate"><span class="pre">式1</span></code>）に従って、<strong>処理Aか処理Cを実行</strong> します。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">式1</span></code> の評価結果が <code class="docutils literal notranslate"><span class="pre">True</span></code> のとき、処理Aが実行されます（<em>処理Cは実行されません</em>）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">式1</span></code> の評価結果が <code class="docutils literal notranslate"><span class="pre">False</span></code> のとき、処理Cが実行されます（<em>処理Aは実行されません</em>）</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">nenrei_kakunin.py</span></code> に <code class="docutils literal notranslate"><span class="pre">else</span></code> を追加しましょう。</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">nenrei_kakunin.py</span><a class="headerlink" href="#id14" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;年齢確認のプログラムを開始します&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">nenrei</span> <span class="o">=</span> <span class="mi">19</span>
+<span class="linenos">3</span><span class="k">if</span> <span class="n">nenrei</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nenrei</span><span class="si">}</span><span class="s2">歳はお酒が買える年齢です&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">5</span><span class="k">else</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">6</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nenrei</span><span class="si">}</span><span class="s2">歳はお酒が買える年齢ではありません&quot;</span><span class="p">)</span>
+</span><span class="linenos">7</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;プログラムを終了します&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>処理系に実行させます。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>nenrei_kakunin.py
+年齢確認のプログラムを開始します
+19歳はお酒が買える年齢ではありません
+プログラムを終了します
+</pre></div>
+</div>
+<p>式 <code class="docutils literal notranslate"><span class="pre">nenrei</span> <span class="pre">&gt;=</span> <span class="pre">20</span></code> は <code class="docutils literal notranslate"><span class="pre">False</span></code> となるので、ファイルの6行目が実行されましたね！
+4行目は実行されていません。</p>
+<p>条件が <code class="docutils literal notranslate"><span class="pre">True</span></code> となる場合も見ておきましょう。</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">nenrei_kakunin.py</span><a class="headerlink" href="#id15" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;年齢確認のプログラムを開始します&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">2</span><span class="n">nenrei</span> <span class="o">=</span> <span class="mi">25</span>
+</span><span class="linenos">3</span><span class="k">if</span> <span class="n">nenrei</span> <span class="o">&gt;=</span> <span class="mi">20</span><span class="p">:</span>
+<span class="linenos">4</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nenrei</span><span class="si">}</span><span class="s2">歳はお酒が買える年齢です&quot;</span><span class="p">)</span>
+<span class="linenos">5</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">6</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nenrei</span><span class="si">}</span><span class="s2">歳はお酒が買える年齢ではありません&quot;</span><span class="p">)</span>
+<span class="linenos">7</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;プログラムを終了します&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>4行目が実行され、6行目は実行されません。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>nenrei_kakunin.py
+年齢確認のプログラムを開始します
+25歳はお酒が買える年齢です
+プログラムを終了します
+</pre></div>
+</div>
+<figure class="align-center" id="id16">
+<img alt="../_images/7-12_if_else_code_flow.drawio.png" src="../_images/7-12_if_else_code_flow.drawio.png" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">if</span></code> と <code class="docutils literal notranslate"><span class="pre">else</span></code> を使うと、条件が <code class="docutils literal notranslate"><span class="pre">True</span></code> の場合と <code class="docutils literal notranslate"><span class="pre">False</span></code> の場合とで処理が分岐する</span><a class="headerlink" href="#id16" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> だけを使うと、条件が成り立つときだけの分岐でした。
+<code class="docutils literal notranslate"><span class="pre">if</span></code> と <code class="docutils literal notranslate"><span class="pre">else</span></code> を使うと、条件が成り立たない時の分岐が加わります。
+ただし、条件に応じて、<strong>どちらかしか実行</strong> されません。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] if 文で出されるエラー</p>
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> 文を書き間違えたときに、処理系が出すエラーと解決方法について知っておきましょう。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> や <code class="docutils literal notranslate"><span class="pre">else</span></code> の行のコロン忘れ</p></li>
+</ol>
+<p>処理系は <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code> を出します。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>nenrei_kakunin.py<span class="w">  </span><span class="c1"># ((ifの行のコロンを忘れました))</span>
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;nenrei_kakunin.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">3</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span>nenrei<span class="w"> </span>&gt;<span class="o">=</span><span class="w"> </span><span class="m">20</span>
+<span class="w">                </span>^
+SyntaxError:<span class="w"> </span>invalid<span class="w"> </span>syntax
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code> を見かけたら、<strong>コロンを忘れていないか</strong> 確認しましょう。</p>
+<ol class="arabic simple" start="2">
+<li><p>処理の行のインデント忘れ</p></li>
+<li><p>処理を複数行書いた時にある行だけインデントが揃っていない</p></li>
+</ol>
+<p>(2)と(3)の場合、処理系は <code class="docutils literal notranslate"><span class="pre">IndentationError</span></code> を出します。
+<a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-numref">5 章</span></a> 「<a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-ref">関数を作って処理をまとめよう</span></a>」のコラム「インデントに関するエラー」と同じです。
+<strong>インデントが揃っているか</strong> 確認してください。</p>
+</div>
+</section>
+<section id="if-elif-else">
+<h3><span class="section-number">7.2.3. </span><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">...</span> <span class="pre">elif</span> <span class="pre">...</span> <span class="pre">else</span> <span class="pre">...</span></code><a class="headerlink" href="#if-elif-else" title="Link to this heading">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">elif</span></code> （エルイフ）を追加すると、初めに示した構成要素が全て登場しますね。
+<code class="docutils literal notranslate"><span class="pre">elif</span></code> は <strong>新たな条件と分岐先の処理を追加</strong> します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">式1</span><span class="p">:</span>
+    <span class="n">処理A</span><span class="err">（</span><span class="n">文</span><span class="err">（</span><span class="n">の並び</span><span class="err">））</span>
+<span class="k">elif</span> <span class="n">式2</span><span class="p">:</span>  <span class="c1"># ((elifの後の半角スペースが1つ入ります。また、コロンを忘れずに！))</span>
+    <span class="n">処理B</span><span class="err">（</span><span class="n">文</span><span class="err">（</span><span class="n">の並び</span><span class="err">））</span>  <span class="c1"># ((先頭のインデントを忘れずに！))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">処理C</span><span class="err">（</span><span class="n">文</span><span class="err">（</span><span class="n">の並び</span><span class="err">））</span>
+</pre></div>
+</div>
+<p>2つの条件（<code class="docutils literal notranslate"><span class="pre">式1</span></code> と <code class="docutils literal notranslate"><span class="pre">式2</span></code>）に従って、実行される処理はA, B, Cの <strong>3つに分かれ、どれか1つが実行され</strong> ます。</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">式1</span></code> の評価結果が <code class="docutils literal notranslate"><span class="pre">True</span></code> のとき、処理Aが実行されます（<em>処理B、Cは実行されません</em>）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">式1</span></code> の評価結果が <code class="docutils literal notranslate"><span class="pre">False</span></code> のとき、<code class="docutils literal notranslate"><span class="pre">式2</span></code> を <strong>評価</strong> します</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">式2</span></code> の評価結果が <code class="docutils literal notranslate"><span class="pre">True</span></code> のとき、処理Bが実行されます（<em>処理Cや処理Aは実行されません</em>）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">式2</span></code> の評価結果が <code class="docutils literal notranslate"><span class="pre">False</span></code> のとき、処理Cが実行されます（<em>処理Bや処理Aは実行されません</em>）</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">nenrei_kakunin.py</span></code> に <code class="docutils literal notranslate"><span class="pre">elif</span></code> を追加しましょう。</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">nenrei_kakunin.py</span><a class="headerlink" href="#id17" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;年齢確認のプログラムを開始します&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">2</span><span class="n">nenrei</span> <span class="o">=</span> <span class="mi">20</span>
+</span><span class="hll"><span class="linenos">3</span><span class="k">if</span> <span class="n">nenrei</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>  <span class="c1"># ((比較演算子を &gt;= から &gt; に変更))</span>
+</span><span class="linenos">4</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nenrei</span><span class="si">}</span><span class="s2">歳はお酒が買える年齢です&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">5</span><span class="k">elif</span> <span class="n">nenrei</span> <span class="o">==</span> <span class="mi">20</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">6</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;成人おめでとう！お酒が買える年齢です&quot;</span><span class="p">)</span>
+</span><span class="linenos">7</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">8</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">nenrei</span><span class="si">}</span><span class="s2">歳はお酒が買える年齢ではありません&quot;</span><span class="p">)</span>
+<span class="linenos">9</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;プログラムを終了します&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>ファイル3行目の <code class="docutils literal notranslate"><span class="pre">if</span></code> に続く条件 <code class="docutils literal notranslate"><span class="pre">nenrei</span> <span class="pre">&gt;</span> <span class="pre">20</span></code> は <code class="docutils literal notranslate"><span class="pre">False</span></code> ですね。
+ファイル5行目の <code class="docutils literal notranslate"><span class="pre">elif</span></code> に続く条件が評価されます。</p>
+<p>ファイルを実行しましょう。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>nenrei_kakunin.py
+年齢確認のプログラムを開始します
+成人おめでとう！お酒が買える年齢です
+プログラムを終了します
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">elif</span></code> の条件 <code class="docutils literal notranslate"><span class="pre">nenrei</span> <span class="pre">==</span> <span class="pre">20</span></code> は <code class="docutils literal notranslate"><span class="pre">True</span></code> ですから、6行目が実行されました。</p>
+<p><code class="docutils literal notranslate"><span class="pre">elif</span></code> とは else if の縮まった形です。
+else if なので、<code class="docutils literal notranslate"><span class="pre">if</span></code> の条件が <code class="docutils literal notranslate"><span class="pre">False</span></code> の場合に <strong>限り</strong> 、<code class="docutils literal notranslate"><span class="pre">elif</span></code> の条件が評価されます。</p>
+<p>2行目で <code class="docutils literal notranslate"><span class="pre">nenrei</span></code> に代入する値を変えると、実行される処理が変わります。
+書き換えて動きを確認してみてください。</p>
+<table class="docutils align-center" id="id18">
+<caption><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">...</span> <span class="pre">elif</span> <span class="pre">...</span> <span class="pre">else</span> <span class="pre">...</span></code></span><a class="headerlink" href="#id18" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nenrei</span></code> に代入する値</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nenrei</span> <span class="pre">&gt;</span> <span class="pre">20</span></code> （条件1）</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nenrei</span> <span class="pre">==</span> <span class="pre">20</span></code> （条件2）</p></td>
+<td><p>実行される処理</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">25</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p>評価されない</p></td>
+<td><p>4行目（25歳はお酒が買える年齢です）</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">19</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>8行目（19歳はお酒が買える年齢ではありません）</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> , <code class="docutils literal notranslate"><span class="pre">elif</span></code> , <code class="docutils literal notranslate"><span class="pre">else</span></code> を使うと、</p>
+<ul class="simple">
+<li><p>条件1が成り立つ時</p></li>
+<li><p>条件1が成り立たないが、条件2が成り立つ時</p></li>
+<li><p>条件1も2も成り立たない時</p></li>
+</ul>
+<p>と、処理が分岐するのです。</p>
+<figure class="align-center" id="id19">
+<img alt="../_images/7-13_if_elif_else_code_flow.drawio.png" src="../_images/7-13_if_elif_else_code_flow.drawio.png" />
+<figcaption>
+<p><span class="caption-text">条件1が <code class="docutils literal notranslate"><span class="pre">True</span></code> の場合、条件1が <code class="docutils literal notranslate"><span class="pre">False</span></code> かつ条件2が <code class="docutils literal notranslate"><span class="pre">True</span></code> の場合、条件1が <code class="docutils literal notranslate"><span class="pre">False</span></code> かつ条件2 が <code class="docutils literal notranslate"><span class="pre">False</span></code> の場合の3つに分岐する</span><a class="headerlink" href="#id19" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>なお、<code class="docutils literal notranslate"><span class="pre">elif</span></code> を複数使って、4つ以上の分岐も表せます。</p>
+<p>分岐はプログラムを <strong>枝分かれ</strong> させます。
+<code class="docutils literal notranslate"><span class="pre">if</span></code> 文でインデントされた処理それぞれは枝分かれしているように見えてきませんか。
+この枝分かれのうち、<strong>実行されるのはどれか1通りだけ</strong> で、他は実行されません。</p>
+<p>順次により、プログラムは1文目から実行されますが、文の並びに分岐を加えると枝分かれができます。
+例えば、関数の処理の中に枝分かれを設けて、関数の引数に応じて実行する処理を変えることもできます。</p>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 式 <code class="docutils literal notranslate"><span class="pre">nenrei</span> <span class="pre">&gt;=</span> <span class="pre">20</span></code> の評価を詳しく</p>
+<p>比較演算子と変数を使った式の評価は、<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">6</span></code> のような変数を使った式の評価（<a class="reference internal" href="../310-variables/index.html#variables"><span class="std std-numref">2 章</span></a>）と何も変わりません。
+変数がまず評価され、次に比較演算子が評価されます。</p>
+<p>例えば、<code class="docutils literal notranslate"><span class="pre">nenrei</span> <span class="pre">=</span> <span class="pre">25</span></code> と代入したとき、 <code class="docutils literal notranslate"><span class="pre">nenrei</span> <span class="pre">&gt;=</span> <span class="pre">20</span></code> は <code class="docutils literal notranslate"><span class="pre">25</span> <span class="pre">&gt;=</span> <span class="pre">20</span></code> を評価することになります。
+25は20以上ですから、結果は <code class="docutils literal notranslate"><span class="pre">True</span></code> ですね。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">25</span> <span class="o">&gt;=</span> <span class="mi">20</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>比較演算子も演算子ですから、<strong>変数、演算子の順</strong> で評価されるのです。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 前提条件を満たさない時に、関数を終了する</p>
+<p><code class="docutils literal notranslate"><span class="pre">if</span></code> 文 と <code class="docutils literal notranslate"><span class="pre">return</span></code> を関数で組合せると、<strong>前提条件を満たさない時に、関数を終了</strong> できます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">souki_shuryo</span><span class="p">(</span><span class="n">nenrei</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">nenrei</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>  <span class="c1"># ((nenreiは20歳以上を前提にしている))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;未成年なので処理を終了します&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">成人の場合の処理</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">return</span></code> 文が実行されると、関数の中の <strong>処理の実行はそこで終わり</strong> ます。
+続く行があっても実行されません。</p>
+<p>そして、<code class="docutils literal notranslate"><span class="pre">return</span></code> 文は <strong>式がなくても作用</strong> します。</p>
+<p>プログラマーの間では、このテクニックを「早期リターン」と呼びます。
+早期リターンした後は前提条件を満たす場合の処理だけに注力できるため、プログラムが読み／書きしやすくなります。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] プログラムの構造を掴む図、フローチャート</p>
+<p>本節では、プログラムと図を左右に見比べられるように掲載しました。
+これはプログラムを実行しなくても見ただけで、分岐の構造をイメージできるようになってもらいたいからです。</p>
+<p>右側に出した図は「フローチャート」と呼ばれます。</p>
+</div>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">7.3. </span>順次と分岐の練習（計算アプリを作る）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>練習として、順次と分岐を使って簡単なプログラム（計算アプリ）を作ってみましょう。</p>
+<p>計算アプリを実行すると、計算式が表示され、暗算した答えを入力するように求められます。
+アプリは入力された答えを採点し、正解したかどうかを表示します。</p>
+<p>これまで学んだ以下を使って計算アプリを実現できます。</p>
+<ul class="simple">
+<li><p>順次</p></li>
+<li><p>分岐（比較演算子と <code class="docutils literal notranslate"><span class="pre">if</span></code> 文）</p></li>
+<li><p>入力の扱い（<code class="docutils literal notranslate"><span class="pre">input</span></code> 関数）</p></li>
+</ul>
+<p>新しいファイル <code class="docutils literal notranslate"><span class="pre">keisan.py</span></code> に作っていきましょう。</p>
+<section id="id7">
+<h3><span class="section-number">7.3.1. </span>例題：正解した場合だけ表示する計算アプリ<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>一歩一歩進めます。
+まずは <strong>正解した場合だけ「正解です！」と表示する</strong> ように作りましょう。</p>
+<p>コマンドラインからの入力を受け取る部分は次のようになりますね。</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">keisan.py</span><a class="headerlink" href="#id20" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;計算アプリです&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">nyuryoku</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;11×12は？ &quot;</span><span class="p">)</span>  <span class="c1"># ((入力する人が見やすいよう、末尾に半角スペースを入れています))</span>
+</pre></div>
+</div>
+</div>
+<p>実行すると、コマンドラインから答えを入力できます。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>keisan.py
+計算アプリです
+<span class="m">11</span>×12は？<span class="w"> </span><span class="m">132</span>
+</pre></div>
+</div>
+<p>今の計算アプリは、何か値を入力すると終了します。
+では、入力された答えが正解の場合だけ「正解です！」と表示するように処理を足してみましょう。</p>
+<ul class="simple">
+<li><p>正解がいくつか計算しましょう</p></li>
+<li><p>入力が正解と一致するかどうかで処理を分岐させるとよさそうですね</p></li>
+</ul>
+<div class="answer admonition">
+<p class="admonition-title">[解答] 想定解</p>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-text">keisan.py</span><a class="headerlink" href="#id21" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;計算アプリです&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">nyuryoku</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;11×12は？ &quot;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">seikai</span> <span class="o">=</span> <span class="mi">11</span> <span class="o">*</span> <span class="mi">12</span>
+<span class="hll"><span class="linenos">4</span><span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">nyuryoku</span><span class="p">)</span> <span class="o">==</span> <span class="n">seikai</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">5</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正解です！&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<p>4行目の <code class="docutils literal notranslate"><span class="pre">if</span></code> の条件で、入力と正解が一致するか比較しています。
+<code class="docutils literal notranslate"><span class="pre">nyuryoku</span></code> は <strong>数字が並んだ文字列</strong> になっているので、整数に変えるために <code class="docutils literal notranslate"><span class="pre">int(nyuryoku)</span></code> とします（補足のコラム参照）。
+入力と正解が一致するとき、「正解です！」と表示されます。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>keisan.py
+計算アプリです
+<span class="m">11</span>×12は？<span class="w"> </span><span class="m">132</span>
+正解です！
+</pre></div>
+</div>
+<p>「正解です！」と表示する計算アプリは作れました！</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 数字の入力には要注意</p>
+<p><code class="docutils literal notranslate"><span class="pre">input</span></code> 関数の返り値は、<strong>数字を入力したときも文字列</strong> です。
+対話モードで確認しましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nyuryoku</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;11×12は？ &quot;</span><span class="p">)</span>  
+<span class="go">11×12は？ 132</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">nyuryoku</span><span class="p">)</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nyuryoku</span>
+<span class="go">&#39;132&#39;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">seikai</span></code> と <code class="docutils literal notranslate"><span class="pre">nyuryoku</span></code> はそれぞれ数値、文字列と <strong>型が違う</strong> ので <code class="docutils literal notranslate"><span class="pre">==</span></code> で比較しても <strong>一致しません</strong>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">seikai</span> <span class="o">=</span> <span class="mi">11</span> <span class="o">*</span> <span class="mi">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nyuryoku</span> <span class="o">==</span> <span class="n">seikai</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>入力された数字を整数として扱いたいですよね。
+<code class="docutils literal notranslate"><span class="pre">'132'</span></code> のように <strong>数字が並んだ文字列を整数に変換する</strong> には、<code class="docutils literal notranslate"><span class="pre">int</span></code> 関数を使います。</p>
+<table class="docutils align-center" id="id22">
+<caption><span class="caption-text">文字列を整数に変換する関数</span><a class="headerlink" href="#id22" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>数字の並んだ文字列を整数に変換する</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>文字列（数字の並びを想定）</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>整数</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s2">&quot;132&quot;</span><span class="p">)</span>
+<span class="go">132</span>
+</pre></div>
+</div>
+<p>入力された文字列を <code class="docutils literal notranslate"><span class="pre">int</span></code> 関数で整数に変換することで、正解と比較できるようになります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">nyuryoku</span><span class="p">)</span> <span class="o">==</span> <span class="n">seikai</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h3><span class="section-number">7.3.2. </span>練習問題1：間違えたことをフィードバックする計算アプリ<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>今の計算アプリは、間違えたときに何も表示されません。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>keisan.py
+計算アプリです
+<span class="m">11</span>×12は？<span class="w"> </span><span class="m">122</span>
+</pre></div>
+</div>
+<p><strong>間違えた時に間違えた旨と正解を表示する</strong> ように変更してみましょう。</p>
+<p><em>ヒント</em>：間違えたときの分岐を追加しましょう</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答] 正解例</p>
+<p>正解例と完全に一致していなくても、<code class="docutils literal notranslate"><span class="pre">keisan.py</span></code> を実行して同じ動きをしていれば正解です。</p>
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-text">keisan.py</span><a class="headerlink" href="#id23" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;計算アプリです&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">nyuryoku</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;11×12は？ &quot;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">seikai</span> <span class="o">=</span> <span class="mi">11</span> <span class="o">*</span> <span class="mi">12</span>
+<span class="linenos">4</span><span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">nyuryoku</span><span class="p">)</span> <span class="o">==</span> <span class="n">seikai</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正解です！&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">6</span><span class="k">else</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">7</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;残念&gt;_&lt; 正解は</span><span class="si">{</span><span class="n">seikai</span><span class="si">}</span><span class="s2">でした&quot;</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<p><em>入力が正解と一致しないとき</em> が間違えたときですね。
+<code class="docutils literal notranslate"><span class="pre">else</span></code> を使って、間違えたときの分岐を追加しました。</p>
+<p>「間違えた旨と正解を表示」には解釈の余地があるので、表示する文章が一致していなくてもかまいません。
+重要なのは、<code class="docutils literal notranslate"><span class="pre">else</span></code> を追加するという点です。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>keisan.py
+計算アプリです
+<span class="m">11</span>×12は？<span class="w"> </span><span class="m">122</span>
+残念&gt;_&lt;<span class="w"> </span>正解は132でした
+</pre></div>
+</div>
+<p>紙面では省略しますが、正解の場合の動作が変わっていないことも確認しましょう。</p>
+</div>
+</section>
+<section id="id9">
+<h3><span class="section-number">7.3.3. </span>練習問題2：惜しい間違いをフィードバックする計算アプリ<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>間違っていても、正解との差が小さい場合には、惜しい間違いと表示するようにしましょう。
+正解との差が小さいというのは、<strong>入力された値と正解が1だけ違う</strong> （すなわち入力が131または133）場合とします。</p>
+<p>入力された値と正解がいくつ違うかを計算するのには <code class="docutils literal notranslate"><span class="pre">abs</span></code> 関数が使えます。</p>
+<table class="docutils align-center" id="id24">
+<caption><span class="caption-text">絶対値を返す関数</span><a class="headerlink" href="#id24" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">abs</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>引数に与えた数の絶対値を返す</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>整数、または浮動小数点数</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>整数、または浮動小数点数</p></td>
+</tr>
+</tbody>
+</table>
+<p>絶対値という語が耳慣れない方は、</p>
+<ul class="simple">
+<li><p>正の数または0の場合はそのまま返し</p></li>
+<li><p>負の数の場合は、マイナスを付けて返す</p></li>
+</ul>
+<p>と考えてください。
+例えば、<span class="math notranslate nohighlight">\(-3\)</span> は <span class="math notranslate nohighlight">\(-(-3)\)</span> より <span class="math notranslate nohighlight">\(3\)</span> を返します。</p>
+<p>対話モードで <code class="docutils literal notranslate"><span class="pre">abs</span></code> 関数に慣れましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">abs</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>式を渡すことで、<strong>2つの数の差の絶対値</strong> を求められます。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;<span class="w"> </span>abs<span class="o">(</span><span class="m">4</span><span class="w"> </span>-<span class="w"> </span><span class="m">2</span><span class="o">)</span>
+<span class="m">2</span>
+&gt;&gt;&gt;<span class="w"> </span>abs<span class="o">(</span><span class="m">3</span><span class="w"> </span>-<span class="w"> </span><span class="m">6</span><span class="o">)</span>
+<span class="m">3</span>
+</pre></div>
+</div>
+<p>これを計算アプリで使いましょう。
+<strong>入力された値と正解との差の絶対値が1と等しい</strong> とき、惜しい間違いと判定します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">keisan.py</span></code> を変更してみてください。</p>
+<p><em>ヒント</em>：間違えたとき（入力と正解が一致しないとき）に、条件を追加します</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答] 正解例</p>
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-text">keisan.py</span><a class="headerlink" href="#id25" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;計算アプリです&quot;</span><span class="p">)</span>
+<span class="linenos">2</span><span class="n">nyuryoku</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;11×12は？ &quot;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">seikai</span> <span class="o">=</span> <span class="mi">11</span> <span class="o">*</span> <span class="mi">12</span>
+<span class="linenos">4</span><span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">nyuryoku</span><span class="p">)</span> <span class="o">==</span> <span class="n">seikai</span><span class="p">:</span>
+<span class="linenos">5</span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;正解です！&quot;</span><span class="p">)</span>
+<span class="hll"><span class="linenos">6</span><span class="k">elif</span> <span class="nb">abs</span><span class="p">(</span><span class="n">seikai</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">nyuryoku</span><span class="p">))</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class="hll"><span class="linenos">7</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;惜しい！正解は</span><span class="si">{</span><span class="n">seikai</span><span class="si">}</span><span class="s2">でした&quot;</span><span class="p">)</span>
+</span><span class="linenos">8</span><span class="k">else</span><span class="p">:</span>
+<span class="linenos">9</span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;残念&gt;_&lt; 正解は</span><span class="si">{</span><span class="n">seikai</span><span class="si">}</span><span class="s2">でした&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>6行目に追加した <code class="docutils literal notranslate"><span class="pre">elif</span></code> により、<code class="docutils literal notranslate"><span class="pre">seikai</span></code> と <code class="docutils literal notranslate"><span class="pre">int(nyuryoku)</span></code> の差の絶対値が1と等しいときに、
+惜しい間違いである旨が表示されます。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;<span class="w"> </span>python<span class="w"> </span>keisan.py
+計算アプリです
+<span class="m">11</span>×12は？<span class="w"> </span><span class="m">133</span>
+惜しい！正解は132でした
+</pre></div>
+</div>
+<p>よさそうですね！
+紙面では省略しますが、正解の場合や惜しくない間違いの場合の動作に変更がないことも確認しましょう。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 主な比較演算子</p>
+<p>主な比較演算子を紹介します。</p>
+<table class="docutils align-center" id="id26">
+<caption><span class="caption-text">主な比較演算子 一覧</span><a class="headerlink" href="#id26" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>比較演算子</p></td>
+<td><p>比較内容</p></td>
+<td><p>数式では</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>以上</p></td>
+<td><p><span class="math notranslate nohighlight">\(\leqq\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>以下</p></td>
+<td><p><span class="math notranslate nohighlight">\(\geqq\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>より大きい</p></td>
+<td><p><span class="math notranslate nohighlight">\(&gt;\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>より小さい</p></td>
+<td><p><span class="math notranslate nohighlight">\(&lt;\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>等しい</p></td>
+<td><p><span class="math notranslate nohighlight">\(=\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>等しくない</p></td>
+<td><p><span class="math notranslate nohighlight">\(\neq\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>ここで初めて登場した比較演算子について、対話モードで確認しましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">nenrei</span> <span class="o">=</span> <span class="mi">29</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nenrei</span> <span class="o">&lt;=</span> <span class="mi">25</span>  <span class="c1"># ((29は25以下とは言えません))</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nenrei</span> <span class="o">&lt;</span> <span class="mi">30</span>  <span class="c1"># ((29は30より小さいです))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nenrei</span> <span class="o">!=</span> <span class="mi">35</span>  <span class="c1"># ((29は35と等しくないと言えます))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 文字列も比較できる</p>
+<p>数値だけでなく文字列も、比較演算子を用いて比較できます。
+文字列の比較では、「等しい」 <code class="docutils literal notranslate"><span class="pre">==</span></code> や「等しくない」 <code class="docutils literal notranslate"><span class="pre">!=</span></code> がよく使われます。</p>
+<table class="docutils align-center" id="id27">
+<caption><span class="caption-text">文字列によく使う比較演算子</span><a class="headerlink" href="#id27" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>比較演算子</p></td>
+<td><p>比較内容</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>文字列どうしが一致（同じ）</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>文字列どうしが一致しない（異なる）</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span> <span class="o">=</span> <span class="s2">&quot;nikkie&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span> <span class="o">==</span> <span class="s2">&quot;nikkie&quot;</span>  <span class="c1"># ((namaeが指す文字列は&quot;nikkie&quot;と一致しますね))</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span> <span class="o">!=</span> <span class="s2">&quot;susumuis&quot;</span>  <span class="c1"># ((namaeが指す文字列は&quot;susumuis&quot;と一致しませんね))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 演算子の種類</p>
+<p><a class="reference internal" href="../300-value_integer_string/index.html#value-integer-string"><span class="std std-numref">1 章</span></a> 「<a class="reference internal" href="../300-value_integer_string/index.html#value-integer-string"><span class="std std-ref">プログラムで数と文字を扱ってみよう</span></a>」で <code class="docutils literal notranslate"><span class="pre">+</span></code> や <code class="docutils literal notranslate"><span class="pre">*</span></code> などの演算子を紹介しました。
+四則演算に使う演算子は「算術演算子」と呼ばれます。
+演算子には、比較演算子、算術演算子といった種類があるのです。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 真理値に使う演算子</p>
+<p><code class="docutils literal notranslate"><span class="pre">True</span></code> と <code class="docutils literal notranslate"><span class="pre">False</span></code> は <strong>反対の関係</strong> にあります。</p>
+<ul class="simple">
+<li><p>「<code class="docutils literal notranslate"><span class="pre">True</span></code> でない」は <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p>「<code class="docutils literal notranslate"><span class="pre">False</span></code> でない」は <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+</ul>
+<p>「<strong>でない</strong>」は <code class="docutils literal notranslate"><span class="pre">not</span></code> という演算子を使って、式で表せます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="ow">not</span> <span class="kc">True</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="ow">not</span> <span class="kc">False</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">not</span></code> のように真理値に使う演算子を「ブール演算子」と呼びます。</p>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">start-programming-with-python</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>ナビゲーション</h3>
+<p class="caption" role="heading"><span class="caption-text">目次</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../300-value_integer_string/index.html">1. プログラムで数と文字を扱ってみよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../310-variables/index.html">2. 値を変数で扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../320-use_functions/index.html">3. 関数でまとまった処理を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../330-input_output/index.html">4. プログラムの入力と出力を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../340-define_functions/index.html">5. 関数を作って処理をまとめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../350-in_order/index.html">6. 3大構造 一. 順次</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. 3大構造 二. 分岐</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">7.1. 比較演算子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#if">7.2. <code class="docutils literal notranslate"><span class="pre">if</span></code> 文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">7.3. 順次と分岐の練習（計算アプリを作る）</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../370-loop/index.html">8. 3大構造 三. 反復</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../380-list/index.html">9. 複数の値をまとめて扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../390-programmer_thinking/index.html">10. プログラマーの考え方を知ろう</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../350-in_order/index.html" title="前の章へ"><span class="section-number">6. </span>3大構造 一. 順次</a></li>
+      <li>Next: <a href="../370-loop/index.html" title="次の章へ"><span class="section-number">8. </span>3大構造 三. 反復</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, nikkie.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/360-fork/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

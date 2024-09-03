@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html lang="ja" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. 関数でまとまった処理を扱おう &#8212; start-programming-with-python  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0c5d2aad" />
+    <script src="../_static/documentation_options.js?v=c033477b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=91613774"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="4. プログラムの入力と出力を扱おう" href="../330-input_output/index.html" />
+    <link rel="prev" title="2. 値を変数で扱おう" href="../310-variables/index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="use-functions">
+<span id="id1"></span><h1><span class="section-number">3. </span>関数でまとまった処理を扱おう<a class="headerlink" href="#use-functions" title="Link to this heading">¶</a></h1>
+<p>変数に代入し、それを使った式を評価するといった一連の文を書けるようになりましたね。
+プログラミングでは、代入してから式を評価のような <strong>一連の文をまとめて1つの処理にできます</strong>。
+この章から <a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-numref">5 章</span></a> 「<a class="reference internal" href="../340-define_functions/index.html#define-functions"><span class="std std-ref">関数を作って処理をまとめよう</span></a>」までで、<em>文がまとまった処理</em> について学びましょう。</p>
+<p>プログラミングでは、<strong>ひとまとまりにした処理</strong> のことを <strong>関数</strong> （かんすう）と呼びます。
+この章では、プログラミング言語が用意した関数を使えるようになりましょう。
+対話モードにプログラムを入力しながら読み進めてください。</p>
+<section id="id2">
+<h2><span class="section-number">3.1. </span>関数とは<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3><span class="section-number">3.1.1. </span>処理をする箱<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>関数には「数」という字が付きますが、数値ではありません。
+まとまった <strong>処理</strong> を指します。</p>
+<p>関数は「函数」（かんすう）とも書かれます。
+「函」という字は、 <strong>箱</strong> を意味します。
+つまり、函数（関数）は、何らかの箱ということです。</p>
+<p>関数は、<strong>入れられたものを決まった手順で処理し、結果を出す箱</strong> です。
+箱には、どんな処理かが分かるように名前が付いています。
+箱の中身がどうなっているかは、外から見えません。
+ですが、プログラマーは中身を詳細に知らなくても処理の結果を利用できます。</p>
+<p>関数の4要素</p>
+<ul class="simple">
+<li><p>箱の名前</p></li>
+<li><p>箱は何をするか</p></li>
+<li><p>箱に入れるもの</p></li>
+<li><p>箱から出てくるもの</p></li>
+</ul>
+<figure class="align-center" id="id16">
+<a class="reference internal image-reference" href="../_images/4-1-function_is_box.png"><img alt="../_images/4-1-function_is_box.png" src="../_images/4-1-function_is_box.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">入力した値を箱が処理し、結果が出てくる</span><a class="headerlink" href="#id16" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id4">
+<h3><span class="section-number">3.1.2. </span>関数のイメージ：自動販売機<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>身近なものでは、例えば自動販売機が関数に近いです。
+自動販売機を関数だと思うと、こんな箱です：</p>
+<table class="docutils align-center" id="id17">
+<caption><span class="caption-text">自動販売機という関数</span><a class="headerlink" href="#id17" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p>自動販売機</p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>飲み物を販売する</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>お金、飲み物の指定</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>飲み物、おつり</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center" id="id18">
+<a class="reference internal image-reference" href="../_images/4-2-vending_machine_metaphor.png"><img alt="../_images/4-2-vending_machine_metaphor.png" src="../_images/4-2-vending_machine_metaphor.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">お金を入れ、飲み物を指定すると、飲み物とおつりが出てくる</span><a class="headerlink" href="#id18" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>私たちは自動販売機の中身やどう動いているかを事細かに知りませんが、自動販売機を使って飲み物が買えますね。</p>
+<p>関数のイメージが少しでもつかめたでしょうか。
+百聞は一見にしかず、次は実際に関数を使ってみましょう。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 箱の「機能」</p>
+<p>皆さんがこの節で出会った「関数」は、英語では function と言います。
+辞書で function を引いてみると、「機能」という訳語があることに気づくでしょう。
+実は、functionを「関数」と訳したことで、少し分かりづらくなってしまっています。</p>
+<p>何か <strong>機能をもった箱</strong> があると想像してください。
+その箱にものを入れると、機能を適用した結果が返ってきます。
+入れたものに対して、機能を働かせた結果を返す、そんな箱が関数です。</p>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">3.2. </span>関数を使ってみよう<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<section id="id6">
+<h3><span class="section-number">3.2.1. </span>文字列の長さを数える関数<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>文字列は文字の並びですから、何文字あるか数えることができます。
+例えば、 <code class="docutils literal notranslate"><span class="pre">&quot;こんにちは&quot;</span></code> という文字列の場合は、「こ」「ん」「に」「ち」「は」の5文字ですね。</p>
+<p>文字列が何文字か数えるという処理はよく使うので、関数として用意されています。</p>
+<table class="docutils align-center" id="id19">
+<caption><span class="caption-text">何文字か数える関数</span><a class="headerlink" href="#id19" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">len</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>文字列が何文字か数える</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>文字列</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>整数（文字数を表す）</p></td>
+</tr>
+</tbody>
+</table>
+<p>では <code class="docutils literal notranslate"><span class="pre">len</span></code> 関数を使ってみましょう。
+対話モードに <code class="docutils literal notranslate"><span class="pre">len(&quot;こんにちは&quot;)</span></code> と入力してEnterキーを押すと、文字数が表示されます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;こんにちは&quot;</span><span class="p">)</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<p>箱の名前 <code class="docutils literal notranslate"><span class="pre">len</span></code> にカッコ <code class="docutils literal notranslate"><span class="pre">()</span></code> を続けます。
+箱に入れるもの（ここでは <code class="docutils literal notranslate"><span class="pre">&quot;こんにちは&quot;</span></code>）は、カッコの中に書きます。
+Enterキーを押すと、箱が処理をして、文字数（<code class="docutils literal notranslate"><span class="pre">5</span></code> 文字）が出てきます。</p>
+<figure class="align-center" id="id20">
+<a class="reference internal image-reference" href="../_images/4-3-len_box_image.drawio.png"><img alt="../_images/4-3-len_box_image.drawio.png" src="../_images/4-3-len_box_image.drawio.png" style="width: 60%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">文字列 <code class="docutils literal notranslate"><span class="pre">&quot;こんにちは&quot;</span></code> を箱に入れる</span><a class="headerlink" href="#id20" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>別の文字列を入れると、<code class="docutils literal notranslate"><span class="pre">len</span></code> 関数から出てくる長さは変わります。
+文字列の繰り返しを使って用意した20文字の文字列を入れてみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;ー&quot;</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span>
+<span class="go">20</span>
+</pre></div>
+</div>
+<p>文字列の長さ <code class="docutils literal notranslate"><span class="pre">20</span></code> 文字と結果が出ていますね。
+式を箱に入れる場合、評価された値が入ります。</p>
+<figure class="align-center" id="id21">
+<img alt="../_images/4-4-len_pass_expression.drawio.png" src="../_images/4-4-len_pass_expression.drawio.png" />
+<figcaption>
+<p><span class="caption-text">箱に入るのは評価された値</span><a class="headerlink" href="#id21" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="id7">
+<h4><span class="section-number">3.2.1.1. </span>練習問題<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h4>
+<p>ここまでで使った文字列を1つ思い出し、<code class="docutils literal notranslate"><span class="pre">len</span></code> 関数で長さを求めてみましょう
+（思い出せない場合は、好きな言葉でかまいません）。</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;さしもしらじな&quot;</span> <span class="o">+</span> <span class="s2">&quot;もゆるおもひを&quot;</span><span class="p">)</span>
+<span class="go">14</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h3><span class="section-number">3.2.2. </span>値の型を確認する関数<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p><a class="reference internal" href="../300-value_integer_string/index.html#value-integer-string"><span class="std std-numref">1 章</span></a> 「<a class="reference internal" href="../300-value_integer_string/index.html#value-integer-string"><span class="std std-ref">プログラムで数と文字を扱ってみよう</span></a>」で取り上げた、型（値の種類）を確認する処理も、関数として用意されています。</p>
+<table class="docutils align-center" id="id22">
+<caption><span class="caption-text">型を確認する関数</span><a class="headerlink" href="#id22" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>引数に渡した値の型を返す</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>値</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>型</p></td>
+</tr>
+</tbody>
+</table>
+<p>では、<code class="docutils literal notranslate"><span class="pre">type</span></code> 関数を使って型を確認しましょう。
+整数と文字列を入れてみます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">&lt;class &#39;int&#39;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="s2">&quot;もゆるおもひを&quot;</span><span class="p">)</span>
+<span class="go">&lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../300-value_integer_string/index.html#value-integer-string"><span class="std std-numref">1 章</span></a> の中の「<a class="reference internal" href="../300-value_integer_string/index.html#value-integer-string-types"><span class="std std-ref">値には種類がある：型</span></a>」で紹介した型（<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>）が出ていますね。</p>
+<figure class="align-center" id="id23">
+<a class="reference internal image-reference" href="../_images/4-11-type_box_image.drawio.png"><img alt="../_images/4-11-type_box_image.drawio.png" src="../_images/4-11-type_box_image.drawio.png" style="width: 60%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">関数 <code class="docutils literal notranslate"><span class="pre">type</span></code> の結果は型</span><a class="headerlink" href="#id23" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="id9">
+<h4><span class="section-number">3.2.2.1. </span>練習問題<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">type</span></code> 関数で浮動小数点数の型を確認してみましょう。</p>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="mf">1.08</span><span class="p">)</span>
+<span class="go">&lt;class &#39;float&#39;&gt;</span>
+</pre></div>
+</div>
+<p>浮動小数点数を表す型は <code class="docutils literal notranslate"><span class="pre">float</span></code> と分かりました（floating（浮動）の省略です）。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 関数でよく見かけるエラー2つ</p>
+<p>1つ目は関数の名前の打ち間違いです。
+変数の打ち間違いと同じように、処理系は <code class="docutils literal notranslate"><span class="pre">NameError</span></code> を出します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">lem</span><span class="p">(</span><span class="s2">&quot;こんにちは&quot;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">NameError</span>: <span class="n">name &#39;lem&#39; is not defined</span>
+</pre></div>
+</div>
+<p>関数を使っていて、<code class="docutils literal notranslate"><span class="pre">NameError</span></code> に出会ったら、<strong>関数の名前を打ち間違えていないか</strong> 確認しましょう。</p>
+<p>もう1つのエラーは、型に関係するエラーです。
+<code class="docutils literal notranslate"><span class="pre">len</span></code> に整数を入れてみたらどうなるでしょうか。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;<span class="w"> </span>len<span class="o">(</span><span class="m">123</span><span class="o">)</span>
+Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;&lt;stdin&gt;&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;module&gt;
+TypeError:<span class="w"> </span>object<span class="w"> </span>of<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="s1">&#39;int&#39;</span><span class="w"> </span>has<span class="w"> </span>no<span class="w"> </span>len<span class="o">()</span>
+</pre></div>
+</div>
+<p>整数を <code class="docutils literal notranslate"><span class="pre">len</span></code> 関数に入れられないために、処理系は <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> を出しました。</p>
+<p>関数で <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> が出たら、その関数が処理できない型を入れています。
+できない使い方をしているということなので、諦めましょう（別の方法での実現を考えます）。
+どこかを修正すれば出なくなる <code class="docutils literal notranslate"><span class="pre">NameError</span></code> と異なります。
+ここでは、関数によっては <strong>箱に入れられない値がある</strong> ことを、頭の片隅に留めておいてください。</p>
+</div>
+</section>
+</section>
+</section>
+<section id="id10">
+<h2><span class="section-number">3.3. </span>関数をもう少し詳しく知ろう<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<section id="id11">
+<h3><span class="section-number">3.3.1. </span>関数を表す用語<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>関数を言い表すときに使われる用語を紹介します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">()</span></code> を通して関数に入れられるものを <strong>引数</strong> （ひきすう）と呼びます。</p>
+<p>引数という言葉を使うと、 <code class="docutils literal notranslate"><span class="pre">len(&quot;こんにちは&quot;)</span></code> というプログラムの実行は、次のようにも言い表されます。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">len</span></code> 関数に引数 <code class="docutils literal notranslate"><span class="pre">&quot;こんにちは&quot;</span></code> を <strong>渡す</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;こんにちは&quot;</span></code> を引数に <code class="docutils literal notranslate"><span class="pre">len</span></code> 関数を <strong>呼び出す</strong></p></li>
+</ul>
+<p>また、関数が処理の結果を出すことを、関数が値を <strong>返す</strong> とも言い表します。
+<code class="docutils literal notranslate"><span class="pre">len</span></code> 関数は引数の文字列の長さを返します。</p>
+<p>関数が返す値のことを <strong>返り値</strong> （かえりち）や <strong>戻り値</strong> （もどりち）と呼びます。</p>
+<figure class="align-center" id="id24">
+<a class="reference internal image-reference" href="../_images/4-7-function_petit_summary.png"><img alt="../_images/4-7-function_petit_summary.png" src="../_images/4-7-function_petit_summary.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">関数にまつわる用語まとめ</span><a class="headerlink" href="#id24" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id12">
+<h3><span class="section-number">3.3.2. </span>関数は式<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>これまでの章で演算子を使った式を知りましたね。
+実は、<strong>関数も式</strong> です。
+演算子を使わない式もあるのです。</p>
+<p>関数（式）の評価結果は、<strong>関数の返り値</strong> です。
+例えば <code class="docutils literal notranslate"><span class="pre">len(&quot;こんにちは&quot;)</span></code> を評価すると、<code class="docutils literal notranslate"><span class="pre">len</span></code> 関数の返り値 <code class="docutils literal notranslate"><span class="pre">5</span></code> が評価結果になります。</p>
+<section id="id13">
+<h4><span class="section-number">3.3.2.1. </span>関数の結果を変数に代入する<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h4>
+<p>演算子を使った式と同じように、<strong>関数の評価結果の値を変数に代入</strong> できます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mojisuu</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;こんにちは世界&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mojisuu</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+<p>変数 <code class="docutils literal notranslate"><span class="pre">mojisuu</span></code> （文字数）に、<code class="docutils literal notranslate"><span class="pre">len</span></code> 関数を適用した結果が代入されました。</p>
+<p>関数を適用した結果に名前を付けたり、一時保存したりする目的で使います。</p>
+<figure class="align-center" id="id25">
+<img alt="../_images/4-6-len_store_variable.drawio.png" src="../_images/4-6-len_store_variable.drawio.png" />
+<figcaption>
+<p><span class="caption-text">関数が出した結果を変数に代入する</span><a class="headerlink" href="#id25" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id14">
+<h4><span class="section-number">3.3.2.2. </span>関数に変数を入れる（式の評価の順序）<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h4>
+<p>関数の引数に変数を使う場合について見てみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;こんにちは世界&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">7</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">len(a)</span></code> という式の評価には <strong>順番</strong> があります。</p>
+<ol class="arabic simple">
+<li><p>まず、関数の引数（式）が評価されます。ここでは、<code class="docutils literal notranslate"><span class="pre">a</span></code> が評価されて <code class="docutils literal notranslate"><span class="pre">&quot;こんにちは世界&quot;</span></code> となります。</p></li>
+<li><p>次に関数の呼び出し <code class="docutils literal notranslate"><span class="pre">len(&quot;こんにちは世界&quot;)</span></code> が評価されます。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len(&quot;こんにちは世界&quot;)</span></code> の評価結果 <code class="docutils literal notranslate"><span class="pre">7</span></code> が <code class="docutils literal notranslate"><span class="pre">len(a)</span></code> の評価結果となります。</p></li>
+</ol>
+<figure class="align-center" id="id26">
+<img alt="../_images/4-5-len_pass_variable.drawio.png" src="../_images/4-5-len_pass_variable.drawio.png" />
+<figcaption>
+<p><span class="caption-text">箱に入るのは変数の指す値</span><a class="headerlink" href="#id26" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id15">
+<h4><span class="section-number">3.3.2.3. </span>練習問題<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h4>
+<p>以下のプログラムを上から順番に実行した時、<code class="docutils literal notranslate"><span class="pre">len(banzai</span> <span class="pre">*</span> <span class="pre">3)</span></code> の返す値は何になりますか？
+まずは対話モードを使わずに考え、その後対話モードで確認してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">banzai</span> <span class="o">=</span> <span class="s2">&quot;万歳！&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">banzai</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>  
+</pre></div>
+</div>
+<div class="answer admonition">
+<p class="admonition-title">[解答]</p>
+<p>評価順により</p>
+<ol class="arabic simple">
+<li><p>引数（式 <code class="docutils literal notranslate"><span class="pre">banzai</span> <span class="pre">*</span> <span class="pre">3</span></code>）を評価して <code class="docutils literal notranslate"><span class="pre">&quot;万歳！万歳！万歳！&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len(&quot;万歳！万歳！万歳！&quot;)</span></code> を評価して <code class="docutils literal notranslate"><span class="pre">9</span></code> （9文字）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len(banzai</span> <span class="pre">*</span> <span class="pre">3)</span></code> の返す値は <code class="docutils literal notranslate"><span class="pre">9</span></code></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">banzai</span> <span class="o">=</span> <span class="s2">&quot;万歳！&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">banzai</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">9</span>
+</pre></div>
+</div>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] Pythonの組み込み関数</p>
+<p>この章で紹介した <code class="docutils literal notranslate"><span class="pre">len</span></code> 関数や <code class="docutils literal notranslate"><span class="pre">type</span></code> 関数は、Pythonの <strong>組み込み関数</strong> と呼ばれます。
+組み込み関数は数が多く、筆者たちもすべてを事細かく把握していません。
+ではどうしているかというと、分からないことがあったら <strong>そのたびに</strong> 組み込み関数の <strong>使い方を調べ</strong> ています。
+組み込み関数を覚えるのではなく、使い方の <strong>調べ方を覚える</strong> ことをおすすめします。</p>
+<p>PCでブラウザーを開き、以下を入力してください。
+<a class="reference external" href="https://docs.python.org/ja/3/library/functions.html">https://docs.python.org/ja/3/library/functions.html</a></p>
+<figure class="align-center" id="id27">
+<img alt="../_images/4-8-python-functions-document.png" src="../_images/4-8-python-functions-document.png" />
+<figcaption>
+<p><span class="caption-text">組み込み関数の一覧ドキュメント</span><a class="headerlink" href="#id27" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>組み込み関数の一覧から <code class="docutils literal notranslate"><span class="pre">len()</span></code> をクリックすると、 <code class="docutils literal notranslate"><span class="pre">len</span></code> 関数の説明が現れます。</p>
+<figure class="align-center" id="id28">
+<img alt="../_images/4-9-len_document.png" src="../_images/4-9-len_document.png" />
+<figcaption>
+<p><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">len</span></code> 関数のドキュメント</span><a class="headerlink" href="#id28" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>このように、組み込み関数の使い方が分からなくなったら調べられます。
+Pythonに限らず、プログラミング言語には、あらかじめ用意された関数があります。
+それらの使い方は、<strong>ドキュメントで調べられます</strong> 。</p>
+<p>なお、<code class="docutils literal notranslate"><span class="pre">len</span></code> 関数のドキュメントを読んでよく分からなくても心配ありません。
+ドキュメントはPythonに慣れた人向けに書かれているからです。
+「オブジェクト」「シーケンス」「コレクション」といった言葉は、Pythonの学習を進めていく中で徐々に意味がつかめてきます。
+意味をつかんだ語が増えるにつれて、ドキュメントを読めるようになっていきます。</p>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] ◯文字以内で書く時に <code class="docutils literal notranslate"><span class="pre">len</span></code> 関数が便利</p>
+<p>日常生活で◯文字以内で文章を書くことはたびたびありますよね（例えば本書の説明文を100文字で書く）。
+そんなときに私は、対話モードを立ち上げて <code class="docutils literal notranslate"><span class="pre">len</span></code> 関数を使います。</p>
+<p>今書いている文章の文字数を変数に代入します。
+そして <code class="docutils literal notranslate"><span class="pre">len</span></code> 関数を呼び出し、今の文字数を確認します。
+100文字との差を求めて「もっと書かなきゃ」「ここを削ろう」などと推敲しています。</p>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">start-programming-with-python</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>ナビゲーション</h3>
+<p class="caption" role="heading"><span class="caption-text">目次</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../300-value_integer_string/index.html">1. プログラムで数と文字を扱ってみよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../310-variables/index.html">2. 値を変数で扱おう</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. 関数でまとまった処理を扱おう</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">3.1. 関数とは</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">3.2. 関数を使ってみよう</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">3.3. 関数をもう少し詳しく知ろう</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../330-input_output/index.html">4. プログラムの入力と出力を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../340-define_functions/index.html">5. 関数を作って処理をまとめよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../350-in_order/index.html">6. 3大構造 一. 順次</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../360-fork/index.html">7. 3大構造 二. 分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../370-loop/index.html">8. 3大構造 三. 反復</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../380-list/index.html">9. 複数の値をまとめて扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../390-programmer_thinking/index.html">10. プログラマーの考え方を知ろう</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../310-variables/index.html" title="前の章へ"><span class="section-number">2. </span>値を変数で扱おう</a></li>
+      <li>Next: <a href="../330-input_output/index.html" title="次の章へ"><span class="section-number">4. </span>プログラムの入力と出力を扱おう</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, nikkie.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/320-use_functions/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

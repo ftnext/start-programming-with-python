@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+
+<html lang="ja" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>5. 関数を作って処理をまとめよう &#8212; start-programming-with-python  ドキュメント</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=c058f7c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=0c5d2aad" />
+    <script src="../_static/documentation_options.js?v=c033477b"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=91613774"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="検索" href="../search.html" />
+    <link rel="next" title="6. 3大構造 一. 順次" href="../350-in_order/index.html" />
+    <link rel="prev" title="4. プログラムの入力と出力を扱おう" href="../330-input_output/index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="define-functions">
+<span id="id1"></span><h1><span class="section-number">5. </span>関数を作って処理をまとめよう<a class="headerlink" href="#define-functions" title="Link to this heading">¶</a></h1>
+<p>プログラミング言語に用意された関数を使えるようになりましたね。
+プログラミングでは、<strong>関数を自分で作れます</strong> ！
+「関数を定義する」とも言います。</p>
+<p>この章では、関数の作り方を紹介します。
+対話モードに入力しながら読み進めてください。</p>
+<section id="id2">
+<h2><span class="section-number">5.1. </span>関数を作ってみよう<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<section id="id3">
+<h3><span class="section-number">5.1.1. </span>決まった挨拶を表示する関数<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>「皆さん、ごきげんよう」と挨拶を表示する関数を作ってみましょう。</p>
+<table class="docutils align-center" id="id13">
+<caption><span class="caption-text">決まった挨拶を表示する関数</span><a class="headerlink" href="#id13" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">aisatsu1</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>「皆さん、ごきげんよう」と表示する</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>なし</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>なし</p></td>
+</tr>
+</tbody>
+</table>
+<p>関数は次のように書きます：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">関数の名前</span><span class="p">():</span>  <span class="c1"># ((defの後に半角スペースが1つ入ります))  </span>
+<span class="gp">... </span>    <span class="n">関数にまとめる文</span><span class="err">（</span><span class="n">の並び</span><span class="err">）</span>  <span class="c1"># ((先頭に半角スペース4つを忘れずに！))</span>
+</pre></div>
+</div>
+<p>処理系が関数の呼び出しを処理する中で、<strong>関数にまとめた文が処理され</strong> ます。</p>
+<p>ここで作る関数の名前は <code class="docutils literal notranslate"><span class="pre">aisatsu1</span></code> とすでに決めています。
+「皆さん、ごきげんよう」と表示したいので、<code class="docutils literal notranslate"><span class="pre">print</span></code> 関数を使った式の出番ですね。</p>
+</section>
+<section id="id4">
+<h3><span class="section-number">5.1.2. </span>決まった挨拶を表示する関数を作る<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<p>では、<code class="docutils literal notranslate"><span class="pre">aisatsu1</span></code> 関数を作ります。
+まず対話モードに <code class="docutils literal notranslate"><span class="pre">def</span></code> で始まる行を入力しましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu1</span><span class="p">():</span>  
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">:</span></code> （コロン）まで入力したらEnterキーを1回押します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu1</span><span class="p">():</span>  
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>2行目に入力できるようになりました。
+<code class="docutils literal notranslate"><span class="pre">print</span></code> 関数を使った式を書く行です。
+すぐに書き始めるのではなく、<strong>半角スペース4つを入れてから</strong> 書いてください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu1</span><span class="p">():</span>  
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;皆さん、ごきげんよう&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>2行目を入力した後、Enterキーを1回押すと、続く行が入力できるようになります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu1</span><span class="p">():</span>  
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;皆さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu1</span></code> 関数にまとめる処理は1行だけなので、何も入力せずにEnterキーを1回押してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu1</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;皆さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> で始まる行が再び現れました。
+これは、<code class="docutils literal notranslate"><span class="pre">aisatsu1</span></code> 関数が作られたことを意味します。</p>
+<p>作った <code class="docutils literal notranslate"><span class="pre">aisatsu1</span></code> 関数を呼び出してみましょう。
+箱に入れるものはないので、呼び出すときはカッコ <code class="docutils literal notranslate"><span class="pre">()</span></code> を付けるだけです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu1</span><span class="p">()</span>
+<span class="go">皆さん、ごきげんよう</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu1</span></code> 関数にまとめた式 <code class="docutils literal notranslate"><span class="pre">print(&quot;皆さん、ごきげんよう&quot;)</span></code> が評価されていますね。</p>
+<figure class="align-center" id="id14">
+<a class="reference internal image-reference" href="../_images/4-17-function_no_parameters.drawio.png"><img alt="../_images/4-17-function_no_parameters.drawio.png" src="../_images/4-17-function_no_parameters.drawio.png" style="width: 60%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">決まった処理をする箱（何も入れずに呼び出せる）</span><a class="headerlink" href="#id14" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id5">
+<h3><span class="section-number">5.1.3. </span>関数を作るときのポイント<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>関数を作るときは、2つのポイントがあります。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">def</span></code> で始める行</p></li>
+<li><p>処理の行は先頭に半角スペース4つを入れる</p></li>
+</ol>
+<p>1つ目は、<code class="docutils literal notranslate"><span class="pre">def</span></code> で始める行 <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">aisatsu1():</span></code> です。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">aisatsu1</span></code> という名前の関数を作ることを表します。</p></li>
+<li><p>関数に入れるものがないことは、空のカッコ <code class="docutils literal notranslate"><span class="pre">()</span></code> で表します。</p></li>
+<li><p>閉じたカッコの後のコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> は忘れやすいので気を付けてください。</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">def</span></code> は、definition（定義）の短縮形です。</p>
+<p>コロンを忘れると、処理系は <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code> を出します。
+対話モードの履歴をさかのぼり、コロンを追加して解消できます。</p>
+<p>2つ目は、関数にまとめる文の先頭に半角スペースを入れて <strong>字下げ</strong> したことです。
+字下げは <strong>インデント</strong> とも呼ばれます。
+関数にまとめる文が複数あるときは、どの文も同じだけインデントします。</p>
+<p><code class="docutils literal notranslate"><span class="pre">def</span></code> の行だけでは、関数にまとめる処理が定義されていません。
+<strong>インデントした行が関数の処理</strong> になります。
+<code class="docutils literal notranslate"><span class="pre">aisatsu1</span></code> 関数の処理は、インデントした行の文（式） <code class="docutils literal notranslate"><span class="pre">print(&quot;皆さん、ごきげんよう&quot;)</span></code> です。</p>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu1</span></code> 関数を呼び出すと、文 <code class="docutils literal notranslate"><span class="pre">print(&quot;皆さん、ごきげんよう&quot;)</span></code> が実行され、この式が評価されます。
+関数呼び出しが処理系に評価されるときに、<strong>インデントした行の文が実行されるようにまとめた</strong> わけです。</p>
+<p>関数定義は文の1種です。
+式自体や代入の文と異なり、関数定義という文の中に <strong>別の文を含められる</strong> のが特徴です。
+別の文を含められることをコロンで示しています。
+別の文はインデントを使って含めます。</p>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">5.2. </span>引数を渡せる関数を作ってみよう<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>前節で作った関数 <code class="docutils literal notranslate"><span class="pre">aisatsu1</span></code> は、引数を渡せない関数でした。</p>
+<p>次のように書くと、<strong>引数を渡せる関数</strong> を定義できます：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">関数の名前</span><span class="p">(</span><span class="n">変数1</span><span class="p">,</span> <span class="n">変数2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>  <span class="c1"># ((カッコの中に書きます))  </span>
+<span class="gp">... </span>    <span class="n">関数にまとめる文</span><span class="err">（</span><span class="n">の並び</span><span class="err">）</span>  <span class="c1"># ((変数を使った処理が書けます))</span>
+</pre></div>
+</div>
+<p>渡したい引数の数だけカッコの中に <strong>変数</strong> を書きます。
+複数の引数を渡したい場合、カッコの中の変数はカンマ <code class="docutils literal notranslate"><span class="pre">,</span></code> で区切ります。</p>
+<p>関数にまとめた処理には、カッコの中の変数が使えます。
+関数呼び出しを評価するとき、この変数に <strong>引数が代入</strong> されます。</p>
+<p>1つの引数、複数の引数の順で例を見ていきましょう。</p>
+<section id="id7">
+<h3><span class="section-number">5.2.1. </span>引数に指定した人への挨拶を表示する関数<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<table class="docutils align-center" id="id15">
+<caption><span class="caption-text">指定した人への挨拶を表示する関数</span><a class="headerlink" href="#id15" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">aisatsu2</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>「〇〇さん、ごきげんよう」と挨拶を表示する</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>文字列（「〇〇」の部分に入る人の名前）</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>なし</p></td>
+</tr>
+</tbody>
+</table>
+<p>この関数に入れるものは1つですね。
+関数のカッコの中の変数は <code class="docutils literal notranslate"><span class="pre">namae</span></code> にします。</p>
+<p>「〇〇さん、ごきげんよう」の表示は、<a class="reference internal" href="../330-input_output/index.html#input-output"><span class="std std-numref">4 章</span></a> 「<a class="reference internal" href="../330-input_output/index.html#input-output"><span class="std std-ref">プログラムの入力と出力を扱おう</span></a>」の練習問題で扱いましたね。
+<code class="docutils literal notranslate"><span class="pre">f</span></code> を付けて始めた文字列については、「<a class="reference internal" href="../330-input_output/index.html#input-output"><span class="std std-ref">プログラムの入力と出力を扱おう</span></a>」の発展（TODO：Xページ参照）を確認してください。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu2</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>作った <code class="docutils literal notranslate"><span class="pre">aisatsu2</span></code> 関数を呼び出してみましょう。
+本書の筆者の名前を渡します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu2</span><span class="p">(</span><span class="s2">&quot;susumuis&quot;</span><span class="p">)</span>
+<span class="go">susumuisさん、ごきげんよう</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu2</span><span class="p">(</span><span class="s2">&quot;nao_y&quot;</span><span class="p">)</span>
+<span class="go">nao_yさん、ごきげんよう</span>
+</pre></div>
+</div>
+<p>渡した引数が <code class="docutils literal notranslate"><span class="pre">namae</span></code> に代入されて、<code class="docutils literal notranslate"><span class="pre">print(f&quot;{namae}さん、ごきげんよう&quot;)</span></code> が評価されていますね。
+この仕組みを使って、関数の処理自体は <strong>変数</strong> を使って <strong>抽象的</strong> に書き、<strong>引数</strong> として渡した <strong>具体的な値</strong> について処理するわけです。</p>
+<p>ぜひ引数として自分の名前を渡して <code class="docutils literal notranslate"><span class="pre">aisatsu2</span></code> 関数を呼び出してみてください。</p>
+<figure class="align-center" id="id16">
+<img alt="../_images/4-16-create-aisatsu-function.drawio.png" src="../_images/4-16-create-aisatsu-function.drawio.png" />
+<figcaption>
+<p><span class="caption-text">関数の定義と、できる関数との対応</span><a class="headerlink" href="#id16" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id8">
+<h3><span class="section-number">5.2.2. </span>引数に指定した姓と名を元に、挨拶を表示する関数<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>関数に入れるものを1つから2つに増やした例です。</p>
+<table class="docutils align-center" id="id17">
+<caption><span class="caption-text">姓と名を指定した人への挨拶を表示する関数</span><a class="headerlink" href="#id17" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">aisatsu3</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>「〇〇さん、ごきげんよう」と挨拶を表示する。「〇〇さん」は、「姓 名さん」とする</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>文字列2つ（1つ目が姓、2つ目が名）</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>なし</p></td>
+</tr>
+</tbody>
+</table>
+<p>「〇〇さん」の部分は、姓と名の文字列を半角スペースでつなぐことにします。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sei</span><span class="p">,</span> <span class="n">mei</span> <span class="o">=</span> <span class="s2">&quot;田中&quot;</span><span class="p">,</span> <span class="s2">&quot;香織&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sei</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">mei</span>
+<span class="go">&#39;田中 香織&#39;</span>
+</pre></div>
+</div>
+<p>半角スペースは、見やすくするために入れました。</p>
+<p>ここまでで確認したことを元にすると、<code class="docutils literal notranslate"><span class="pre">aisatsu3</span></code> 関数は次のようになります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu3</span><span class="p">(</span><span class="n">sei</span><span class="p">,</span> <span class="n">mei</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">namae</span> <span class="o">=</span> <span class="n">sei</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">mei</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>複数行に渡る処理は、<strong>すべての行を同じだけインデント</strong> します。</p>
+<p>呼び出してみましょう。
+カンマで区切った変数と引数は、<strong>同じ位置にあるものどうしが対応</strong> して代入されます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu3</span><span class="p">(</span><span class="s2">&quot;田中&quot;</span><span class="p">,</span> <span class="s2">&quot;香織&quot;</span><span class="p">)</span>
+<span class="go">田中 香織さん、ごきげんよう</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu3(&quot;田中&quot;,</span> <span class="pre">&quot;香織&quot;)</span></code> と呼び出すと、</p>
+<ul class="simple">
+<li><p>最初の引数 <code class="docutils literal notranslate"><span class="pre">&quot;田中&quot;</span></code> が変数 <code class="docutils literal notranslate"><span class="pre">sei</span></code> に代入され、</p></li>
+<li><p>2番めの引数 <code class="docutils literal notranslate"><span class="pre">&quot;香織&quot;</span></code> が変数 <code class="docutils literal notranslate"><span class="pre">mei</span></code> に代入されて、</p></li>
+</ul>
+<p>関数の処理が実行されます。</p>
+<p><strong>複数渡した引数には順番がある</strong> ことがポイントです。
+<code class="docutils literal notranslate"><span class="pre">aisatsu3(&quot;香織&quot;,</span> <span class="pre">&quot;田中&quot;)</span></code> と呼び出すと、<code class="docutils literal notranslate"><span class="pre">sei</span></code> に代入されるのは <code class="docutils literal notranslate"><span class="pre">&quot;香織&quot;</span></code> になります。</p>
+<div class="column admonition">
+<p class="admonition-title">[コラム] インデントに関するエラー</p>
+<p>関数を作るときのインデントは、初めのうちは間違えやすい箇所です。
+インデントがなかったり、揃っていなかったりすると、処理系は <code class="docutils literal notranslate"><span class="pre">IndentationError</span></code> を出します。
+見かけたら <strong>インデントを忘れていないか、インデントが揃っているか</strong>、確認しましょう。</p>
+<p>(1)インデントを忘れてしまった場合</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu2</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>  
+<span class="gp">... </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">2</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="pm">^</span>
+<span class="gr">IndentationError</span>: <span class="n">expected an indented block</span>
+</pre></div>
+</div>
+<p>(2)インデントが少ない行がある場合</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu3</span><span class="p">(</span><span class="n">sei</span><span class="p">,</span> <span class="n">mei</span><span class="p">):</span>  
+<span class="gp">... </span>    <span class="n">namae</span> <span class="o">=</span> <span class="n">sei</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">mei</span>
+<span class="gp">... </span>  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>  <span class="c1"># ((インデントが少ない行))</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">3</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="w">                              </span><span class="pm">^</span>
+<span class="gr">IndentationError</span>: <span class="n">unindent does not match any outer indentation level</span>
+</pre></div>
+</div>
+<p>(3)インデントが多い行がある場合</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu3</span><span class="p">(</span><span class="n">sei</span><span class="p">,</span> <span class="n">mei</span><span class="p">):</span>  
+<span class="gp">... </span>    <span class="n">namae</span> <span class="o">=</span> <span class="n">sei</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">mei</span>
+<span class="gp">... </span>      <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>  <span class="c1"># ((インデントが多い行))</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">3</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="pm">^</span>
+<span class="gr">IndentationError</span>: <span class="n">unexpected indent</span>
+</pre></div>
+</div>
+</div>
+<div class="column admonition">
+<p class="admonition-title">[コラム] 関数のインデント、タブか半角スペースか</p>
+<p>インデントについて「半角スペースを4つ入れましょう」と伝えました。
+実は、半角スペースの数は何個でもかまいません。
+インデントに使われる半角スペースの数が揃っていれば、処理系は <code class="docutils literal notranslate"><span class="pre">IndentationError</span></code> を出しません。</p>
+<p>また、Tab（タブ）キーを使ってもインデントできます。
+ですが、Pythonを書くプログラマーの間では、インデントに <strong>半角スペース</strong> を使うのが慣習です。</p>
+<p>本書のおすすめは、<strong>インデントに半角スペース4つを使う</strong> ことです。
+この数は、Pythonを書くプログラマーの間で一般的です。</p>
+</div>
+</section>
+</section>
+<section id="id9">
+<h2><span class="section-number">5.3. </span>返り値のある関数を作ってみよう<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p>ここまでに作った関数には返り値はありませんでした。
+次のように <code class="docutils literal notranslate"><span class="pre">return</span></code> 文（<code class="docutils literal notranslate"><span class="pre">return</span></code> で始まる文）を使うと、<strong>返り値のある関数</strong> を定義できます：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">関数の名前</span><span class="p">(</span><span class="n">変数1</span><span class="p">,</span> <span class="n">変数2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>  
+<span class="gp">... </span>    <span class="n">関数にまとめる文</span><span class="err">（</span><span class="n">の並び</span><span class="err">）</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">式</span>  <span class="c1"># ((returnの後に半角スペースが1つ入ります))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">return</span></code> 文の <strong>式を評価した値</strong> が、関数の返り値となります。</p>
+<section id="id10">
+<h3><span class="section-number">5.3.1. </span>引数に指定した人への挨拶文を返す関数<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>返り値のある関数を試しに作ってみましょう。</p>
+<table class="docutils align-center" id="id18">
+<caption><span class="caption-text">指定した人への挨拶文を返す関数</span><a class="headerlink" href="#id18" title="Link to this table">¶</a></caption>
+<tbody>
+<tr class="row-odd"><td><p>箱の名前</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>箱は何をするか</p></td>
+<td><p>「〇〇さん、ごきげんよう」という挨拶文を返す</p></td>
+</tr>
+<tr class="row-odd"><td><p>箱に入れるもの</p></td>
+<td><p>文字列（「〇〇」の部分に入る人の名前）</p></td>
+</tr>
+<tr class="row-even"><td><p>箱から出てくるもの</p></td>
+<td><p>文字列（挨拶文）</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数は次のようになります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu_bun</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>本書の筆者の名前を渡して呼び出してみます。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu_bun</span><span class="p">(</span><span class="s2">&quot;susumuis&quot;</span><span class="p">)</span>
+<span class="go">&#39;susumuisさん、ごきげんよう&#39;</span>
+</pre></div>
+</div>
+<p>返り値は、式 <code class="docutils literal notranslate"><span class="pre">f&quot;{namae}さん、ごきげんよう&quot;</span></code> を評価した値になっていますね。
+渡した <code class="docutils literal notranslate"><span class="pre">&quot;susumuis&quot;</span></code> が <code class="docutils literal notranslate"><span class="pre">namae</span></code> に代入されています。</p>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu_bun</span></code> 関数の返り値の文字列を <code class="docutils literal notranslate"><span class="pre">print</span></code> 関数に渡すことで、挨拶を表示できますね。</p>
+<figure class="align-center" id="id19">
+<img alt="../_images/4-18-function_returned_value.drawio.png" src="../_images/4-18-function_returned_value.drawio.png" />
+<figcaption>
+<p><span class="caption-text">返り値のある関数は <code class="docutils literal notranslate"><span class="pre">return</span></code> を指定して作る</span><a class="headerlink" href="#id19" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 関数の返り値は複数あってもいい</p>
+<p><code class="docutils literal notranslate"><span class="pre">return</span></code> 文に続く式は、<strong>カンマで区切って複数指定</strong> できます。
+このとき、関数は複数の値を返します。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">関数の名前</span><span class="p">(</span><span class="n">変数1</span><span class="p">,</span> <span class="n">変数2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>  
+<span class="gp">... </span>    <span class="n">関数にまとめる文</span><span class="err">（</span><span class="n">の並び</span><span class="err">）</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">式1</span><span class="p">,</span> <span class="n">式2</span><span class="p">,</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>挨拶文とその長さを返す関数を作ってみましょう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu_bun_kai</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">bun</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">bun</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bun</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>この関数の返り値の代入は、<a class="reference internal" href="../310-variables/index.html#variables"><span class="std std-numref">2 章</span></a> 「<a class="reference internal" href="../310-variables/index.html#variables"><span class="std std-ref">値を変数で扱おう</span></a>」のコラムで取り上げた「複数の変数に同時に代入」の書き方を使います。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu</span><span class="p">,</span> <span class="n">mojisuu</span> <span class="o">=</span> <span class="n">aisatsu_bun_kai</span><span class="p">(</span><span class="s2">&quot;nao_y&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu</span>
+<span class="go">&#39;nao_yさん、ごきげんよう&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mojisuu</span>
+<span class="go">14</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h2><span class="section-number">5.4. </span>なぜ処理をまとめるのか<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>引数を渡せる関数や、返り値のある関数の作り方が分かりましたね。
+皆さんが知っている関数を組合せて、自分だけの関数を作れるようになっています！</p>
+<p>プログラマーは、<strong>処理のまとまりで関数を作り、それを使ってプログラムを書き</strong> ます。
+なぜ関数を作って処理をまとめるのかを考えてみましょう。</p>
+<section id="id12">
+<h3><span class="section-number">5.4.1. </span>プログラムに階層構造を作る<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<p>関数を使って処理をまとめる理由は、プログラムに <strong>階層構造</strong> を持たせるためです。</p>
+<p><a class="reference internal" href="../310-variables/index.html#variables"><span class="std std-numref">2 章</span></a> 「<a class="reference internal" href="../310-variables/index.html#variables"><span class="std std-ref">値を変数で扱おう</span></a>」では、途中の結果を変数に代入しながら計算しましたね。
+複雑な計算をするプログラムでは、変数に代入しながら書き続けると、100行、1000行を超えることもあるでしょう。
+100行、1000行のプログラムは、何も工夫しないと、読んだり書いたりする <strong>プログラマーにとってどんな処理なのかが分かりにくく</strong> なります。</p>
+<p>そこで、処理を抽象度ごとに <strong>階層構造</strong> を持たせた箇条書きにして考えます。</p>
+<ul class="simple">
+<li><p>処理A</p>
+<ul>
+<li><p>文 a-1</p></li>
+<li><p>文 a-2</p></li>
+<li><p>:</p></li>
+</ul>
+</li>
+<li><p>処理B</p></li>
+<li><p>処理C</p></li>
+</ul>
+<p><strong>抽象的</strong> に見れば、処理A、処理B、処理Cを順番にやっていると <strong>概要をつかめます</strong>。
+このとき、処理のそれぞれに立ち入る必要はありません。
+この処理A、B、Cが関数に相当します。
+関数の名前から大枠を掴んだあとで、各処理を構成する文を具体的に見ていけばよくなります。</p>
+<p>階層構造がなければ、プログラマーはすべてのプログラムを読んで頭の中で階層構造を組み立てなければなりません（それも毎回です！）。
+関数を使って階層構造を作れば、プログラムの中で <strong>必要な部分だけを読んで把握</strong> できます。</p>
+<p>うまく階層構造が付けられた関数たちは、その中の一部を別の用途でも <strong>再利用</strong> できます。
+関数にまとめることで、同じ処理を繰り返し書かずに済むわけです。
+熟練したプログラマーほど、再利用のしやすさにこだわって関数を作ります。</p>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 関数の中でのみ使える変数</p>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu2</span></code> 関数に渡した値は、<strong>関数の処理でのみ有効な変数</strong> <code class="docutils literal notranslate"><span class="pre">namae</span></code> に代入されます。
+<code class="docutils literal notranslate"><span class="pre">aisatsu2(&quot;nikkie&quot;)</span></code> という呼び出しは、変数 <code class="docutils literal notranslate"><span class="pre">namae</span></code> に <code class="docutils literal notranslate"><span class="pre">&quot;nikkie&quot;</span></code> を代入し、関数の続く処理を実行します。
+言い換えると、<code class="docutils literal notranslate"><span class="pre">aisatsu2</span></code> 関数の外側に同名の <code class="docutils literal notranslate"><span class="pre">namae</span></code> 変数があったとしても、
+関数の内側の変数 <code class="docutils literal notranslate"><span class="pre">namae</span></code> と外側の <code class="docutils literal notranslate"><span class="pre">namae</span></code> は <strong>区別される</strong> ということです。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span> <span class="o">=</span> <span class="s2">&quot;nikkie&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span>
+<span class="go">&#39;nikkie&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu2</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu2</span><span class="p">(</span><span class="s2">&quot;susumuis&quot;</span><span class="p">)</span>
+<span class="go">susumuisさん、ごきげんよう</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span>
+<span class="go">&#39;nikkie&#39;</span>
+</pre></div>
+</div>
+<p>関数の内側の変数 <code class="docutils literal notranslate"><span class="pre">namae</span></code> に <code class="docutils literal notranslate"><span class="pre">&quot;susumuis&quot;</span></code> が代入されて処理が実行されましたが、
+関数の外側の変数 <code class="docutils literal notranslate"><span class="pre">namae</span></code> が指す値は変わっていませんね。</p>
+<p>同じ名前の変数 <code class="docutils literal notranslate"><span class="pre">namae</span></code> であっても、関数の中で使われているかいないかで別々のものとして扱います。
+この仕組みは、「変数の <strong>スコープ</strong>」と呼ばれ、プログラミング言語における重要な概念です。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 引数の2通りの見方</p>
+<p>引数には、「実際の引数」と「形式的な引数」があります。
+プログラミングの用語で、それぞれ、「実引数（じつひきすう）」「仮引数（かりひきすう）」と呼びます。</p>
+<p><strong>実際の引数</strong> （実引数）は、<strong>関数を呼び出す立場</strong> からの見方です。
+実際の引数は <strong>具体的な値</strong> です（例： <code class="docutils literal notranslate"><span class="pre">4</span></code> や <code class="docutils literal notranslate"><span class="pre">&quot;こんにちは&quot;</span></code> など）。
+実際の引数として指定した変数や式は、まず評価されて具体的な値になってから関数に渡ります。
+本文ではこちらの意味で引数という語を使ってきました。</p>
+<p><strong>形式的な引数</strong> （仮引数）は、<strong>関数を定義する立場</strong> からの見方です。
+形式的な引数は、カッコの中に書いた <strong>変数</strong> で、関数の中でのみ有効です。
+関数の処理を書く上で、形式的にでも <strong>渡される値を表す変数</strong> があると書きやすいのです。
+形式的な引数には、関数呼び出しで渡された実際の引数が代入されます（代入されるまでは何も値を指していません）。
+形式的な引数が複数あるときは、同じだけ実際の引数を渡す必要があり、渡した順に対応して代入されます。</p>
+<p>以下は、形式的な引数を <code class="docutils literal notranslate"><span class="pre">namae</span></code> として <code class="docutils literal notranslate"><span class="pre">aisatsu2</span></code> 関数を定義し、
+実際の引数として変数 <code class="docutils literal notranslate"><span class="pre">namae</span></code> を渡す例です（指す値 <code class="docutils literal notranslate"><span class="pre">&quot;nikkie&quot;</span></code> が渡されます）。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">aisatsu2</span><span class="p">(</span><span class="n">namae</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">namae</span><span class="si">}</span><span class="s2">さん、ごきげんよう&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">namae</span> <span class="o">=</span> <span class="s2">&quot;nikkie&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu2</span><span class="p">(</span><span class="n">namae</span><span class="p">)</span>
+<span class="go">nikkieさん、ごきげんよう</span>
+</pre></div>
+</div>
+<p>形式的な引数と実際の引数が同じ名前だからうまく動いているのではありません。
+<code class="docutils literal notranslate"><span class="pre">aisatsu2(namae)</span></code> という呼び出しで、<strong>実際の引数が形式的な引数に代入される</strong> のでうまく動いています。
+実際の引数に指定する変数は何でもよく、 <code class="docutils literal notranslate"><span class="pre">hissha</span></code> のように変えられます。
+<code class="docutils literal notranslate"><span class="pre">aisatsu2(hissha)</span></code> という呼び出しで、問題なく動きます。</p>
+</div>
+<div class="advanced admonition">
+<p class="admonition-title">[発展] 実際の引数には2種類ある</p>
+<p><code class="docutils literal notranslate"><span class="pre">aisatsu3</span></code> 関数の呼び出しで実際の引数を指定する方法は、実はいくつかあります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu3</span><span class="p">(</span><span class="s2">&quot;田中&quot;</span><span class="p">,</span> <span class="s2">&quot;香織&quot;</span><span class="p">)</span>
+<span class="go">田中 香織さん、ごきげんよう</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu3</span><span class="p">(</span><span class="s2">&quot;田中&quot;</span><span class="p">,</span> <span class="n">mei</span><span class="o">=</span><span class="s2">&quot;香織&quot;</span><span class="p">)</span>
+<span class="go">田中 香織さん、ごきげんよう</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu3</span><span class="p">(</span><span class="n">sei</span><span class="o">=</span><span class="s2">&quot;田中&quot;</span><span class="p">,</span> <span class="n">mei</span><span class="o">=</span><span class="s2">&quot;香織&quot;</span><span class="p">)</span>
+<span class="go">田中 香織さん、ごきげんよう</span>
+</pre></div>
+</div>
+<p>実際の引数には2種類あります。</p>
+<ul class="simple">
+<li><p><strong>位置引数</strong>：実際の引数だけを指定した場合</p></li>
+<li><p><strong>キーワード引数</strong>：<code class="docutils literal notranslate"><span class="pre">形式的な引数=実際の引数</span></code> と指定した場合</p></li>
+</ul>
+<p>指定の仕方は異なりますが、渡される値は同じですから、<strong>関数の動きは変わりません</strong>。</p>
+<p>注意点として、キーワード引数を位置引数の前に使うことはできません（続く例のように処理系はエラーを出します）。
+<strong>位置引数 → キーワード引数の順</strong> という決まりがあります。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">aisatsu3</span><span class="p">(</span><span class="n">sei</span><span class="o">=</span><span class="s2">&quot;田中&quot;</span><span class="p">,</span> <span class="s2">&quot;香織&quot;</span><span class="p">)</span>  
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
+<span class="gr">SyntaxError</span>: <span class="n">positional argument follows keyword argument</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">start-programming-with-python</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="検索" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>ナビゲーション</h3>
+<p class="caption" role="heading"><span class="caption-text">目次</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../300-value_integer_string/index.html">1. プログラムで数と文字を扱ってみよう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../310-variables/index.html">2. 値を変数で扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../320-use_functions/index.html">3. 関数でまとまった処理を扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../330-input_output/index.html">4. プログラムの入力と出力を扱おう</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. 関数を作って処理をまとめよう</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">5.1. 関数を作ってみよう</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">5.2. 引数を渡せる関数を作ってみよう</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">5.3. 返り値のある関数を作ってみよう</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">5.4. なぜ処理をまとめるのか</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../350-in_order/index.html">6. 3大構造 一. 順次</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../360-fork/index.html">7. 3大構造 二. 分岐</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../370-loop/index.html">8. 3大構造 三. 反復</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../380-list/index.html">9. 複数の値をまとめて扱おう</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../390-programmer_thinking/index.html">10. プログラマーの考え方を知ろう</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../330-input_output/index.html" title="前の章へ"><span class="section-number">4. </span>プログラムの入力と出力を扱おう</a></li>
+      <li>Next: <a href="../350-in_order/index.html" title="次の章へ"><span class="section-number">6. </span>3大構造 一. 順次</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2022, nikkie.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.0.2</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/340-define_functions/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
