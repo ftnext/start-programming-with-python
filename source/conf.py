@@ -65,7 +65,8 @@ html_static_path = ['_static']
 
 from docutils import nodes  # noqa
 from docutils.parsers.rst.directives.admonitions import BaseAdmonition  # noqa
-from sphinx.util.nodes import StringList, nested_parse_with_titles  # noqa
+from docutils.statemachine import StringList  # noqa
+from sphinx.util.nodes import nested_parse_with_titles  # noqa
 
 
 class NamedNoteDirective(BaseAdmonition):
